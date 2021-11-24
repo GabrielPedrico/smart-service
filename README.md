@@ -7,4 +7,4 @@ de um sistema web de cardapio e atendimento para restaurantes.
 
 # Tecnologias:
 
-https://www.google.com/url?sa=i&url=https%3A%2F%2Ffile.wiki%2Fdownload-java-8-update-111-offline-installers%2F&psig=AOvVaw3SMBYrY761daHi6YyxjzFz&ust=1637865669344000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCPjj0vyqsfQCFQAAAAAdAAAAABAD
+![Alt text](https://1.bp.blogspot.com/-QXQ_jdU0Frs/V46c6ImU4JI/AAAAAAAAAkM/u0xcOFxDC1gCJFc-36VOX_Ioc7pVpDOHACLcB/s200/Java%2BRuntime%2BEnvironment.png)![Alt text](https://www.dariawan.com/media/images/tutorial-spring-logo.width-400.png)![Alt text](https://pngimg.com/uploads/mysql/mysql_PNG9.png)
