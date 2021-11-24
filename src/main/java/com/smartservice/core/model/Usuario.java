@@ -1,9 +1,11 @@
 package com.smartservice.core.model;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import java.util.Objects;
 import java.util.UUID;
