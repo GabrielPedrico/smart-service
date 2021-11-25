@@ -2,10 +2,7 @@ package com.smartservice.core.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Objects;
 import java.util.UUID;
@@ -15,11 +12,12 @@ public class Usuario {
 
     @Id @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(unique = true)
     private UUID id;
 
     private String nome;
 
-    @Email
+    @Column(unique = true)
     private String email;
 
     private String password;

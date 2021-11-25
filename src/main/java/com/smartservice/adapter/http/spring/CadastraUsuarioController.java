@@ -1,6 +1,8 @@
 package com.smartservice.adapter.http.spring;
 
-import com.smartservice.adapter.datastore.entity.UsuarioRepository;
+import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
+import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;
+import com.smartservice.adapter.http.dto.entrada.CadastraClienteRequest;
 import com.smartservice.core.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,18 +16,24 @@ import javax.validation.Valid;
 @RestController
 public class CadastraUsuarioController {
 
-
     @Autowired
     public UsuarioRepository repository;
 
-    @PostMapping
+    @PostMapping(value = "/cadastra/cliente")
     @CrossOrigin
-    ResponseEntity<?> cadastrar(@RequestBody @Valid Usuario request){
+    ResponseEntity<?> cadastrarCliente(@RequestBody @Valid CadastraClienteRequest request){
 
-        Usuario usuario = request;
+        Usuario cliente = request.toModel();
+        repository.save(cliente);
+        return ResponseEntity.ok().body("Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+    }
 
-        repository.save(request);
+    @PostMapping(value = "/cadastra/administrador")
+    @CrossOrigin
+    ResponseEntity<?> cadastrarAdministrador(@RequestBody @Valid CadastraAdministradorRequest request){
 
-        return ResponseEntity.ok().body(request.toString());
+        Usuario administrador = request.toModel();
+        repository.save(administrador);
+        return ResponseEntity.ok().body("Administrador " + administrador.getNome() + " cadastrado com sucesso!");
     }
 }

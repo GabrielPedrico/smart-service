@@ -1,4 +1,4 @@
-package com.smartservice.adapter.datastore.entity;
+package com.smartservice.adapter.datastore.repositories;
 
 import com.smartservice.core.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
