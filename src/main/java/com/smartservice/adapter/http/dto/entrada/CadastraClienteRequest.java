@@ -2,17 +2,11 @@ package com.smartservice.adapter.http.dto.entrada;
 
 import com.smartservice.core.model.Perfil;
 import com.smartservice.core.model.Usuario;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Column;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.UUID;
 
 public class CadastraClienteRequest {
 
