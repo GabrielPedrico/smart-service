@@ -1,8 +1,7 @@
 package com.smartservice.adapter.http.spring;
 
-import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
 import com.smartservice.adapter.http.dto.entrada.AutenticaUsuarioRequest;
-import com.smartservice.core.biz.UsuarioBusiness;
+import com.smartservice.core.port.UsuarioPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,15 +15,11 @@ import javax.validation.Valid;
 public class AutenticaController {
 
         @Autowired
-        public UsuarioRepository repository;
-
-        @Autowired
-        public UsuarioBusiness usuarioBusiness;
+        private UsuarioPort port;
 
         @PostMapping(value = "/auth")
         @CrossOrigin
         ResponseEntity<?> cadastrarCliente(@RequestBody @Valid AutenticaUsuarioRequest request) {
-            usuarioBusiness.autenticaUsuario(request.getEmail(),request.getPassword());
-            return ResponseEntity.ok().build();
+            return port.autenticaUsuario(request.getEmail(), request.getPassword());
         }
 }
