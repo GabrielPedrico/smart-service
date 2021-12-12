@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+/*Autor: Gabriel Pedrico*/
 @RestController
 public class CadastraUsuarioController {
 
