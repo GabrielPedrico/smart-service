@@ -22,7 +22,7 @@ public class Usuario {
 
     private String password;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Perfil tipo;
 
     private String telefone;

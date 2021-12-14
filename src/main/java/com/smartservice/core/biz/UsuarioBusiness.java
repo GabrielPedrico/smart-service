@@ -1,20 +1,29 @@
 package com.smartservice.core.biz;
 
+import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
+import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;
 import com.smartservice.adapter.http.dto.entrada.CadastraClienteRequest;
+import com.smartservice.adapter.http.dto.saida.usuario.CadastraUsuarioResponse;
 import com.smartservice.core.model.Usuario;
 import com.smartservice.core.port.UsuarioPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
 
 @Component
 public class UsuarioBusiness implements UsuarioPort {
 
     @Autowired
     public UsuarioRepository repository;
+
+    @Autowired
+    public UsuarioMapper usuarioMapper;
 
     public BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
@@ -24,21 +33,37 @@ public class UsuarioBusiness implements UsuarioPort {
         if (userExists.isEmpty()) throw new IllegalArgumentException("Usuario inexistente");
         var passMatchs = bCryptPasswordEncoder.matches(senha,userExists.get().getPassword());
         if (!passMatchs) throw new IllegalArgumentException("Senha incorreta");
-        return ResponseEntity.ok().body("Autenticação Ok");
+        return getResponseData(buildResponseData(buildAutenticarUsuarioResponse()), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> cadastraCliente(CadastraClienteRequest request){
 
-        Usuario cliente = request.toModel();
+        Usuario cliente = usuarioMapper.converterParaUsuario(request);
         repository.save(cliente);
-        return ResponseEntity.ok().body("Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+        return getResponseData(buildResponseData(buildCadastraUsuarioResponse()), HttpStatus.CREATED);
     }
 
     @Override
     public ResponseEntity<?> cadastraAdministrador(CadastraAdministradorRequest request){
-        Usuario administrador = request.toModel();
+        Usuario administrador = usuarioMapper.converterParaUsuario(request);
         repository.save(administrador);
-        return ResponseEntity.ok().body("Administrador " + administrador.getNome() + " cadastrado com sucesso!");
+        return getResponseData(buildResponseData(buildCadastraUsuarioResponse()), HttpStatus.CREATED);
+    }
+
+    public CadastraUsuarioResponse buildCadastraUsuarioResponse(){
+            return new CadastraUsuarioResponse("PROCESSAMENTO OK");
+    }
+
+    public CadastraUsuarioResponse buildAutenticarUsuarioResponse(){
+        return new CadastraUsuarioResponse("AUTENTICACAO OK");
+    }
+
+    public ResponseEntity<ResponseData> getResponseData(ResponseData responseData, HttpStatus httpStatus){
+        return new ResponseEntity<>(responseData,httpStatus);
+    }
+
+    private ResponseData buildResponseData(CadastraUsuarioResponse cadastraUsuarioResponse){
+        return new ResponseData(Collections.singletonList(cadastraUsuarioResponse));
     }
 }

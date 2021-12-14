@@ -4,6 +4,7 @@ import com.smartservice.core.model.Perfil;
 import com.smartservice.core.model.Usuario;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -19,6 +20,9 @@ public class CadastraAdministradorRequest {
 
     @Size(min = 6)
     private String password;
+
+
+    private Perfil tipo;
 
     @NotBlank
     private String telefone;
@@ -44,12 +48,11 @@ public class CadastraAdministradorRequest {
     @NotBlank
     private String estado;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
     public CadastraAdministradorRequest(String nome, String email, String password, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
         this.nome = nome;
         this.email = email;
-        this.password = password;
         this.telefone = telefone;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -62,6 +65,11 @@ public class CadastraAdministradorRequest {
 
     @Deprecated
     public CadastraAdministradorRequest (){}
+
+    public void executaRotina(){
+        this.password = bCryptPasswordEncoder.encode(this.password);
+        this.tipo = Perfil.ADMINISTRADOR;
+    }
 
     public String getNome() {
         return nome;
@@ -107,8 +115,7 @@ public class CadastraAdministradorRequest {
         return estado;
     }
 
-    public Usuario toModel(){
-        var _password = bCryptPasswordEncoder.encode(this.password);
-        return new Usuario(this.nome,this.email,_password, Perfil.ADMINISTRADOR,this.telefone,this.logradouro,this.numero,this.complemento,this.cep,this.bairro,this.cidade,this.estado);
+    public Perfil getTipo() {
+        return tipo;
     }
 }

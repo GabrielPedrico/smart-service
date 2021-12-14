@@ -4,6 +4,8 @@ import com.smartservice.core.model.Perfil;
 import com.smartservice.core.model.Usuario;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -19,6 +21,8 @@ public class CadastraClienteRequest {
 
     @Size(min = 6)
     private String password;
+
+    private Perfil tipo;
 
     @NotBlank
     private String telefone;
@@ -60,8 +64,63 @@ public class CadastraClienteRequest {
         this.estado = estado;
     }
 
-    public Usuario toModel(){
-        var _password = bCryptPasswordEncoder.encode(this.password);
-        return new Usuario(this.nome,this.email,_password,Perfil.CLIENTE,this.telefone,this.logradouro,this.numero,this.complemento,this.cep,this.bairro,this.cidade,this.estado);
+    @Deprecated
+    public CadastraClienteRequest(){}
+
+    public void executaRotina(){
+        this.password = bCryptPasswordEncoder.encode(this.password);
+        this.tipo = Perfil.CLIENTE;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Perfil getTipo() {
+        return tipo;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public BCryptPasswordEncoder getbCryptPasswordEncoder() {
+        return bCryptPasswordEncoder;
     }
 }
