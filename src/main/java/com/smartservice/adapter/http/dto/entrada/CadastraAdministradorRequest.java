@@ -1,10 +1,8 @@
 package com.smartservice.adapter.http.dto.entrada;
 
-import com.smartservice.core.model.Perfil;
-import com.smartservice.core.model.Usuario;
+import com.smartservice.core.model.enums.Perfil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

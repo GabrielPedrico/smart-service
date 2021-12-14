@@ -1,56 +1,46 @@
-package com.smartservice.adapter.http.dto.entrada;
+package com.smartservice.core.model.usuario;
 
 import com.smartservice.core.model.enums.Perfil;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import java.util.UUID;
 
-public class CadastraClienteRequest {
+public class UsuarioModel {
 
-    @NotBlank
+    private UUID id;
+
     private String nome;
 
-    @NotBlank
-    @Email
     private String email;
 
-    @Size(min = 6)
     private String password;
 
     private Perfil tipo;
 
-    @NotBlank
     private String telefone;
 
-    @NotBlank
     private String logradouro;
 
-    @NotBlank
     private String numero;
 
-    @NotBlank
     private String complemento;
 
-    @NotBlank
     private String cep;
 
-    @NotBlank
     private String bairro;
 
-    @NotBlank
     private String cidade;
 
-    @NotBlank
     private String estado;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
-    public CadastraClienteRequest(String nome, String email, String password, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
+    public UsuarioModel(UUID id, String nome, String email, String password, Perfil tipo, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.password = password;
+        this.tipo = tipo;
         this.telefone = telefone;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -61,12 +51,8 @@ public class CadastraClienteRequest {
         this.estado = estado;
     }
 
-    @Deprecated
-    public CadastraClienteRequest(){}
-
-    public void executaRotina(){
-        this.password = bCryptPasswordEncoder.encode(this.password);
-        this.tipo = Perfil.CLIENTE;
+    public UUID getId() {
+        return id;
     }
 
     public String getNome() {
@@ -115,9 +101,5 @@ public class CadastraClienteRequest {
 
     public String getEstado() {
         return estado;
-    }
-
-    public BCryptPasswordEncoder getbCryptPasswordEncoder() {
-        return bCryptPasswordEncoder;
     }
 }

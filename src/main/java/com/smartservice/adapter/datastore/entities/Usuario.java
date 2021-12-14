@@ -1,9 +1,9 @@
-package com.smartservice.core.model;
+package com.smartservice.adapter.datastore.entities;
 
+import com.smartservice.core.model.enums.Perfil;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import java.util.Objects;
 import java.util.UUID;
 
