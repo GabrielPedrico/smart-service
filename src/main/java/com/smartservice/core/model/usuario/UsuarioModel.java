@@ -2,9 +2,6 @@ package com.smartservice.core.model.usuario;
 
 import com.smartservice.core.model.enums.Perfil;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.UUID;
 
 public class UsuarioModel {
