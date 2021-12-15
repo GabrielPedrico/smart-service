@@ -11,7 +11,7 @@ de um sistema web de cardapio e atendimento para restaurantes.
 
 # Endpoints
 
-# http://localhost:8080/cadastra/cliente (Cadastra Cliente)
+# http://localhost:8080/cadastra/cliente [POST]
 
 Entrada:
 {
@@ -38,7 +38,7 @@ Saida(201):
     ]
 }
 
-# http://localhost:8080/cadastra/administrador (Cadastra Adm)
+# http://localhost:8080/cadastra/administrador [POST]
 
 Entrada:
 {
@@ -64,7 +64,7 @@ Saida(201):
     ]
 }
 
-# http://localhost:8080/auth (Autenticação)
+# http://localhost:8080/auth [POST]
 
 Entrada:
 {
