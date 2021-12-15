@@ -2,12 +2,12 @@ package com.smartservice.core.biz;
 
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
+import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.exceptions.UsuarioNaoAutorizadoException;
 import com.smartservice.core.exceptions.UsuarioNaoExistenteException;
 import com.smartservice.core.port.entrada.UsuarioAutenticaPort;
-import org.springframework.stereotype.Component;
 
-@Component
+@AdapterUseCase
 public class UsuarioAutenticaBusiness implements UsuarioAutenticaPort {
 
 
