@@ -2,6 +2,7 @@ package com.smartservice.config.advice;
 
 import com.smartservice.adapter.http.dto.Response;
 import com.smartservice.adapter.http.dto.saida.handle.ErrorApiResponse;
+import com.smartservice.core.exceptions.HttpException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,12 @@ public class AdviceControllerConfig extends ResponseEntityExceptionHandler {
         if(HttpStatus.INTERNAL_SERVER_ERROR.equals(httpStatus))request.setAttribute("javax.servlet.error.exception",ex,0);
         var response = buildErrorApiResponse(ex.getMessage(),httpStatus.getReasonPhrase(),httpStatus,null);
         return ResponseEntity.status(httpStatus).body(new Response<>(response));
+    }
+
+    @ExceptionHandler
+    protected ResponseEntity<Object> handleHttpExceptions(HttpException throwable){
+        var response = buildErrorApiResponse(throwable.getMessage(),throwable.getHttpStatus().getReasonPhrase(),throwable.getHttpStatus(),null);
+        return ResponseEntity.status(throwable.getHttpStatus()).body(new Response<>(response));
     }
 
     //Tratamento default para erros
