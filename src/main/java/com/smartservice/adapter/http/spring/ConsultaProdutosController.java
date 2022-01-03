@@ -27,7 +27,7 @@ public class ConsultaProdutosController {
         @CrossOrigin
         ResponseEntity<?> consultaProdutos() throws IOException {
             var produtos = port.consultaProdutos();
-            return getResponseData(buildResponseData(buildConsultaProdutosResponse(produtos)), HttpStatus.ACCEPTED);
+            return getResponseData(buildResponseData(buildConsultaProdutosResponse(produtos)), HttpStatus.OK);
         }
 
         public ConsultaProdutoResponse buildConsultaProdutosResponse(List<Produto> produtos){
