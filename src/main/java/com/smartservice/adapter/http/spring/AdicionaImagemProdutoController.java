@@ -3,7 +3,6 @@ package com.smartservice.adapter.http.spring;
 import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
 import com.smartservice.core.port.saida.AdicionaImagemProdutoPort;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,7 +19,7 @@ public class AdicionaImagemProdutoController {
     @Autowired
     private AdicionaImagemProdutoPort port;
 
-    @PutMapping(value = "/cadastra/imagem/{id}",
+    @PutMapping(value = "/cadastra/imagem/produto/{id}",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE},
             headers = "content-type=multipart/*")
