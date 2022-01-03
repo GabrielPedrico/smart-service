@@ -82,4 +82,40 @@ Saida(200):
     ]
 }
 
+# http://localhost:8080/cadastra/produto [POST]
+
+Entrada:
+{
+    "categoria": "PODRAO",
+    "nome": "Hamburguer",
+    "preco": "12.99",
+    "descricao": "xxxxxxxxxxxxxxxxxxxxxxxx",
+    "estoque": "20"
+}
+
+
+Saida(201):
+{
+    "data": [
+        {
+            "message": "PROCESSAMENTO OK"
+        }
+    ]
+}
+
+# http://localhost:8080/cadastra/imagem/produto/{id} [PUT]
+
+Entrada(Multipartfile):
+
+form-data: file
+
+Sáida(202):
+{
+    "data": [
+        {
+            "message": "PROCESSAMENTO OK"
+        }
+    ]
+}
+
 
