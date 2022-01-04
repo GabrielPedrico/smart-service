@@ -121,7 +121,7 @@ Sáida(202):
 # http://localhost:8080/produtos [GET]
 
 Entrada(Vazia):
-Saída:
+Saída(200):
 {
     "data": [
         {
@@ -139,4 +139,27 @@ Saída:
         }
     ]
 }
+
+# http://localhost:8080/produtos/categoria/{categoria} [GET]
+
+Entrada(Vazia):
+Saída(200):
+{
+    "data": [
+        {
+            "produtos": [
+                {
+                    "id": "42582b31-2fe9-4867-a070-ffdd07bc9650",
+                    "categoria": "PODRAO",
+                    "nome": "Hamburguer",
+                    "preco": 12.99,
+                    "descricao": "xxxxxxxxxxxxxxxxxxxxxxxx",
+                    "estoque": 20,
+                    "imgUrl": "BASE64"
+                }
+            ]
+        }
+    ]
+}
+
 
