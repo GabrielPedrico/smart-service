@@ -7,4 +7,8 @@ import java.util.List;
 public interface ConsultaProdutosPort {
 
     List<Produto> consultaProdutos();
+
+    List<Produto> consultaPorCategoria(String categoria);
+
+
 }

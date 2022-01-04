@@ -30,14 +30,9 @@ public class CadastraProdutoController {
     @CrossOrigin
     ResponseEntity<?> cadastrarProduto(@RequestBody @Valid CadastraProdutoRequest request){
             ProdutoModel produtoModel = produtoMapper.converterParaProdutoModel(request);
-            cadastroProdutoPort.processaCadastro(produtoModel);
-            return getResponseData(buildResponseData(buildCadastraUsuarioResponse()), HttpStatus.CREATED);
+            var cadastroProdutoResponse =cadastroProdutoPort.processaCadastro(produtoModel);
+            return getResponseData(buildResponseData(cadastroProdutoResponse), HttpStatus.CREATED);
     }
-
-    public CadastraProdutoResponse buildCadastraUsuarioResponse(){
-        return new CadastraProdutoResponse("PROCESSAMENTO OK");
-    }
-
     public ResponseEntity<ResponseData> getResponseData(ResponseData responseData, HttpStatus httpStatus){
         return new ResponseEntity<>(responseData,httpStatus);
     }

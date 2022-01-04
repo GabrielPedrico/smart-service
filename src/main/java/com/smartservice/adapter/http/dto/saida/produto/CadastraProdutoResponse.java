@@ -2,16 +2,17 @@ package com.smartservice.adapter.http.dto.saida.produto;
 
 public class CadastraProdutoResponse {
 
-    private String message;
+    private String produtoId;
 
-    public CadastraProdutoResponse(String message) {
-        this.message = message;
+    public CadastraProdutoResponse(String produtoId) {
+        this.produtoId = produtoId;
     }
+
     @Deprecated
     public CadastraProdutoResponse() {
     }
 
-    public String getMessage() {
-        return message;
+    public String getProdutoId() {
+        return produtoId;
     }
 }

@@ -2,6 +2,7 @@ package com.smartservice.core.biz;
 
 import com.smartservice.adapter.broker.mapper.ProdutoMapper;
 import com.smartservice.adapter.datastore.entities.Produto;
+import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.model.usuario.ProdutoModel;
 import com.smartservice.core.port.entrada.CadastroProdutoPort;
@@ -20,8 +21,8 @@ public class CadastroProdutoBusiness implements CadastroProdutoPort {
     }
 
     @Override
-    public void processaCadastro(ProdutoModel produtoModel) {
+    public CadastraProdutoResponse processaCadastro(ProdutoModel produtoModel) {
         Produto produto = produtoMapper.converterParaProduto(produtoModel);
-        cadastroProdutoPortSaida.cadastraProduto(produto);
+        return cadastroProdutoPortSaida.cadastraProduto(produto);
     }
 }

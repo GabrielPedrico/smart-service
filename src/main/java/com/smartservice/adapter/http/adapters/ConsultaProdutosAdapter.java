@@ -2,6 +2,8 @@ package com.smartservice.adapter.http.adapters;
 
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.datastore.repositories.ProdutoRepository;
+import com.smartservice.core.exceptions.ProdutoNaoExistenteException;
+import com.smartservice.core.model.enums.Categoria;
 import com.smartservice.core.port.saida.ConsultaProdutosPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,4 +21,12 @@ public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
         var produtos = produtoRepository.findAll();
         return produtos;
     }
+
+    @Override
+    public List<Produto> consultaPorCategoria(String categoria)  {
+       var produtos = produtoRepository.findByCategoria(Categoria.valueOf(categoria));
+       return produtos;
+    }
+
+
 }
