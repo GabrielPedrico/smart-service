@@ -77,7 +77,9 @@ Saida(200):
 {
     "data": [
         {
-            "message": "AUTENTICACAO OK"
+            "message": "AUTENTICACAO OK",
+            "usuario": "André",
+            "nivelUsuario": "ADMINISTRADOR"
         }
     ]
 }
