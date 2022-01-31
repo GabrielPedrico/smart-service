@@ -1,5 +1,7 @@
 package com.smartservice.core.port.entrada;
 
+import com.smartservice.adapter.http.dto.saida.usuario.AutenticaUsuarioResponse;
+
 public interface UsuarioAutenticaPort {
-    void autenticaUsuario(String email, String senha);
+    AutenticaUsuarioResponse autenticaUsuario(String email, String senha);
 }

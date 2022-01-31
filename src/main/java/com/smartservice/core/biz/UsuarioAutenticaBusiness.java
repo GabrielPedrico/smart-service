@@ -2,6 +2,7 @@ package com.smartservice.core.biz;
 
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
+import com.smartservice.adapter.http.dto.saida.usuario.AutenticaUsuarioResponse;
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.exceptions.UsuarioNaoAutorizadoException;
 import com.smartservice.core.exceptions.UsuarioNaoExistenteException;
@@ -22,10 +23,11 @@ public class UsuarioAutenticaBusiness implements UsuarioAutenticaPort {
     }
 
     @Override
-    public void autenticaUsuario(String email, String senha){
+    public AutenticaUsuarioResponse autenticaUsuario(String email, String senha){
         var userExists = repository.findByEmail(email);
         if (userExists.isEmpty()) throw new UsuarioNaoExistenteException("Usuario inexistente");
         var passMatchs = usuarioAutenticaPort.verificaSenha(senha,userExists.get().getPassword());
         if (!passMatchs) throw new UsuarioNaoAutorizadoException("Senha incorreta");
+        return new AutenticaUsuarioResponse("AUTENTICACAO OK",userExists.get().getNome(),userExists.get().getTipo().toString());
     }
 }

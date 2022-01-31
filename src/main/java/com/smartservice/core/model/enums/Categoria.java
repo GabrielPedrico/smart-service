@@ -2,9 +2,9 @@ package com.smartservice.core.model.enums;
 
 public enum Categoria {
 
-    SUSHI,
-    PORCOES,
+    HAMBURGERS,
+    BEBIDAS,
     BEBIDASALCOLICAS,
     PODRAO,
-    DOGAO
+    PORCOES
 }
