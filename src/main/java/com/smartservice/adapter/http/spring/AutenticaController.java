@@ -2,6 +2,7 @@ package com.smartservice.adapter.http.spring;
 
 import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.entrada.AutenticaUsuarioRequest;
+import com.smartservice.adapter.http.dto.saida.usuario.AutenticaUsuarioResponse;
 import com.smartservice.adapter.http.dto.saida.usuario.CadastraUsuarioResponse;
 import com.smartservice.core.port.entrada.UsuarioAutenticaPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +25,15 @@ public class AutenticaController {
         @PostMapping(value = "/auth")
         @CrossOrigin
         ResponseEntity<?> cadastrarCliente(@RequestBody @Valid AutenticaUsuarioRequest request) {
-                port.autenticaUsuario(request.getEmail(), request.getPassword());
-                return getResponseData(buildResponseData(buildAutenticarUsuarioResponse()), HttpStatus.OK);
-        }
-
-        public CadastraUsuarioResponse buildAutenticarUsuarioResponse(){
-                return new CadastraUsuarioResponse("AUTENTICACAO OK");
+                var response = port.autenticaUsuario(request.getEmail(), request.getPassword());
+                return getResponseData(buildResponseData(response), HttpStatus.OK);
         }
 
         public ResponseEntity<ResponseData> getResponseData(ResponseData responseData, HttpStatus httpStatus){
                 return new ResponseEntity<>(responseData,httpStatus);
         }
 
-        private ResponseData buildResponseData(CadastraUsuarioResponse cadastraUsuarioResponse){
-                return new ResponseData(Collections.singletonList(cadastraUsuarioResponse));
+        private ResponseData buildResponseData(AutenticaUsuarioResponse autenticaUsuarioResponse){
+                return new ResponseData(Collections.singletonList(autenticaUsuarioResponse));
         }
 }
