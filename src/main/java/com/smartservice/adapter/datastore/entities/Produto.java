@@ -14,8 +14,8 @@ public class Produto {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(unique = true)
-    private UUID id;
+    @Column(unique = true,columnDefinition="VARCHAR(40)")
+    private String id;
 
     private Categoria categoria;
 
@@ -34,7 +34,7 @@ public class Produto {
     @Deprecated
     public Produto(){}
 
-    public Produto(UUID id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
+    public Produto(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
         this.id = id;
         this.categoria = categoria;
         this.nome = nome;
@@ -44,7 +44,7 @@ public class Produto {
         this.imgUrl = imgUrl;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 

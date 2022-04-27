@@ -21,10 +21,9 @@ public class AdicionaImagemProdutoAdapter implements AdicionaImagemProdutoPort {
 
     @Override
     public void adicionaImagemProduto(MultipartFile imgUrl,String id) throws IOException {
-        UUID _id = UUID.fromString(id);
         byte[] image = Base64.encodeBase64(imgUrl.getBytes());
         String result = new String(image);
-        Optional<Produto> produto = produtoRepository.findById(_id);
+        Optional<Produto> produto = produtoRepository.findById(id);
         if(produto.isEmpty()) throw new ProdutoNaoExistenteException("Produto inexistente para id: " + id);
         produto.get().setImgUrl(result);
         produtoRepository.save(produto.get());

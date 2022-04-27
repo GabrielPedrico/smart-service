@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.spring;
+package com.smartservice.adapter.http.spring.produto;
 
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.http.dto.ResponseData;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,6 +35,15 @@ public class ConsultaProdutosController {
     ResponseEntity<?> consultaProdutosPorCategoria(@PathVariable("categoria") String categoria) throws IOException {
         var produtos = port.consultaPorCategoria(categoria);
         return getResponseData(buildResponseData(buildConsultaProdutosResponse(produtos)), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/produto/{id}")
+    @CrossOrigin
+    ResponseEntity<?> consultaProdutosPorId(@PathVariable("id") String id) throws IOException {
+        var produtos = port.consultaPorId(id);
+        List<Produto> produto = new ArrayList<>();
+        produto.add(produtos.get());
+        return getResponseData(buildResponseData(buildConsultaProdutosResponse(produto)), HttpStatus.OK);
     }
 
         public ConsultaProdutoResponse buildConsultaProdutosResponse(List<Produto> produtos){
