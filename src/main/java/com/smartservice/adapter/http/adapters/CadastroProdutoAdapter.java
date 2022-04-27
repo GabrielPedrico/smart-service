@@ -17,6 +17,6 @@ public class CadastroProdutoAdapter implements CadastroProdutoPort {
     @Override
     public CadastraProdutoResponse cadastraProduto(Produto produto) {
         produtoRepository.save(produto);
-        return new CadastraProdutoResponse(produto.getId().toString());
+        return new CadastraProdutoResponse(produto.getId());
     }
 }

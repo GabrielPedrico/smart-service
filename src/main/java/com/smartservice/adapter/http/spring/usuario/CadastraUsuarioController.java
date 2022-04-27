@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.spring;
+package com.smartservice.adapter.http.spring.usuario;
 
 import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;

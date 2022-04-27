@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
@@ -26,6 +27,15 @@ public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
     public List<Produto> consultaPorCategoria(String categoria)  {
        var produtos = produtoRepository.findByCategoria(Categoria.valueOf(categoria));
        return produtos;
+    }
+
+    @Override
+    public Optional<Produto> consultaPorId(String id) {
+        var produto = produtoRepository.findById(id);
+        if(produto.isEmpty()){
+            throw new ProdutoNaoExistenteException("Produto não existe.");
+        }
+        return produto;
     }
 
 

@@ -7,7 +7,8 @@ import java.util.UUID;
 
 public class ProdutoModel {
 
-    private UUID id;
+
+    private String id;
 
     private Categoria categoria;
 
@@ -21,7 +22,7 @@ public class ProdutoModel {
 
     private String imgUrl;
 
-    public ProdutoModel(UUID id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
+    public ProdutoModel(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
         this.id = id;
         this.categoria = categoria;
         this.nome = nome;
@@ -33,7 +34,7 @@ public class ProdutoModel {
 
     public ProdutoModel(){}
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
