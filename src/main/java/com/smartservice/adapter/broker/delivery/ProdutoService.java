@@ -2,6 +2,7 @@ package com.smartservice.adapter.broker.delivery;
 
 import com.smartservice.adapter.broker.mapper.ProdutoMapper;
 import com.smartservice.core.port.entrada.CadastroProdutoPort;
+import com.smartservice.core.port.entrada.DeletaProdutoPort;
 import com.smartservice.core.port.saida.AdicionaImagemProdutoPort;
 import com.smartservice.core.port.entrada.ConsultaProdutosPort;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,16 @@ public class ProdutoService {
 
     private final AdicionaImagemProdutoPort adicionaImagemProdutoPort;
 
+    private final DeletaProdutoPort deletaProdutoPort;
+
     private final ProdutoMapper produtoMapper;
 
-    public ProdutoService(CadastroProdutoPort cadastroProdutoPort, ConsultaProdutosPort consultaProdutosPort, AdicionaImagemProdutoPort adicionaImagemProdutoPort, ProdutoMapper produtoMapper) {
+    public ProdutoService(CadastroProdutoPort cadastroProdutoPort, ConsultaProdutosPort consultaProdutosPort, AdicionaImagemProdutoPort adicionaImagemProdutoPort, ProdutoMapper produtoMapper,DeletaProdutoPort deletaProdutoPort) {
         this.cadastroProdutoPort = cadastroProdutoPort;
         this.consultaProdutosPort = consultaProdutosPort;
         this.adicionaImagemProdutoPort = adicionaImagemProdutoPort;
         this.produtoMapper = produtoMapper;
+        this.deletaProdutoPort = deletaProdutoPort;
     }
 
     public CadastroProdutoPort cadastroProdutoPort() {
@@ -38,5 +42,9 @@ public class ProdutoService {
 
     public ProdutoMapper produtoMapper() {
         return produtoMapper;
+    }
+
+    public DeletaProdutoPort deletaProdutoPort() {
+        return deletaProdutoPort;
     }
 }

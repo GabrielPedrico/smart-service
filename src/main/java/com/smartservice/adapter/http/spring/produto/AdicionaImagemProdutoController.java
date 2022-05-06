@@ -3,7 +3,6 @@ package com.smartservice.adapter.http.spring.produto;
 import com.smartservice.adapter.broker.delivery.ProdutoService;
 import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
-import com.smartservice.core.port.saida.AdicionaImagemProdutoPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

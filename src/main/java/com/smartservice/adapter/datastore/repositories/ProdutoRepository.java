@@ -10,4 +10,6 @@ import java.util.UUID;
 public interface ProdutoRepository extends JpaRepository<Produto, String> {
 
     List<Produto> findByCategoria(Categoria categoria);
+
+    //void deleteById(String id);
 }

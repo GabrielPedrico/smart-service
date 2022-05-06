@@ -1,4 +1,4 @@
-package com.smartservice.core.model.usuario;
+package com.smartservice.core.model.produto;
 
 import com.smartservice.core.model.enums.Categoria;
 
@@ -30,6 +30,10 @@ public class ProdutoModel {
         this.descricao = descricao;
         this.estoque = estoque;
         this.imgUrl = imgUrl;
+    }
+
+    public ProdutoModel(String id){
+        this.id = id;
     }
 
     public ProdutoModel(){}
