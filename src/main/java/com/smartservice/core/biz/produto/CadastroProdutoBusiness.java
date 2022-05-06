@@ -4,7 +4,7 @@ import com.smartservice.adapter.broker.mapper.ProdutoMapper;
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
 import com.smartservice.config.annotations.AdapterUseCase;
-import com.smartservice.core.model.usuario.ProdutoModel;
+import com.smartservice.core.model.produto.ProdutoModel;
 import com.smartservice.core.port.entrada.CadastroProdutoPort;
 
 @AdapterUseCase

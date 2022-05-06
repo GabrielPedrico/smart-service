@@ -2,17 +2,17 @@ package com.smartservice.core.biz.produto;
 
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.config.annotations.AdapterUseCase;
+import com.smartservice.core.port.entrada.ConsultaProdutosPort;
 import com.smartservice.core.model.enums.Categoria;
-import com.smartservice.core.port.saida.ConsultaProdutosPort;
 
 import java.util.List;
 
 @AdapterUseCase
-public class ConsultaProdutoBusiness implements com.smartservice.core.port.entrada.ConsultaProdutosPort {
+public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
 
-    private final ConsultaProdutosPort consultaProdutosPort;
+    private final com.smartservice.core.port.saida.ConsultaProdutosPort consultaProdutosPort;
 
-    public ConsultaProdutoBusiness(ConsultaProdutosPort consultaProdutosPort) {
+    public ConsultaProdutoBusiness(com.smartservice.core.port.saida.ConsultaProdutosPort consultaProdutosPort) {
         this.consultaProdutosPort = consultaProdutosPort;
     }
 

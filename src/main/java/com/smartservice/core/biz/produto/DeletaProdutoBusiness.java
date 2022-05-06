@@ -1,7 +1,10 @@
 package com.smartservice.core.biz.produto;
 
 import com.smartservice.config.annotations.AdapterUseCase;
+import com.smartservice.core.model.produto.ProdutoModel;
 import com.smartservice.core.port.entrada.DeletaProdutoPort;
+
+import java.util.List;
 
 @AdapterUseCase
 public class DeletaProdutoBusiness implements DeletaProdutoPort {
@@ -15,5 +18,10 @@ public class DeletaProdutoBusiness implements DeletaProdutoPort {
     @Override
     public void delete(String idProduto) {
         deletaProdutoPort.deleteCrud(idProduto);
+    }
+
+    @Override
+    public void deleteProdutos(List<ProdutoModel> produtos) {
+        deletaProdutoPort.deleteProdutosCrud(produtos);
     }
 }

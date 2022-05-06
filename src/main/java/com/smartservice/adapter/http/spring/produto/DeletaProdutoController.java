@@ -4,16 +4,17 @@ import com.smartservice.adapter.broker.delivery.ProdutoService;
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.http.dto.DefaultResponse;
 import com.smartservice.adapter.http.dto.ResponseData;
+import com.smartservice.adapter.http.dto.entrada.produto.DeletaProdutoRequest;
+import com.smartservice.adapter.http.dto.entrada.produto.DeletaProdutosRequest;
 import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
 import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutoResponse;
+import com.smartservice.core.model.produto.ProdutoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +29,14 @@ public class DeletaProdutoController {
     @CrossOrigin
     ResponseEntity<?> deletaProdutoById(@PathVariable("id") String idProduto) throws IOException {
         produtoService.deletaProdutoPort().delete(idProduto);
+        return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping(value = "/deleta/produtos")
+    @CrossOrigin
+    ResponseEntity<?> deletaProdutoById(@RequestBody @Valid DeletaProdutosRequest produtos) throws IOException {
+        List<ProdutoModel> produtosModel = produtoService.produtoMapper().converterParaListaDeProdutoModel(produtos);
+        produtoService.deletaProdutoPort().deleteProdutos(produtosModel);
         return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.ACCEPTED);
     }
 

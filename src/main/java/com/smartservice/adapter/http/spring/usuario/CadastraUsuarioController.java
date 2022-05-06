@@ -5,7 +5,6 @@ import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.entrada.usuario.CadastraAdministradorRequest;
 import com.smartservice.adapter.http.dto.entrada.usuario.CadastraClienteRequest;
 import com.smartservice.adapter.http.dto.saida.usuario.CadastraUsuarioResponse;
-import com.smartservice.core.port.saida.UsuarioCadastroPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

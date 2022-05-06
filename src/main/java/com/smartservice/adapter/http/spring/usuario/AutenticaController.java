@@ -4,7 +4,6 @@ import com.smartservice.adapter.broker.delivery.UsuarioService;
 import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.entrada.usuario.AutenticaUsuarioRequest;
 import com.smartservice.adapter.http.dto.saida.usuario.AutenticaUsuarioResponse;
-import com.smartservice.core.port.entrada.UsuarioAutenticaPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
