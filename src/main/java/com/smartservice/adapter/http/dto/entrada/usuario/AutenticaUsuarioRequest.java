@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.dto.entrada;
+package com.smartservice.adapter.http.dto.entrada.usuario;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

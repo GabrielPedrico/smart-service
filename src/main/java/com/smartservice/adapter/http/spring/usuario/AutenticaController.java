@@ -1,9 +1,9 @@
 package com.smartservice.adapter.http.spring.usuario;
 
+import com.smartservice.adapter.broker.delivery.UsuarioService;
 import com.smartservice.adapter.http.dto.ResponseData;
-import com.smartservice.adapter.http.dto.entrada.AutenticaUsuarioRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.AutenticaUsuarioRequest;
 import com.smartservice.adapter.http.dto.saida.usuario.AutenticaUsuarioResponse;
-import com.smartservice.adapter.http.dto.saida.usuario.CadastraUsuarioResponse;
 import com.smartservice.core.port.entrada.UsuarioAutenticaPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,12 +20,12 @@ import java.util.Collections;
 public class AutenticaController {
 
         @Autowired
-        private UsuarioAutenticaPort port;
+        private UsuarioService usuarioService;
 
         @PostMapping(value = "/auth")
         @CrossOrigin
         ResponseEntity<?> cadastrarCliente(@RequestBody @Valid AutenticaUsuarioRequest request) {
-                var response = port.autenticaUsuario(request.getEmail(), request.getPassword());
+                var response = usuarioService.usuarioAutenticaPort().autenticaUsuario(request.getEmail(), request.getPassword());
                 return getResponseData(buildResponseData(response), HttpStatus.OK);
         }
 

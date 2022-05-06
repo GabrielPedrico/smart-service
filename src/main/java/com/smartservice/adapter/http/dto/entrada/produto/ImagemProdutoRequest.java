@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.dto.entrada;
+package com.smartservice.adapter.http.dto.entrada.produto;
 
 public class ImagemProdutoRequest {
 

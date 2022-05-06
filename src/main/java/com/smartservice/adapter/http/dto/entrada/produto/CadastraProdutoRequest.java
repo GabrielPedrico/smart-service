@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.dto.entrada;
+package com.smartservice.adapter.http.dto.entrada.produto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PositiveOrZero;

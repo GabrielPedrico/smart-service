@@ -1,4 +1,4 @@
-package com.smartservice.core.biz;
+package com.smartservice.core.biz.produto;
 
 import com.smartservice.adapter.broker.mapper.ProdutoMapper;
 import com.smartservice.adapter.datastore.entities.Produto;

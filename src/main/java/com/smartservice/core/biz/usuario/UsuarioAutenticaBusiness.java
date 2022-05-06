@@ -1,4 +1,4 @@
-package com.smartservice.core.biz;
+package com.smartservice.core.biz.usuario;
 
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;

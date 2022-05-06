@@ -1,10 +1,7 @@
 package com.smartservice.adapter.broker.mapper;
 
 import com.smartservice.adapter.datastore.entities.Produto;
-import com.smartservice.adapter.datastore.entities.Usuario;
-import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;
-import com.smartservice.adapter.http.dto.entrada.CadastraClienteRequest;
-import com.smartservice.adapter.http.dto.entrada.CadastraProdutoRequest;
+import com.smartservice.adapter.http.dto.entrada.produto.CadastraProdutoRequest;
 import com.smartservice.config.general.ModelMapperConfig;
 import com.smartservice.core.model.enums.Categoria;
 import com.smartservice.core.model.usuario.ProdutoModel;

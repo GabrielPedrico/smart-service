@@ -1,7 +1,7 @@
 package com.smartservice.core.port.saida;
 
-import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;
-import com.smartservice.adapter.http.dto.entrada.CadastraClienteRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.CadastraAdministradorRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.CadastraClienteRequest;
 
 public interface UsuarioCadastroPort {
      void cadastraCliente(CadastraClienteRequest request);

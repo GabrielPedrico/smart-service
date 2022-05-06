@@ -1,8 +1,9 @@
 package com.smartservice.adapter.http.spring.usuario;
 
+import com.smartservice.adapter.broker.delivery.UsuarioService;
 import com.smartservice.adapter.http.dto.ResponseData;
-import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;
-import com.smartservice.adapter.http.dto.entrada.CadastraClienteRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.CadastraAdministradorRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.CadastraClienteRequest;
 import com.smartservice.adapter.http.dto.saida.usuario.CadastraUsuarioResponse;
 import com.smartservice.core.port.saida.UsuarioCadastroPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +22,19 @@ import java.util.Collections;
 public class CadastraUsuarioController {
 
     @Autowired
-    private UsuarioCadastroPort port;
+    private UsuarioService usuarioService;
 
     @PostMapping(value = "/cadastra/cliente")
     @CrossOrigin
     ResponseEntity<?> cadastrarCliente(@RequestBody @Valid CadastraClienteRequest request){
-        port.cadastraCliente(request);
+        usuarioService.usuarioCadastroPort().cadastraCliente(request);
         return getResponseData(buildResponseData(buildCadastraUsuarioResponse()), HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/cadastra/administrador")
     @CrossOrigin
     ResponseEntity<?> cadastrarAdministrador(@RequestBody @Valid CadastraAdministradorRequest request){
-        port.cadastraAdministrador(request);
+        usuarioService.usuarioCadastroPort().cadastraAdministrador(request);
         return getResponseData(buildResponseData(buildCadastraUsuarioResponse()), HttpStatus.CREATED);
     }
 

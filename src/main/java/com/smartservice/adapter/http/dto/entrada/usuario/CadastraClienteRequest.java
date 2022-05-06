@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.dto.entrada;
+package com.smartservice.adapter.http.dto.entrada.usuario;
 
 import com.smartservice.core.model.enums.Perfil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -7,7 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class CadastraAdministradorRequest {
+public class CadastraClienteRequest {
 
     @NotBlank
     private String nome;
@@ -18,7 +18,6 @@ public class CadastraAdministradorRequest {
 
     @Size(min = 6)
     private String password;
-
 
     private Perfil tipo;
 
@@ -46,11 +45,12 @@ public class CadastraAdministradorRequest {
     @NotBlank
     private String estado;
 
-    private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-    public CadastraAdministradorRequest(String nome, String email, String password, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
+    public CadastraClienteRequest(String nome, String email, String password, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
         this.nome = nome;
         this.email = email;
+        this.password = password;
         this.telefone = telefone;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -62,11 +62,11 @@ public class CadastraAdministradorRequest {
     }
 
     @Deprecated
-    public CadastraAdministradorRequest (){}
+    public CadastraClienteRequest(){}
 
     public void executaRotina(){
         this.password = bCryptPasswordEncoder.encode(this.password);
-        this.tipo = Perfil.ADMINISTRADOR;
+        this.tipo = Perfil.CLIENTE;
     }
 
     public String getNome() {
@@ -79,6 +79,10 @@ public class CadastraAdministradorRequest {
 
     public String getPassword() {
         return password;
+    }
+
+    public Perfil getTipo() {
+        return tipo;
     }
 
     public String getTelefone() {
@@ -113,7 +117,7 @@ public class CadastraAdministradorRequest {
         return estado;
     }
 
-    public Perfil getTipo() {
-        return tipo;
+    public BCryptPasswordEncoder getbCryptPasswordEncoder() {
+        return bCryptPasswordEncoder;
     }
 }
