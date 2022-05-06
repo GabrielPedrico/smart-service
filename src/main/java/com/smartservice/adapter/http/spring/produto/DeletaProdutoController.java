@@ -34,7 +34,7 @@ public class DeletaProdutoController {
 
     @DeleteMapping(value = "/deleta/produtos")
     @CrossOrigin
-    ResponseEntity<?> deletaProdutoById(@RequestBody @Valid DeletaProdutosRequest produtos) throws IOException {
+    ResponseEntity<?> deletaProdutosById(@RequestBody @Valid DeletaProdutosRequest produtos) throws IOException {
         List<ProdutoModel> produtosModel = produtoService.produtoMapper().converterParaListaDeProdutoModel(produtos);
         produtoService.deletaProdutoPort().deleteProdutos(produtosModel);
         return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.ACCEPTED);
