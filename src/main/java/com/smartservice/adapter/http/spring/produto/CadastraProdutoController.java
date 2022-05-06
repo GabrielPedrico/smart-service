@@ -1,8 +1,9 @@
 package com.smartservice.adapter.http.spring.produto;
 
+import com.smartservice.adapter.broker.delivery.ProdutoService;
 import com.smartservice.adapter.broker.mapper.ProdutoMapper;
 import com.smartservice.adapter.http.dto.ResponseData;
-import com.smartservice.adapter.http.dto.entrada.CadastraProdutoRequest;
+import com.smartservice.adapter.http.dto.entrada.produto.CadastraProdutoRequest;
 import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
 import com.smartservice.core.model.usuario.ProdutoModel;
 import com.smartservice.core.port.entrada.CadastroProdutoPort;
@@ -21,16 +22,13 @@ import java.util.Collections;
 public class CadastraProdutoController {
 
     @Autowired
-    private CadastroProdutoPort cadastroProdutoPort;
-
-    @Autowired
-    private ProdutoMapper produtoMapper;
+    private ProdutoService produtoService;
 
     @PostMapping(value = "/cadastra/produto")
     @CrossOrigin
     ResponseEntity<?> cadastrarProduto(@RequestBody @Valid CadastraProdutoRequest request){
-            ProdutoModel produtoModel = produtoMapper.converterParaProdutoModel(request);
-            var cadastroProdutoResponse =cadastroProdutoPort.processaCadastro(produtoModel);
+            ProdutoModel produtoModel = produtoService.produtoMapper().converterParaProdutoModel(request);
+            var cadastroProdutoResponse =produtoService.cadastroProdutoPort().processaCadastro(produtoModel);
             return getResponseData(buildResponseData(cadastroProdutoResponse), HttpStatus.CREATED);
     }
     public ResponseEntity<ResponseData> getResponseData(ResponseData responseData, HttpStatus httpStatus){

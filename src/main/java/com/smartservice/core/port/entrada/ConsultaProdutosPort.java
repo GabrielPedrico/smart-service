@@ -1,4 +1,4 @@
-package com.smartservice.core.port.saida;
+package com.smartservice.core.port.entrada;
 
 import com.smartservice.adapter.datastore.entities.Produto;
 
@@ -11,6 +11,5 @@ public interface ConsultaProdutosPort {
     List<Produto> consultaPorCategoria(String categoria);
 
     Produto consultaPorId(String id);
-
 
 }

@@ -30,12 +30,12 @@ public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
     }
 
     @Override
-    public Optional<Produto> consultaPorId(String id) {
+    public Produto consultaPorId(String id) {
         var produto = produtoRepository.findById(id);
         if(produto.isEmpty()){
             throw new ProdutoNaoExistenteException("Produto não existe.");
         }
-        return produto;
+        return produto.get();
     }
 
 

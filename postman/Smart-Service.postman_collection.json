@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "47a6e02e-ab49-4bf3-8eab-31cab22c1d64",
+		"name": "Smart-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIO",
+			"item": [
+				{
+					"name": "CADASTRA CLIENTE [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Andre\",\n    \"email\": \"andre@hotmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CADASTRA ADM [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Andre\",\n    \"email\": \"andreadm@hotmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"administrador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AUTENTICAÇÃO [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"andre@hotmail.com\",\n    \"password\" : \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUTO",
+			"item": [
+				{
+					"name": "CADASTRA PRODUTO [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\":\"PODRAO\",\r\n    \"nome\":\"ProdutoTeste\",\r\n    \"preco\":\"150\",\r\n    \"descricao\":\"Teste Teste Teste Teste Teste\",\r\n    \"estoque\":\"99\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERE IMG PRODUTO [POST]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/gabri/OneDrive/Imagens/buttonSprite.png"
+								},
+								{
+									"key": "file",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/imagem/produto/abb537fc-3ee4-406c-9fda-302a021e0a15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"imagem",
+								"produto",
+								"abb537fc-3ee4-406c-9fda-302a021e0a15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA PRODUTOS [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA BY ID [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produto/abb537fc-3ee4-406c-9fda-302a021e0a15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto",
+								"abb537fc-3ee4-406c-9fda-302a021e0a15"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA BY CATEGORIA [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos/categoria/PODRAO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"categoria",
+								"PODRAO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PEDIDO",
+			"item": []
+		}
+	]
+}

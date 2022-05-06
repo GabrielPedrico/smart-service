@@ -1,5 +1,6 @@
 package com.smartservice.adapter.http.spring.produto;
 
+import com.smartservice.adapter.broker.delivery.ProdutoService;
 import com.smartservice.adapter.http.dto.ResponseData;
 import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
 import com.smartservice.core.port.saida.AdicionaImagemProdutoPort;
@@ -17,7 +18,7 @@ import java.util.Collections;
 public class AdicionaImagemProdutoController {
 
     @Autowired
-    private AdicionaImagemProdutoPort port;
+    private ProdutoService produtoService;
 
     @PutMapping(value = "/cadastra/imagem/produto/{id}",
             consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
@@ -25,7 +26,7 @@ public class AdicionaImagemProdutoController {
             headers = "content-type=multipart/*")
     @CrossOrigin
     ResponseEntity<?> adicionaImagemProduto(@RequestParam("file") MultipartFile file, @PathVariable String id) throws IOException {
-        port.adicionaImagemProduto(file,id);
+        produtoService.adicionaImagemProdutoPort().adicionaImagemProduto(file,id);
         return getResponseData(buildResponseData(buildCadastraUsuarioResponse()), HttpStatus.ACCEPTED);
     }
 

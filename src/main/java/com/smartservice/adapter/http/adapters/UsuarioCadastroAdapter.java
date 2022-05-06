@@ -3,8 +3,8 @@ package com.smartservice.adapter.http.adapters;
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.adapter.datastore.entities.Usuario;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
-import com.smartservice.adapter.http.dto.entrada.CadastraAdministradorRequest;
-import com.smartservice.adapter.http.dto.entrada.CadastraClienteRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.CadastraAdministradorRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.CadastraClienteRequest;
 import com.smartservice.core.port.saida.UsuarioCadastroPort;
 import org.springframework.stereotype.Component;
 
