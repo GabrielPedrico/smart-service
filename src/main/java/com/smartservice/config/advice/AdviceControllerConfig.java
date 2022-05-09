@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
@@ -35,6 +36,12 @@ public class AdviceControllerConfig extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleHttpExceptions(HttpException throwable){
         var response = buildErrorApiResponse(throwable.getMessage(),throwable.getHttpStatus().getReasonPhrase(),throwable.getHttpStatus(),null);
         return ResponseEntity.status(throwable.getHttpStatus()).body(new Response<>(response));
+    }
+
+    @ExceptionHandler
+    protected ResponseEntity<Object> handleMessagingException(MessagingException throwable){
+        var response = buildErrorApiResponse(throwable.getMessage(),throwable.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR,throwable.getCause().getLocalizedMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new Response<>(response));
     }
 
     //Tratamento default para erros

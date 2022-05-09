@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Andre\",\n    \"email\": \"andre@hotmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"raw": "{\n    \"nome\": \"Gabriel Pedrico\",\n    \"email\": \"gabrieldacostapedrico@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +73,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"andre@hotmail.com\",\n    \"password\" : \"123456\"\n}",
+							"raw": "{\n    \"email\" : \"gabrieldacostapedrico@gmail.com\",\n    \"password\" : \"4de8beab-55ce-4824-875a-4b1a9be1c997\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,6 +89,26 @@
 							"port": "8080",
 							"path": [
 								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SOLICITA RESET SENHA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/resetar_senha/gabrieldacostapedrico@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"resetar_senha",
+								"gabrieldacostapedrico@gmail.com"
 							]
 						}
 					},
