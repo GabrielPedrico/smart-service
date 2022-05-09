@@ -10,10 +10,11 @@ import java.util.UUID;
 @Entity
 public class Usuario {
 
-    @Id @GeneratedValue(generator = "UUID")
+    @Id
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(unique = true)
-    private UUID id;
+    @Column(unique = true,columnDefinition="VARCHAR(40)")
+    private String id;
 
     private String nome;
 
@@ -90,11 +91,11 @@ public class Usuario {
                 '}';
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -193,4 +194,6 @@ public class Usuario {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+
 }

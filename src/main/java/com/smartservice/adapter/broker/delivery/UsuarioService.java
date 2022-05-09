@@ -2,6 +2,7 @@ package com.smartservice.adapter.broker.delivery;
 
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.core.port.entrada.UsuarioAutenticaPort;
+import com.smartservice.core.port.entrada.UsuarioEditaPort;
 import com.smartservice.core.port.saida.UsuarioCadastroPort;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,10 @@ public class UsuarioService {
 
     private final UsuarioMapper usuarioMapper;
 
-    public UsuarioService(UsuarioCadastroPort usuarioCadastroPort, UsuarioAutenticaPort usuarioAutenticaPort, UsuarioMapper usuarioMapper) {
+    private final UsuarioEditaPort usuarioEditaPort;
+
+    public UsuarioService(UsuarioCadastroPort usuarioCadastroPort, UsuarioAutenticaPort usuarioAutenticaPort, UsuarioMapper usuarioMapper,UsuarioEditaPort usuarioEditaPort) {
+        this.usuarioEditaPort = usuarioEditaPort;
         this.usuarioCadastroPort = usuarioCadastroPort;
         this.usuarioAutenticaPort = usuarioAutenticaPort;
         this.usuarioMapper = usuarioMapper;
@@ -30,5 +34,9 @@ public class UsuarioService {
 
     public UsuarioMapper usuarioMapper() {
         return usuarioMapper;
+    }
+
+    public UsuarioEditaPort usuarioEditaPort() {
+        return usuarioEditaPort;
     }
 }
