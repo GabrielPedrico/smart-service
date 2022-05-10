@@ -113,6 +113,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ATUALIZA USUARIO [PATCH]",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"GG\",\n    \"email\": \"\",\n    \"password\": \"\",\n    \"telefone\": \"\",\n    \"logradouro\": \"ATUALIZEI AQUI SOH\",\n    \"numero\": \"\",\n    \"complemento\": \"\",\n    \"cep\": \"\",\n    \"bairro\": \"\",\n    \"cidade\": \"\",\n    \"estado\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/edita/julianavillelacomunicacao@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"edita",
+								"julianavillelacomunicacao@gmail.com"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

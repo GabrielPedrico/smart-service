@@ -59,13 +59,6 @@ public class EmailSendAdapter implements EmailSendPort {
                     Message.RecipientType.TO, InternetAddress.parse(emailDestino));
             message.setSubject("Smart Service Reset Senha");
 
-/*            String msg = "Olá conforme solicitado segue o reset de sua senha.\n" +
-                    "\n" +
-                    "Nova senha:"+ novaSenha+ "\n"+
-                    "\n" +
-                    "*Caso não tenha feito a solicitação para reset de senha entre contato com nosso suporte\n" +
-                    "\n" +
-                    "Att.Time Smart Service";*/
         String msg = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                 "\n" +
