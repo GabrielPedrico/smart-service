@@ -1,20 +1,12 @@
-package com.smartservice.core.model.usuario;
+package com.smartservice.adapter.http.dto.entrada.usuario;
 
-import com.smartservice.core.model.enums.Perfil;
-
-import java.util.UUID;
-
-public class UsuarioModel {
-
-    private UUID id;
+public class RequestEditaUsuario {
 
     private String nome;
 
     private String email;
 
     private String password;
-
-    private Perfil tipo;
 
     private String telefone;
 
@@ -32,12 +24,13 @@ public class UsuarioModel {
 
     private String estado;
 
-    public UsuarioModel(UUID id, String nome, String email, String password, Perfil tipo, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
-        this.id = id;
+    @Deprecated
+    public RequestEditaUsuario(){}
+
+    public RequestEditaUsuario(String nome, String email, String password, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
         this.nome = nome;
         this.email = email;
         this.password = password;
-        this.tipo = tipo;
         this.telefone = telefone;
         this.logradouro = logradouro;
         this.numero = numero;
@@ -46,12 +39,6 @@ public class UsuarioModel {
         this.bairro = bairro;
         this.cidade = cidade;
         this.estado = estado;
-    }
-
-    public UsuarioModel(){};
-
-    public UUID getId() {
-        return id;
     }
 
     public String getNome() {
@@ -64,10 +51,6 @@ public class UsuarioModel {
 
     public String getPassword() {
         return password;
-    }
-
-    public Perfil getTipo() {
-        return tipo;
     }
 
     public String getTelefone() {
@@ -100,5 +83,49 @@ public class UsuarioModel {
 
     public String getEstado() {
         return estado;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

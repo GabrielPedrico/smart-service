@@ -3,14 +3,12 @@ package com.smartservice.adapter.http.spring.usuario;
 import com.smartservice.adapter.broker.delivery.UsuarioService;
 import com.smartservice.adapter.http.dto.DefaultResponse;
 import com.smartservice.adapter.http.dto.ResponseData;
-import com.smartservice.adapter.http.dto.entrada.usuario.CadastraClienteRequest;
+import com.smartservice.adapter.http.dto.entrada.usuario.RequestEditaUsuario;
+import com.smartservice.core.model.usuario.UsuarioModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.validation.Valid;
@@ -25,6 +23,13 @@ public class EditaUsuarioController {
     @PostMapping("/resetar_senha/{email}")
     ResponseEntity<?> resetaSenhaUsuario(@PathVariable("email") String email) throws MessagingException {
         usuarioService.usuarioEditaPort().resetarSenha(email);
+        return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.OK);
+    }
+
+    @PatchMapping("/edita/{email}")
+    ResponseEntity<?> editaUsuario(@PathVariable("email") String email,@RequestBody @Valid RequestEditaUsuario request) throws MessagingException {
+        UsuarioModel requestConvertido = usuarioService.usuarioMapper().converterParaUsuarioModel(request);
+        usuarioService.usuarioEditaPort().editaUsuario(requestConvertido,email);
         return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.OK);
     }
 

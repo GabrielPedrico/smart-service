@@ -1,7 +1,9 @@
 package com.smartservice.core.biz.usuario;
 
 import com.smartservice.config.annotations.AdapterUseCase;
+import com.smartservice.core.model.usuario.UsuarioModel;
 import com.smartservice.core.port.entrada.UsuarioEditaPort;
+import com.smartservice.core.port.saida.EditaUsuarioPort;
 import com.smartservice.core.port.saida.EmailSendPort;
 
 import javax.mail.MessagingException;
@@ -11,8 +13,11 @@ public class EditaUsuarioBusiness implements UsuarioEditaPort {
 
     private final EmailSendPort emailSendPort;
 
-    public EditaUsuarioBusiness(EmailSendPort emailSendPort) {
+    private final EditaUsuarioPort editaUsuarioPort;
+
+    public EditaUsuarioBusiness(EmailSendPort emailSendPort,EditaUsuarioPort editaUsuarioPort) {
         this.emailSendPort = emailSendPort;
+        this.editaUsuarioPort = editaUsuarioPort;
     }
 
     @Override
@@ -21,17 +26,7 @@ public class EditaUsuarioBusiness implements UsuarioEditaPort {
     }
 
     @Override
-    public void mudarSenha() {
-        //TODO Falta criar o port de saida para acesso ao DB & implementar lógica em adapter para CRUD
-    }
-
-    @Override
-    public void mudarEmail() {
-        //TODO Falta criar o port de saida para acesso ao DB & implementar lógica em adapter para CRUD
-    }
-
-    @Override
-    public void mudarPerfil() {
-        //TODO Falta criar o port de saida para acesso ao DB & implementar lógica em adapter para CRUD
+    public void editaUsuario(UsuarioModel usuarioModel,String email) {
+        editaUsuarioPort.crudUpdateUsuario(usuarioModel,email);
     }
 }
