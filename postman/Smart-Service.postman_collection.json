@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Gabriel Pedrico\",\n    \"email\": \"gabrieldacostapedrico@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"raw": "{\n    \"nome\": \"Juliana Villela\",\n    \"email\": \"julianavillelacomunicacao@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +73,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"gabrieldacostapedrico@gmail.com\",\n    \"password\" : \"4de8beab-55ce-4824-875a-4b1a9be1c997\"\n}",
+							"raw": "{\n    \"email\" : \"julianavillelacomunicacao@gmail.com\",\n    \"password\" : \"123456789\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -100,7 +100,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/resetar_senha/gabrieldacostapedrico@gmail.com",
+							"raw": "http://localhost:8080/resetar_senha/julianavillelacomunicacao@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -108,7 +108,7 @@
 							"port": "8080",
 							"path": [
 								"resetar_senha",
-								"gabrieldacostapedrico@gmail.com"
+								"julianavillelacomunicacao@gmail.com"
 							]
 						}
 					},
@@ -121,7 +121,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"GG\",\n    \"email\": \"\",\n    \"password\": \"\",\n    \"telefone\": \"\",\n    \"logradouro\": \"ATUALIZEI AQUI SOH\",\n    \"numero\": \"\",\n    \"complemento\": \"\",\n    \"cep\": \"\",\n    \"bairro\": \"\",\n    \"cidade\": \"\",\n    \"estado\": \"\"\n}",
+							"raw": "{\n    \"nome\": \"\",\n    \"email\": \"\",\n    \"password\": \"\",\n    \"telefone\": \"\",\n    \"logradouro\": \"QUERO EDITAR APENAS ESSE CAMPO\",\n    \"numero\": \"\",\n    \"complemento\": \"\",\n    \"cep\": \"\",\n    \"bairro\": \"\",\n    \"cidade\": \"\",\n    \"estado\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,13 +149,47 @@
 			"name": "PRODUTO",
 			"item": [
 				{
+					"name": "CATEGORIA",
+					"item": [
+						{
+							"name": "CADASTRA CATEGORIA [POST]",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\":\"Hamburguer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/cadastra/categoria",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cadastra",
+										"categoria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "CADASTRA PRODUTO [POST]",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoria\":\"PODRAO\",\r\n    \"nome\":\"ProdutoTeste4\",\r\n    \"preco\":\"150\",\r\n    \"descricao\":\"Teste Teste Teste Teste Teste\",\r\n    \"estoque\":\"99\"\r\n}",
+							"raw": "{\r\n    \"categoria\": \"Hamburguer\",\r\n    \"nome\": \"Hamburguer\",\r\n    \"preco\": \"12.99\",\r\n    \"descricao\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\r\n    \"estoque\": \"20\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -260,7 +294,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/produtos/categoria/PODRAO",
+							"raw": "http://localhost:8080/produtos/categoria/hamburguer",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -269,7 +303,7 @@
 							"path": [
 								"produtos",
 								"categoria",
-								"PODRAO"
+								"hamburguer"
 							]
 						}
 					},
@@ -332,7 +366,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoria\":\"HAMBURGERS\",\r\n    \"nome\":\"Agora sou um burguinho xD\",\r\n    \"preco\":\"\",\r\n    \"descricao\":\"\",\r\n    \"estoque\":\"\"\r\n}",
+							"raw": "{\r\n    \"categoria\":\"Sushi\",\r\n    \"nome\":\"Agora sou um SUSHI\",\r\n    \"preco\":\"\",\r\n    \"descricao\":\"\",\r\n    \"estoque\":\"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -340,7 +374,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/edita/produto/1c5b37e6-86ef-4aa2-8a60-234fed7ffdfd",
+							"raw": "http://localhost:8080/edita/produto/2ba88b9b-d2e7-42e9-87dc-11a6fba90975",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -349,7 +383,7 @@
 							"path": [
 								"edita",
 								"produto",
-								"1c5b37e6-86ef-4aa2-8a60-234fed7ffdfd"
+								"2ba88b9b-d2e7-42e9-87dc-11a6fba90975"
 							]
 						}
 					},

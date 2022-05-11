@@ -1,12 +1,9 @@
 package com.smartservice.adapter.datastore.entities;
 
-import com.smartservice.core.model.enums.Categoria;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Entity
 public class Produto {
@@ -17,6 +14,7 @@ public class Produto {
     @Column(unique = true,columnDefinition="VARCHAR(40)")
     private String id;
 
+    @ManyToOne
     private Categoria categoria;
 
     private String nome;

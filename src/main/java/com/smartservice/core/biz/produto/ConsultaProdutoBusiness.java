@@ -3,7 +3,6 @@ package com.smartservice.core.biz.produto;
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.port.entrada.ConsultaProdutosPort;
-import com.smartservice.core.model.enums.Categoria;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
 
     @Override
     public List<Produto> consultaPorCategoria(String categoria) {
-        Categoria.verificaExistenciaCategoria(categoria);
+        categoria.toUpperCase().replace(" ","_");
         return consultaProdutosPort.consultaPorCategoria(categoria);
     }
 
