@@ -1,16 +1,15 @@
 package com.smartservice.core.model.produto;
 
-import com.smartservice.core.model.enums.Categoria;
+import com.smartservice.adapter.datastore.entities.Categoria;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 public class ProdutoModel {
 
 
     private String id;
 
-    private Categoria categoria;
+    private String categoria;
 
     private String nome;
 
@@ -22,7 +21,7 @@ public class ProdutoModel {
 
     private String imgUrl;
 
-    public ProdutoModel(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
+    public ProdutoModel(String id, String categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
         this.id = id;
         this.categoria = categoria;
         this.nome = nome;
@@ -42,7 +41,7 @@ public class ProdutoModel {
         return id;
     }
 
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
