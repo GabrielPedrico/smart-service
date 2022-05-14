@@ -22,7 +22,7 @@ public class EditaUsuarioBusiness implements UsuarioEditaPort {
 
     @Override
     public void resetarSenha(String email) throws MessagingException {
-        emailSendPort.sendEmail(email);
+        emailSendPort.sendResetEmail(email);
     }
 
     @Override

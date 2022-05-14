@@ -30,12 +30,10 @@ public class EditaProdutoAdapter implements EditaProdutoPort {
     public void editaProduto(ProdutoModel produtoModel) {
         Optional<Produto> possivelProduto = produtoRepository.findById(produtoModel.getId());
         if(possivelProduto.isEmpty()) throw new ProdutoNaoExistenteException("Produto inexistente.");
-        Optional<Categoria> possivelCategoria = categoriaRepository.findByNome(produtoModel.getCategoria().toUpperCase().replace(" ","_"));
-        if(possivelCategoria.isEmpty() && !produtoModel.getCategoria().isEmpty()) throw new CategoriaNaoExistenteException("Categoria inexistente, falha ao editar produto.");
         Produto produto = produtoMapper.converterParaProduto(produtoModel);
 
         if(produto.getCategoria().getNome().isEmpty()) produto.setCategoria(possivelProduto.get().getCategoria());
-        if(!produto.getCategoria().getNome().isEmpty()) produto.setCategoria(possivelCategoria.get());
+        if(!produto.getCategoria().getNome().isEmpty()) produto.setCategoria(possivelProduto.get().getCategoria());
         if(produto.getDescricao().isBlank()) produto.setDescricao(possivelProduto.get().getDescricao());
         if(produto.getNome().isBlank()) produto.setNome(possivelProduto.get().getNome());
         if(produto.getPreco() == null) produto.setPreco(possivelProduto.get().getPreco());

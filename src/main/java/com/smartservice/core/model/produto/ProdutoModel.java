@@ -1,7 +1,5 @@
 package com.smartservice.core.model.produto;
 
-import com.smartservice.adapter.datastore.entities.Categoria;
-
 import java.math.BigDecimal;
 
 public class ProdutoModel {

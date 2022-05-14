@@ -1,9 +1,12 @@
 package com.smartservice.adapter.datastore.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Produto {
@@ -29,10 +32,14 @@ public class Produto {
     @Lob
     private String imgUrl;
 
+    @ManyToMany
+    @JsonIgnore
+    private List<Pedido> pedidos = new ArrayList<>();
+
     @Deprecated
     public Produto(){}
 
-    public Produto(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl) {
+    public Produto(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl,List<Pedido> pedidos) {
         this.id = id;
         this.categoria = categoria;
         this.nome = nome;
@@ -40,6 +47,7 @@ public class Produto {
         this.descricao = descricao;
         this.estoque = estoque;
         this.imgUrl = imgUrl;
+        this.pedidos = pedidos;
     }
 
     public String getId() {
@@ -92,5 +100,17 @@ public class Produto {
 
     public void setEstoque(Integer estoque) {
         this.estoque = estoque;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }
