@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "47a6e02e-ab49-4bf3-8eab-31cab22c1d64",
+		"_postman_id": "6f435479-9b86-4b60-9f4b-2cdeed719ae7",
 		"name": "Smart-Service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -393,7 +393,38 @@
 		},
 		{
 			"name": "PEDIDO",
-			"item": []
+			"item": [
+				{
+					"name": "CADASTRA PEDIDO [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_usuario\":\"\",\r\n    \"produtos\":[\r\n        {\"id_produto\":\"\",\r\n        \"quantidade\":\"\"}\r\n    ],\r\n    \"forma_pagamento\":\"DEBITO\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/delivery/pedido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"delivery",
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
