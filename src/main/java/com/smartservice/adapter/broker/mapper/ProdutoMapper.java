@@ -25,7 +25,7 @@ public class ProdutoMapper {
     }
 
     public Produto converterParaProduto(ProdutoModel produtoModel){
-        return new Produto(produtoModel.getId(),new Categoria(null,produtoModel.getCategoria()),produtoModel.getNome(),produtoModel.getPreco(),produtoModel.getDescricao(),produtoModel.getEstoque(),produtoModel.getImgUrl());
+        return new Produto(produtoModel.getId(),new Categoria(null,produtoModel.getCategoria()),produtoModel.getNome(),produtoModel.getPreco(),produtoModel.getDescricao(),produtoModel.getEstoque(),produtoModel.getImgUrl(),null);
     }
 
     public ProdutoModel converterParaProdutoModel(CadastraProdutoRequest cadastraProdutoRequest){

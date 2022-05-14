@@ -21,12 +21,14 @@ public class EditaUsuarioController {
     UsuarioService usuarioService;
 
     @PostMapping("/resetar_senha/{email}")
+    @CrossOrigin
     ResponseEntity<?> resetaSenhaUsuario(@PathVariable("email") String email) throws MessagingException {
         usuarioService.usuarioEditaPort().resetarSenha(email);
         return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.OK);
     }
 
     @PatchMapping("/edita/{email}")
+    @CrossOrigin
     ResponseEntity<?> editaUsuario(@PathVariable("email") String email,@RequestBody @Valid RequestEditaUsuario request) throws MessagingException {
         UsuarioModel requestConvertido = usuarioService.usuarioMapper().converterParaUsuarioModel(request);
         usuarioService.usuarioEditaPort().editaUsuario(requestConvertido,email);

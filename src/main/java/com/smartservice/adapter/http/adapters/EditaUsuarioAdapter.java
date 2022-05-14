@@ -46,9 +46,9 @@ public class EditaUsuarioAdapter implements EditaUsuarioPort {
         if(usuarioFinal.getComplemento().isBlank()) usuarioFinal.setComplemento(possivelUsuario.get().getComplemento());
         if(usuarioFinal.getEstado().isBlank()) usuarioFinal.setEstado(possivelUsuario.get().getEstado());
         if(usuarioFinal.getNome().isBlank()) usuarioFinal.setNome(possivelUsuario.get().getNome());
+        if(!usuarioFinal.getPassword().isBlank()) usuarioFinal.setPassword(bCrypt.encode(possivelUsuario.get().getPassword()));
         if(usuarioFinal.getPassword().isBlank()) usuarioFinal.setPassword(possivelUsuario.get().getPassword());
         if(usuarioFinal.getCidade().isBlank()) usuarioFinal.setCidade(possivelUsuario.get().getCidade());
-        if(!usuarioFinal.getPassword().isBlank()) usuarioFinal.setPassword(bCrypt.encode(usuarioModel.getPassword()));
 
         usuarioRepository.save(usuarioFinal);
 
