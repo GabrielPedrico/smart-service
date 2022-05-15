@@ -23,7 +23,7 @@ public class AutenticaController {
 
         @PostMapping(value = "/auth")
         @CrossOrigin
-        ResponseEntity<?> cadastrarCliente(@RequestBody @Valid AutenticaUsuarioRequest request) {
+        ResponseEntity<?> autentica(@RequestBody @Valid AutenticaUsuarioRequest request) {
                 var response = usuarioService.usuarioAutenticaPort().autenticaUsuario(request.getEmail(), request.getPassword());
                 return getResponseData(buildResponseData(response), HttpStatus.OK);
         }

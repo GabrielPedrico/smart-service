@@ -24,10 +24,9 @@ public class UsuarioAutenticaBusiness implements UsuarioAutenticaPort {
 
     @Override
     public AutenticaUsuarioResponse autenticaUsuario(String email, String senha){
-        var userExists = repository.findByEmail(email);
-        if (userExists.isEmpty()) throw new UsuarioNaoExistenteException("Usuario inexistente");
-        var passMatchs = usuarioAutenticaPort.verificaSenha(senha,userExists.get().getPassword());
+        var userExists = repository.findByEmail(email).orElseThrow(()-> new UsuarioNaoExistenteException("Usuario inexistente"));
+        var passMatchs = usuarioAutenticaPort.verificaSenha(senha,userExists.getPassword());
         if (!passMatchs) throw new UsuarioNaoAutorizadoException("Senha incorreta");
-        return new AutenticaUsuarioResponse("AUTENTICACAO OK",userExists.get().getNome(),userExists.get().getTipo().toString());
+        return new AutenticaUsuarioResponse("AUTENTICACAO OK",userExists.getNome(),userExists.getTipo().toString(),userExists.getId());
     }
 }

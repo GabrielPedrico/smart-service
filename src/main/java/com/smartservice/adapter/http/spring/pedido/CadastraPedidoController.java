@@ -26,7 +26,7 @@ public class CadastraPedidoController {
     @Autowired
     private PedidoService pedidoService;
 
-        @PostMapping(value = "/cadastra/delivery/pedido")
+    @PostMapping(value = "/cadastra/pedido/delivery")
     @CrossOrigin
     ResponseEntity<?> cadastrarPedido(@RequestBody @Valid CadastraPedidoRequest request) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
         PedidoModel pedidoModel = pedidoService.pedidoMapper().converterParaPedidoModel(request);

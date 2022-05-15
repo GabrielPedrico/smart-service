@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6f435479-9b86-4b60-9f4b-2cdeed719ae7",
+		"_postman_id": "83731f33-90d0-4420-b761-7ecbf1572ee5",
 		"name": "Smart-Service",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -73,7 +73,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"julianavillelacomunicacao@gmail.com\",\n    \"password\" : \"123456789\"\n}",
+							"raw": "{\n    \"email\" : \"julianavillelacomunicacao@gmail.com\",\n    \"password\" : \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -138,6 +138,26 @@
 							"path": [
 								"edita",
 								"julianavillelacomunicacao@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA USUARIO BY ID [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuario/d2b17862-8e0d-4f93-94fa-1f223d0b675f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"d2b17862-8e0d-4f93-94fa-1f223d0b675f"
 							]
 						}
 					},
@@ -409,7 +429,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/cadastra/delivery/pedido",
+							"raw": "http://localhost:8080/cadastra/pedido/delivery",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -417,8 +437,8 @@
 							"port": "8080",
 							"path": [
 								"cadastra",
-								"delivery",
-								"pedido"
+								"pedido",
+								"delivery"
 							]
 						}
 					},
