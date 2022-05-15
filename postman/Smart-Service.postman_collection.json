@@ -1,0 +1,450 @@
+{
+	"info": {
+		"_postman_id": "83731f33-90d0-4420-b761-7ecbf1572ee5",
+		"name": "Smart-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIO",
+			"item": [
+				{
+					"name": "CADASTRA CLIENTE [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Juliana Villela\",\n    \"email\": \"julianavillelacomunicacao@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CADASTRA ADM [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Andre\",\n    \"email\": \"andreadm@hotmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"administrador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AUTENTICAÇÃO [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"julianavillelacomunicacao@gmail.com\",\n    \"password\" : \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SOLICITA RESET SENHA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/resetar_senha/julianavillelacomunicacao@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"resetar_senha",
+								"julianavillelacomunicacao@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZA USUARIO [PATCH]",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"\",\n    \"email\": \"\",\n    \"password\": \"\",\n    \"telefone\": \"\",\n    \"logradouro\": \"QUERO EDITAR APENAS ESSE CAMPO\",\n    \"numero\": \"\",\n    \"complemento\": \"\",\n    \"cep\": \"\",\n    \"bairro\": \"\",\n    \"cidade\": \"\",\n    \"estado\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/edita/julianavillelacomunicacao@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"edita",
+								"julianavillelacomunicacao@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA USUARIO BY ID [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/usuario/d2b17862-8e0d-4f93-94fa-1f223d0b675f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"d2b17862-8e0d-4f93-94fa-1f223d0b675f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUTO",
+			"item": [
+				{
+					"name": "CATEGORIA",
+					"item": [
+						{
+							"name": "CADASTRA CATEGORIA [POST]",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\":\"Hamburguer\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/cadastra/categoria",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cadastra",
+										"categoria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CADASTRA PRODUTO [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\": \"Hamburguer\",\r\n    \"nome\": \"Hamburguer\",\r\n    \"preco\": \"12.99\",\r\n    \"descricao\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\r\n    \"estoque\": \"20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/produto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERE IMG PRODUTO [POST]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/gabri/OneDrive/Imagens/buttonSprite.png"
+								},
+								{
+									"key": "file",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/imagem/produto/4793fc83-a52c-4822-aeea-4cdd30d53e90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"imagem",
+								"produto",
+								"4793fc83-a52c-4822-aeea-4cdd30d53e90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA PRODUTOS [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA BY ID [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produto/4793fc83-a52c-4822-aeea-4cdd30d53e90",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produto",
+								"4793fc83-a52c-4822-aeea-4cdd30d53e90"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTA BY CATEGORIA [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/produtos/categoria/hamburguer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"produtos",
+								"categoria",
+								"hamburguer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE BY ID [DEL]",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/deleta/produto/dc3c6884-516a-44b7-ba60-fed154376cce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleta",
+								"produto",
+								"dc3c6884-516a-44b7-ba60-fed154376cce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE LISTA PRODUTOS [DEL]",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"produtos\":[\r\n        {\"idProduto\":\"3443c46c-2252-4a47-828b-56c09b782e7a\"},\r\n        {\"idProduto\":\"3f5595dc-97fd-45e3-a7e0-facb0003e2ef\"},\r\n        {\"idProduto\":\"e10512f5-df21-4db5-8928-df0b9dbb3f59\"}\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/deleta/produtos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deleta",
+								"produtos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDITA PRODUTO BY ID [PUT]",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoria\":\"Sushi\",\r\n    \"nome\":\"Agora sou um SUSHI\",\r\n    \"preco\":\"\",\r\n    \"descricao\":\"\",\r\n    \"estoque\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/edita/produto/2ba88b9b-d2e7-42e9-87dc-11a6fba90975",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"edita",
+								"produto",
+								"2ba88b9b-d2e7-42e9-87dc-11a6fba90975"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PEDIDO",
+			"item": [
+				{
+					"name": "CADASTRA PEDIDO [POST]",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_usuario\":\"\",\r\n    \"produtos\":[\r\n        {\"id_produto\":\"\",\r\n        \"quantidade\":\"\"}\r\n    ],\r\n    \"forma_pagamento\":\"DEBITO\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastra/pedido/delivery",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastra",
+								"pedido",
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

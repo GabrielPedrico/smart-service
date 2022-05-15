@@ -1,0 +1,10 @@
+
+E
+java:S11723"/Remove this unused method parameter "password".(æ•†“
+^
+java:S6355@"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
+K
+java:S1133A"5Do not forget to remove this deprecated code someday.(±½Ý·
+>
+java:S1123A"(Add the missing @deprecated Javadoc tag.(±½Ý·
+W	java:S1073"BConstructor has 11 parameters, which is greater than 7 authorized.(æ•†“
