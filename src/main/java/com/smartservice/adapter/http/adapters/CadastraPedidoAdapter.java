@@ -30,7 +30,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class CadastraPedidoAdapter implements CadastraPedidoPort {
@@ -110,7 +109,7 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
                 "_Pedido gerado por Smart Service Delivery às "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:m"))+" ";
         String uri = URLEncoder.encode(pedidoMsg,"UTF-8");
         String urlFinalPedidoWpp = urlWpp.concat("send?phone="+wppProperties.getTelefone()+"&text="+uri);
-        emailSendPort.sendPedidoEmail(usuario,pedido,urlFinalPedidoWpp);
+        emailSendPort.sendPedidoRegistradoEmail(pedido,urlFinalPedidoWpp);
         return new CadastraPedidoResponse(pedido.getId(),pedido.getStatusPedido().toString(),urlFinalPedidoWpp);
     }
 }

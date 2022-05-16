@@ -9,5 +9,9 @@ public interface EmailSendPort {
 
     void sendResetEmail(String emailDestino) throws MessagingException;
 
-    void sendPedidoEmail(Usuario usuario, Pedido pedido,String msgWpp) throws MessagingException;
+    void sendPedidoRegistradoEmail(Pedido pedido, String msgWpp) throws MessagingException;
+
+    void sendPedidoEmPreparoEmail(Pedido pedido) throws MessagingException;
+
+    void sendPedidoSaiuEntregaEmail(Pedido pedido) throws MessagingException;
 }
