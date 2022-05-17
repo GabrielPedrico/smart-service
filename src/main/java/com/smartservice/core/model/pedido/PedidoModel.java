@@ -11,10 +11,13 @@ public class PedidoModel {
 
     private String formaPagamento;
 
-    public PedidoModel(String idUsuario, List<ProdutoModel> produtos, String formaPagamento) {
+    private String obs;
+
+    public PedidoModel(String idUsuario, List<ProdutoModel> produtos, String formaPagamento,String obs) {
         this.idUsuario = idUsuario;
         this.produtos = produtos;
         this.formaPagamento = formaPagamento;
+        this.obs = obs;
     }
 
     public PedidoModel(){}
@@ -29,5 +32,9 @@ public class PedidoModel {
 
     public String getFormaPagamento() {
         return formaPagamento;
+    }
+
+    public String getObs() {
+        return obs;
     }
 }

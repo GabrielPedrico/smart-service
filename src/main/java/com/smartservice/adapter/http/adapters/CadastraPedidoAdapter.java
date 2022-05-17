@@ -51,11 +51,11 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
         List<Produto> produtos = new ArrayList<Produto>();
         String listaDeProdutos = "";
         pedido.setProdutos(produtos);
+        pedido.setObs(pedidoModel.getObs());
         Usuario usuario = usuarioRepository.findById(pedidoModel.getIdUsuario()).orElseThrow(()-> new UsuarioNaoExistenteException("Falha ao registrar pedido, usuario inexistente"));
         pedido.setUsuario(usuario);
         pedido.setFormaPagamento(TipoPagamento.valueOf(pedidoModel.getFormaPagamento()));
         if(pedido.getFormaPagamento().equals(null)) throw new FormaPagamentoInvalidaException("Falha ao registrar pedido, forma de pagamento invalida");
-
         double valorTotal = 0;
         for (ProdutoModel produtoModel:pedidoModel.getProdutos()
              ) {
