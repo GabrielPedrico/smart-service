@@ -27,7 +27,7 @@ public class PedidoMapper {
             ProdutoModel produtoModel = new ProdutoModel(produtoRequest.getIdProduto(),produtoRequest.getQuantidade());
             produtos.add(produtoModel);
         }
-        return new PedidoModel(cadastraPedidoRequest.getIdUsuario(),produtos,cadastraPedidoRequest.getFormaPagamento());
+        return new PedidoModel(cadastraPedidoRequest.getIdUsuario(),produtos,cadastraPedidoRequest.getFormaPagamento(),cadastraPedidoRequest.getObs());
     }
 
     public ModelMapperConfig getModelMapper() {

@@ -32,5 +32,6 @@ public class AlteraStatusPedidoAdapter implements AlteraStatusPedidoPort {
         if(status.equals(StatusPedido.PREPARANDO)) emailSendPort.sendPedidoEmPreparoEmail(pedido);
 
         if(status.equals(StatusPedido.ENTREGANDO)) emailSendPort.sendPedidoSaiuEntregaEmail(pedido);
+
     }
 }
