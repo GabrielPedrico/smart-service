@@ -519,6 +519,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "CONSULTA PEDIDOS POR USUARIO [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pedidos/ad3a6648-b555-43fa-a7c9-b15a964dcc56",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pedidos",
+								"ad3a6648-b555-43fa-a7c9-b15a964dcc56"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

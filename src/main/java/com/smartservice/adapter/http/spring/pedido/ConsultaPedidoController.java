@@ -33,6 +33,13 @@ public class ConsultaPedidoController {
         return getResponseData(buildResponseData(response), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/pedidos/{idUsuario}")
+    @CrossOrigin
+    ResponseEntity<?> consultaPedidosPorUsuario(@PathVariable("idUsuario") String id) throws IOException {
+        List<ConsultaPedidoResponse> pedidos = pedidoService.consultaPedidosPort().consultaPedidosPorUsuario(id);
+        return getResponseData(buildResponseDatas(pedidos), HttpStatus.OK);
+    }
+
     public ResponseEntity<ResponseData> getResponseData(ResponseData responseData, HttpStatus httpStatus){
         return new ResponseEntity<>(responseData,httpStatus);
     }
