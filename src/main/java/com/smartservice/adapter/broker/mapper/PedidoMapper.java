@@ -1,5 +1,6 @@
 package com.smartservice.adapter.broker.mapper;
 
+import com.smartservice.adapter.http.dto.entrada.pedido.CadastraPedidoMesaRequest;
 import com.smartservice.adapter.http.dto.entrada.pedido.CadastraPedidoRequest;
 import com.smartservice.adapter.http.dto.entrada.pedido.ProdutoRequest;
 import com.smartservice.config.general.ModelMapperConfig;
@@ -28,6 +29,16 @@ public class PedidoMapper {
             produtos.add(produtoModel);
         }
         return new PedidoModel(cadastraPedidoRequest.getIdUsuario(),produtos,cadastraPedidoRequest.getFormaPagamento(),cadastraPedidoRequest.getObs());
+    }
+
+    public PedidoModel converterParaPedidoModel(CadastraPedidoMesaRequest cadastraPedidoRequest){
+        List<ProdutoModel> produtos = new ArrayList<ProdutoModel>();
+        for (ProdutoRequest produtoRequest:cadastraPedidoRequest.getProdutos()
+        ) {
+            ProdutoModel produtoModel = new ProdutoModel(produtoRequest.getIdProduto(),produtoRequest.getQuantidade());
+            produtos.add(produtoModel);
+        }
+        return new PedidoModel(null,produtos,null,cadastraPedidoRequest.getObs());
     }
 
     public ModelMapperConfig getModelMapper() {

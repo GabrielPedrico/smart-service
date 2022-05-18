@@ -20,8 +20,14 @@ public class CadastraPedidoBusiness implements CadastraPedidoPort {
     }
 
     @Override
-    public CadastraPedidoResponse cadastra(PedidoModel pedidoModel) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
-        CadastraPedidoResponse response = cadastraPedidoPort.cadastraPedidoDB(pedidoModel);
+    public CadastraPedidoResponse cadastraPedidoDelivery(PedidoModel pedidoModel) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
+        CadastraPedidoResponse response = cadastraPedidoPort.cadastraPedidoDeliveryDB(pedidoModel);
+        return response;
+    }
+
+    @Override
+    public CadastraPedidoResponse cadastraPedidoPresencial(PedidoModel pedidoModel,String qrCode) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
+        CadastraPedidoResponse response = cadastraPedidoPort.cadastraPedidoPresencialDB(pedidoModel,qrCode);
         return response;
     }
 }

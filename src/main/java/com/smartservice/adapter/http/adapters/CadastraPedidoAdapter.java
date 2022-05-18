@@ -1,17 +1,17 @@
 package com.smartservice.adapter.http.adapters;
 
+import com.smartservice.adapter.datastore.entities.Mesa;
 import com.smartservice.adapter.datastore.entities.Pedido;
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.datastore.entities.Usuario;
+import com.smartservice.adapter.datastore.repositories.MesaRepository;
 import com.smartservice.adapter.datastore.repositories.PedidoRepository;
 import com.smartservice.adapter.datastore.repositories.ProdutoRepository;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
 import com.smartservice.adapter.http.dto.saida.pedido.CadastraPedidoResponse;
 import com.smartservice.config.properties.WppProperties;
-import com.smartservice.core.exceptions.FormaPagamentoInvalidaException;
-import com.smartservice.core.exceptions.ProdutoNaoExistenteException;
-import com.smartservice.core.exceptions.ProdutoSemEstoqueException;
-import com.smartservice.core.exceptions.UsuarioNaoExistenteException;
+import com.smartservice.core.exceptions.*;
+import com.smartservice.core.model.enums.StatusMesa;
 import com.smartservice.core.model.enums.StatusPedido;
 import com.smartservice.core.model.enums.TipoPagamento;
 import com.smartservice.core.model.pedido.PedidoModel;
@@ -44,9 +44,11 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
     EmailSendPort emailSendPort;
     @Autowired
     WppProperties wppProperties;
+    @Autowired
+    MesaRepository mesaRepository;
 
     @Override
-    public CadastraPedidoResponse cadastraPedidoDB(PedidoModel pedidoModel) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
+    public CadastraPedidoResponse cadastraPedidoDeliveryDB(PedidoModel pedidoModel) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
         Pedido pedido = new Pedido();
         List<Produto> produtos = new ArrayList<Produto>();
         String listaDeProdutos = "";
@@ -78,7 +80,7 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
         pedido.setCodigoPedido(pedido.getId().substring(0,4).toUpperCase());
         pedidoRepository.save(pedido);
         String urlWpp = wppProperties.getApi();
-        double valorTotalComEntrega = pedido.getValorTotal().doubleValue()+5.0;
+        double valorTotalComEntrega = pedido.getValorTotal().doubleValue()+5;
         String pedidoMsg = "*GOSTOU DE PEDIR NO NOSSO APP?*\n" +
                 "Não precisa baixar nada, adicione o nosso restaurante na tela inicial do seu celular e peça com mais agilidade na próxima vez através do link abaixo:\n" +
                 "https://nomeseurestaurante.smartservice.app/\n" +
@@ -111,5 +113,35 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
         String urlFinalPedidoWpp = urlWpp.concat("send?phone="+wppProperties.getTelefone()+"&text="+uri);
         emailSendPort.sendPedidoRegistradoEmail(pedido,urlFinalPedidoWpp);
         return new CadastraPedidoResponse(pedido.getId(),pedido.getStatusPedido().toString(),urlFinalPedidoWpp);
+    }
+
+    @Override
+    public CadastraPedidoResponse cadastraPedidoPresencialDB(PedidoModel pedidoModel,String qrCode) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
+        Mesa mesa = mesaRepository.findById(Integer.valueOf(qrCode)).orElseThrow(()-> new MesaNaoExistenteException("Numero mesa invalido"));
+        if(mesa.getStatusMesa().equals(StatusMesa.LIVRE)) throw new MesaLivreException("Não é possível cadastrar pedidos para mesas com status LIVRE, apenas mesas com Status OCUPADO podem registrar pedidos");
+        Pedido pedido = new Pedido();
+        List<Produto> produtos = new ArrayList<Produto>();
+        double valorTotal = 0;
+        for (ProdutoModel produtoModel:pedidoModel.getProdutos()
+        ) {
+            Produto possivelProduto = produtoRepository.findById(produtoModel.getIdProduto())
+                    .orElseThrow(()-> new ProdutoNaoExistenteException("Falha ao registrar pedido, o produto com ID:"+produtoModel.getIdProduto()+" não existe na nossa base de dados."));
+            int numeroEmEstoque = possivelProduto.getEstoque();
+            if(numeroEmEstoque <= 0 || numeroEmEstoque < produtoModel.getQuantidade()) throw new ProdutoSemEstoqueException("O produto de ID:"+produtoModel.getIdProduto()+" não tem a quantidade em estoque solicitada pelo usuario");
+            numeroEmEstoque = numeroEmEstoque-produtoModel.getQuantidade();
+            possivelProduto.setEstoque(numeroEmEstoque);
+            pedido.getProdutos().add(possivelProduto);
+            valorTotal += possivelProduto.getPreco().doubleValue() * produtoModel.getQuantidade().doubleValue();
+            produtoRepository.save(possivelProduto);
+        }
+        pedido.setValorTotal(BigDecimal.valueOf(valorTotal));
+        pedido.setStatusPedido(StatusPedido.PREPARANDO);
+        pedidoRepository.save(pedido);
+        mesa.getPedidos().add(pedido);
+        double valorTotalMesa= pedido.getValorTotal().doubleValue()+mesa.getValorTotal().doubleValue();
+        mesa.setValorTotal(BigDecimal.valueOf(valorTotalMesa));
+        mesaRepository.save(mesa);
+
+        return new CadastraPedidoResponse(pedido.getId(),pedido.getStatusPedido().name(),"Pedido registrado para mesa "+mesa.getId());
     }
 }
