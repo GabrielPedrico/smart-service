@@ -9,4 +9,6 @@ public interface ConsultaPedidosPort {
     ConsultaPedidoResponse consultaPedidoPorId(String idPedido);
 
     List<ConsultaPedidoResponse> consultaPedidosPorStatus(String status);
+
+    List<ConsultaPedidoResponse> consultaPedidosPorUsuario(String idUsuario);
 }

@@ -2,11 +2,14 @@ package com.smartservice.adapter.http.adapters;
 
 import com.smartservice.adapter.datastore.entities.Pedido;
 import com.smartservice.adapter.datastore.entities.Produto;
+import com.smartservice.adapter.datastore.entities.Usuario;
 import com.smartservice.adapter.datastore.repositories.PedidoRepository;
+import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
 import com.smartservice.adapter.http.dto.saida.pedido.ConsultaPedidoResponse;
 import com.smartservice.adapter.http.dto.saida.pedido.EnderecoResponse;
 import com.smartservice.adapter.http.dto.saida.pedido.ProdutoResponse;
 import com.smartservice.core.exceptions.PedidoNaoExistenteException;
+import com.smartservice.core.exceptions.UsuarioNaoExistenteException;
 import com.smartservice.core.model.enums.StatusPedido;
 import com.smartservice.core.port.saida.ConsultaPedidosPort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +24,21 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
 
     @Autowired
     private PedidoRepository pedidoRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Override
     public ConsultaPedidoResponse consultaPedidoPorId(String idPedido) {
-        Pedido pedido = pedidoRepository.findById(idPedido).orElseThrow(()->new PedidoNaoExistenteException("Pedido não existe na nossa base de dados."));
-        EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(),pedido.getUsuario().getNumero(),pedido.getUsuario().getBairro(),pedido.getUsuario().getComplemento(),pedido.getUsuario().getCidade(),pedido.getUsuario().getEstado(),pedido.getUsuario().getCep());
+        Pedido pedido = pedidoRepository.findById(idPedido).orElseThrow(() -> new PedidoNaoExistenteException("Pedido não existe na nossa base de dados."));
+        EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
         List<ProdutoResponse> produtos = new ArrayList<>();
         List<Produto> produtosDB = pedido.getProdutos();
-        for (Produto produto:produtosDB
-             ) {
-            ProdutoResponse produtoResponse = new ProdutoResponse(produto.getNome(),"1");
+        for (Produto produto : produtosDB
+        ) {
+            ProdutoResponse produtoResponse = new ProdutoResponse(produto.getNome(), "1");
             produtos.add(produtoResponse);
         }
-        return new ConsultaPedidoResponse(pedido.getCodigoPedido(),pedido.getUsuario().getNome(),pedido.getUsuario().getEmail(),endereco,produtos,pedido.getObs(),pedido.getFormaPagamento().toString(),pedido.getValorTotal().toString(),pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y")));
+        return new ConsultaPedidoResponse(pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y")));
     }
 
     @Override
@@ -42,15 +47,35 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
         List<Pedido> pedidos = pedidoRepository.findByStatusPedido(statusPedido);
         List<ConsultaPedidoResponse> pedidosResponse = new ArrayList<>();
         List<ProdutoResponse> produtos = new ArrayList<>();
-        for (Pedido pedido:pedidos
-             ) {
-            for (Produto produto:pedido.getProdutos()
-                 ) {
-                ProdutoResponse produtoResponse = new ProdutoResponse(produto.getNome(),"1");
+        for (Pedido pedido : pedidos
+        ) {
+            for (Produto produto : pedido.getProdutos()
+            ) {
+                ProdutoResponse produtoResponse = new ProdutoResponse(produto.getNome(), "1");
                 produtos.add(produtoResponse);
             }
-            EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(),pedido.getUsuario().getNumero(),pedido.getUsuario().getBairro(),pedido.getUsuario().getComplemento(),pedido.getUsuario().getCidade(),pedido.getUsuario().getEstado(),pedido.getUsuario().getCep());
-            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getCodigoPedido(),pedido.getUsuario().getNome(),pedido.getUsuario().getEmail(),endereco,produtos,pedido.getObs(),pedido.getFormaPagamento().toString(),pedido.getValorTotal().toString(),pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y"))));
+            EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
+            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y"))));
+            produtos = new ArrayList<>();
+        }
+        return pedidosResponse;
+    }
+
+    @Override
+    public List<ConsultaPedidoResponse> consultaPedidosPorUsuario(String idUsuario) {
+        Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow(() -> new UsuarioNaoExistenteException("Usuario não encontrado na nossa base de dados."));
+        List<Pedido> pedidos = pedidoRepository.findByUsuario(usuario);
+        List<ConsultaPedidoResponse> pedidosResponse = new ArrayList<>();
+        List<ProdutoResponse> produtos = new ArrayList<>();
+        for (Pedido pedido : pedidos
+        ) {
+            for (Produto produto : pedido.getProdutos()
+            ) {
+                ProdutoResponse produtoResponse = new ProdutoResponse(produto.getNome(), "1");
+                produtos.add(produtoResponse);
+            }
+            EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
+            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y"))));
             produtos = new ArrayList<>();
         }
         return pedidosResponse;
