@@ -9,5 +9,6 @@ import java.net.URISyntaxException;
 
 public interface CadastraPedidoPort {
 
-    CadastraPedidoResponse cadastra(PedidoModel pedidoModel) throws MessagingException, URISyntaxException, UnsupportedEncodingException;
+    CadastraPedidoResponse cadastraPedidoDelivery(PedidoModel pedidoModel) throws MessagingException, URISyntaxException, UnsupportedEncodingException;
+    CadastraPedidoResponse cadastraPedidoPresencial(PedidoModel pedidoModel,String qrCode) throws MessagingException, URISyntaxException, UnsupportedEncodingException;
 }

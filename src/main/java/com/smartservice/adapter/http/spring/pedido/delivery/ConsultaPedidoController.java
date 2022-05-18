@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.spring.pedido;
+package com.smartservice.adapter.http.spring.pedido.delivery;
 
 import com.smartservice.adapter.broker.delivery.PedidoService;
 import com.smartservice.adapter.http.dto.ResponseData;
@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.smartservice.adapter.http.spring.pedido;
+package com.smartservice.adapter.http.spring.pedido.delivery;
 
 import com.smartservice.adapter.broker.delivery.PedidoService;
 import com.smartservice.adapter.http.dto.DefaultResponse;

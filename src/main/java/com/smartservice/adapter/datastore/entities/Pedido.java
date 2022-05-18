@@ -27,6 +27,9 @@ public class Pedido {
     @OneToOne
     private Usuario usuario;
 
+    @ManyToOne
+    private Mesa mesa;
+
     @ManyToMany
     private List<Produto> produtos = new ArrayList<Produto>();
 
