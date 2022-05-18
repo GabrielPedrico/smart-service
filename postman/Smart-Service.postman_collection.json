@@ -199,6 +199,55 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "EDITA NOME CATEGORIA [PATCH]",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome_novo\" : \"sushi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/edita/categoria/HAMBURGERS",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"edita",
+										"categoria",
+										"HAMBURGERS"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:8080/categorias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/categorias",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
