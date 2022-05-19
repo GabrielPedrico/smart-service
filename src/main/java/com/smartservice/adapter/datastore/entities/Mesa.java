@@ -24,6 +24,9 @@ public class Mesa {
     @OneToMany
     private List<Pedido> pedidos = new ArrayList<>();
 
+    @ManyToMany
+    private List<Produto> produtos = new ArrayList<>();
+
     private BigDecimal valorTotal;
 
     public Mesa(int id, String qrCode, StatusMesa statusMesa, List<Pedido> pedidos, BigDecimal valorTotal) {
@@ -82,5 +85,13 @@ public class Mesa {
 
     public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
     }
 }

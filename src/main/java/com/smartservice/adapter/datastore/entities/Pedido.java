@@ -51,7 +51,7 @@ public class Pedido {
     private LocalDateTime dataFinalizacaoPedido;
 
 
-    public Pedido(String id, Usuario usuario, List<Produto> produtos, TipoPagamento formaPagamento, StatusPedido statusPedido, BigDecimal valorTotal, LocalDateTime dataCriacaoPedido, LocalDateTime dataFinalizacaoPedido,String obs) {
+    public Pedido(String id, Usuario usuario, List<Produto> produtos, TipoPagamento formaPagamento, StatusPedido statusPedido, BigDecimal valorTotal, LocalDateTime dataCriacaoPedido, LocalDateTime dataFinalizacaoPedido,String obs,Mesa mesa) {
         this.id = id;
         this.usuario = usuario;
         this.produtos = produtos;
@@ -62,6 +62,7 @@ public class Pedido {
         this.dataFinalizacaoPedido = dataFinalizacaoPedido;
         this.codigoPedido = id.substring(0,3).toUpperCase();
         this.obs = obs;
+        this.mesa = mesa;
     }
 
     @Deprecated
@@ -145,5 +146,9 @@ public class Pedido {
 
     public void setObs(String obs) {
         this.obs = obs;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
     }
 }
