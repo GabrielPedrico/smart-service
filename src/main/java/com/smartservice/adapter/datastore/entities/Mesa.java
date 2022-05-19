@@ -19,12 +19,13 @@ public class Mesa {
     @Lob
     private String qrCode;
 
+    @Enumerated(EnumType.STRING)
     private StatusMesa statusMesa;
 
     @OneToMany
     private List<Pedido> pedidos = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Produto> produtos = new ArrayList<>();
 
     private BigDecimal valorTotal;

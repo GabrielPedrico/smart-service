@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PedidoRepository extends JpaRepository<Pedido,String> {
 
-    List<Pedido> findByStatusPedido(StatusPedido statusPedido);
+    Optional<List<Pedido>> findByStatusPedido(StatusPedido statusPedido);
 
-    List<Pedido> findByUsuario(Usuario usuario);
+    Optional<List<Pedido>> findByUsuario(Usuario usuario);
 }

@@ -30,7 +30,7 @@ public class Pedido {
     @ManyToOne
     private Mesa mesa;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Produto> produtos = new ArrayList<Produto>();
 
     @Column(columnDefinition="VARCHAR(300)")

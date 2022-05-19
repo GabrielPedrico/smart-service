@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Juliana Villela\",\n    \"email\": \"julianavillelacomunicacao@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"raw": "{\n    \"nome\": \"Gabriel Pedrico\",\n    \"email\": \"gabrieldacostapedrico@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +73,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"julianavillelacomunicacao@gmail.com\",\n    \"password\" : \"123456\"\n}",
+							"raw": "{\n    \"email\" : \"gabrieldacostapedrico@gmail.com\",\n    \"password\" : \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,7 +149,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/usuario/d2b17862-8e0d-4f93-94fa-1f223d0b675f",
+							"raw": "http://localhost:8080/usuario/394ed38a-7d4b-4718-8d7b-4b2427e169b1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -157,7 +157,7 @@
 							"port": "8080",
 							"path": [
 								"usuario",
-								"d2b17862-8e0d-4f93-94fa-1f223d0b675f"
+								"394ed38a-7d4b-4718-8d7b-4b2427e169b1"
 							]
 						}
 					},
@@ -258,7 +258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoria\": \"Hamburguer\",\r\n    \"nome\": \"Hamburguer\",\r\n    \"preco\": \"12.99\",\r\n    \"descricao\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\r\n    \"estoque\": \"20\"\r\n}",
+							"raw": "{\r\n    \"categoria\": \"Hamburguer\",\r\n    \"nome\": \"X-Bacon\",\r\n    \"preco\": \"12.99\",\r\n    \"descricao\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\r\n    \"estoque\": \"20\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -343,7 +343,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/produto/4793fc83-a52c-4822-aeea-4cdd30d53e90",
+							"raw": "http://localhost:8080/produto/41971589-8b54-4a62-b723-15d8f416d20f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -351,7 +351,7 @@
 							"port": "8080",
 							"path": [
 								"produto",
-								"4793fc83-a52c-4822-aeea-4cdd30d53e90"
+								"41971589-8b54-4a62-b723-15d8f416d20f"
 							]
 						}
 					},
@@ -363,7 +363,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/produtos/categoria/hamburguer",
+							"raw": "http://localhost:8080/produtos/categoria/bebidas",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -372,7 +372,7 @@
 							"path": [
 								"produtos",
 								"categoria",
-								"hamburguer"
+								"bebidas"
 							]
 						}
 					},
@@ -384,7 +384,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/deleta/produto/dc3c6884-516a-44b7-ba60-fed154376cce",
+							"raw": "http://localhost:8080/deleta/produto/e0be7048-c6f8-4ac0-a658-16a56519dc51",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -393,7 +393,7 @@
 							"path": [
 								"deleta",
 								"produto",
-								"dc3c6884-516a-44b7-ba60-fed154376cce"
+								"e0be7048-c6f8-4ac0-a658-16a56519dc51"
 							]
 						}
 					},
@@ -473,7 +473,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"id_usuario\":\"ab02285e-59aa-42c9-8f7b-27b16e98214b\",\r\n    \"produtos\":[\r\n        {\"id_produto\":\"e1ea94c4-378d-4191-8195-49cf2a58160d\",\r\n        \"quantidade\":\"2\"}\r\n    ],\r\n    \"forma_pagamento\":\"DEBITO\"\r\n    \r\n}",
+									"raw": "{\r\n    \"id_usuario\": \"47e6f18d-3158-46e2-bcab-f12fec70b202\",\r\n    \"produtos\": [\r\n        {\r\n            \"id_produto\": \"2c09c0e1-3b6e-4c03-a8cf-cf1b259b93b2\",\r\n            \"quantidade\": \"2\"\r\n        }\r\n    ],\r\n    \"forma_pagamento\": \"CREDITO\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -503,7 +503,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"status\":\"CONCLUIDO\"\r\n}",
+									"raw": "{\r\n    \"status\":\"PREPARANDO\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -511,7 +511,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/alterar/status/pedido/76f20f06-29a9-4abe-b825-b771d5d4ca89",
+									"raw": "http://localhost:8080/alterar/status/pedido/19175239-85f0-4064-8e31-926e54b101b5",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -521,7 +521,7 @@
 										"alterar",
 										"status",
 										"pedido",
-										"76f20f06-29a9-4abe-b825-b771d5d4ca89"
+										"19175239-85f0-4064-8e31-926e54b101b5"
 									]
 								}
 							},
@@ -533,7 +533,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/pedidos?status=AGUARDANDO_CONFIRMACAO",
+									"raw": "http://localhost:8080/pedidos?status=PREPARANDO",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -545,7 +545,7 @@
 									"query": [
 										{
 											"key": "status",
-											"value": "AGUARDANDO_CONFIRMACAO"
+											"value": "PREPARANDO"
 										}
 									]
 								}
@@ -558,7 +558,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/pedido/b7049ef2-674e-4d6d-a482-128312ad3d4c",
+									"raw": "http://localhost:8080/pedido/4c0121aa-a680-4c07-89fa-a7115c43334b",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -566,7 +566,7 @@
 									"port": "8080",
 									"path": [
 										"pedido",
-										"b7049ef2-674e-4d6d-a482-128312ad3d4c"
+										"4c0121aa-a680-4c07-89fa-a7115c43334b"
 									]
 								}
 							},
@@ -604,7 +604,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"produtos\":[\r\n        {\"id_produto\":\"7bb997d1-628e-440e-9a2a-c3a9896919dc\",\r\n        \"quantidade\":\"6\"}\r\n    ]\r\n    \r\n}",
+									"raw": "{\r\n    \"produtos\":[\r\n        {\"id_produto\":\"2c09c0e1-3b6e-4c03-a8cf-cf1b259b93b2\",\r\n        \"quantidade\":\"1\"}\r\n    ]\r\n    \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -644,7 +644,7 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8080/alterar/status/pedido/76f20f06-29a9-4abe-b825-b771d5d4ca89",
+									"raw": "http://localhost:8080/alterar/status/pedido/34123b7c-814a-4d6c-8aaf-226e76f01679",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -654,7 +654,7 @@
 										"alterar",
 										"status",
 										"pedido",
-										"76f20f06-29a9-4abe-b825-b771d5d4ca89"
+										"34123b7c-814a-4d6c-8aaf-226e76f01679"
 									]
 								}
 							},
