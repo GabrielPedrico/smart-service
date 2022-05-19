@@ -131,13 +131,14 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
             numeroEmEstoque = numeroEmEstoque-produtoModel.getQuantidade();
             possivelProduto.setEstoque(numeroEmEstoque);
             for(int i = 0; i<produtoModel.getQuantidade(); i++){
-                mesa.getProdutos().add(possivelProduto);
+                produtos.add(possivelProduto);
             }
             valorTotal += possivelProduto.getPreco().doubleValue() * produtoModel.getQuantidade().doubleValue();
             produtoRepository.save(possivelProduto);
         }
         pedido.setValorTotal(BigDecimal.valueOf(valorTotal));
         pedido.setStatusPedido(StatusPedido.PREPARANDO);
+        pedido.setProdutos(produtos);
         pedidoRepository.save(pedido);
         mesa.getPedidos().add(pedido);
         mesa.getProdutos().addAll(produtos);

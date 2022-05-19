@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.mail.MessagingException;
+import java.time.LocalDateTime;
 
 @Component
 public class AlteraStatusPedidoAdapter implements AlteraStatusPedidoPort {
@@ -27,11 +28,16 @@ public class AlteraStatusPedidoAdapter implements AlteraStatusPedidoPort {
         Pedido pedido = possivelPedido;
         if(pedido.getStatusPedido().equals(StatusPedido.CONCLUIDO) || pedido.getStatusPedido().equals(StatusPedido.CANCELADO)) throw new AlteraStatusInconsistenciaException("Não é possível alterar o status de um pedido que ja esteja CONCLUIDO/CANCELADO");
         pedido.setStatusPedido(status);
-        pedidoRepository.save(pedido);
 
         if(status.equals(StatusPedido.PREPARANDO)) emailSendPort.sendPedidoEmPreparoEmail(pedido);
 
         if(status.equals(StatusPedido.ENTREGANDO)) emailSendPort.sendPedidoSaiuEntregaEmail(pedido);
+
+        if(status.equals(StatusPedido.CONCLUIDO)){
+            pedido.setDataFinalizacaoPedido(LocalDateTime.now());
+        }
+
+        pedidoRepository.save(pedido);
 
     }
 }
