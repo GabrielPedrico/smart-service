@@ -130,7 +130,9 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
             if(numeroEmEstoque <= 0 || numeroEmEstoque < produtoModel.getQuantidade()) throw new ProdutoSemEstoqueException("O produto de ID:"+produtoModel.getIdProduto()+" não tem a quantidade em estoque solicitada pelo usuario");
             numeroEmEstoque = numeroEmEstoque-produtoModel.getQuantidade();
             possivelProduto.setEstoque(numeroEmEstoque);
-            pedido.getProdutos().add(possivelProduto);
+            for(int i = 0; i<produtoModel.getQuantidade(); i++){
+                mesa.getProdutos().add(possivelProduto);
+            }
             valorTotal += possivelProduto.getPreco().doubleValue() * produtoModel.getQuantidade().doubleValue();
             produtoRepository.save(possivelProduto);
         }
@@ -138,6 +140,7 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
         pedido.setStatusPedido(StatusPedido.PREPARANDO);
         pedidoRepository.save(pedido);
         mesa.getPedidos().add(pedido);
+        mesa.getProdutos().addAll(produtos);
         double valorTotalMesa= pedido.getValorTotal().doubleValue()+mesa.getValorTotal().doubleValue();
         mesa.setValorTotal(BigDecimal.valueOf(valorTotalMesa));
         mesaRepository.save(mesa);

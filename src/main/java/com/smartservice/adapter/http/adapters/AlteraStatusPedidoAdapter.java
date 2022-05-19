@@ -22,8 +22,8 @@ public class AlteraStatusPedidoAdapter implements AlteraStatusPedidoPort {
 
 
     @Override
-    public void alteraStatusDB(String idProduto, StatusPedido status) throws MessagingException {
-        Pedido possivelPedido = pedidoRepository.findById(idProduto).orElseThrow(()->new PedidoNaoExistenteException("Pedido inexistente na nossa base de dados."));
+    public void alteraStatusDB(String idPedido, StatusPedido status) throws MessagingException {
+        Pedido possivelPedido = pedidoRepository.findById(idPedido).orElseThrow(()->new PedidoNaoExistenteException("Pedido inexistente na nossa base de dados."));
         Pedido pedido = possivelPedido;
         if(pedido.getStatusPedido().equals(StatusPedido.CONCLUIDO) || pedido.getStatusPedido().equals(StatusPedido.CANCELADO)) throw new AlteraStatusInconsistenciaException("Não é possível alterar o status de um pedido que ja esteja CONCLUIDO/CANCELADO");
         pedido.setStatusPedido(status);
