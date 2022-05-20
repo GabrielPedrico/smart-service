@@ -4,6 +4,8 @@ import com.smartservice.adapter.datastore.entities.Categoria;
 import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.datastore.repositories.CategoriaRepository;
 import com.smartservice.adapter.datastore.repositories.ProdutoRepository;
+import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutoResponse;
+import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutosResponse;
 import com.smartservice.core.exceptions.CategoriaNaoExistenteException;
 import com.smartservice.core.exceptions.ProdutoNaoExistenteException;
 import com.smartservice.core.port.saida.ConsultaProdutosPort;
@@ -11,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
@@ -23,26 +24,34 @@ public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
     private CategoriaRepository categoriaRepository;
 
     @Override
-    public List<Produto> consultaProdutos() {
-        var produtos = produtoRepository.findAll();
-        return produtos;
-    }
-
-    @Override
-    public List<Produto> consultaPorCategoria(String categoria)  {
-        Optional<Categoria> possivelCategoria = categoriaRepository.findByNome(categoria);
-        if(possivelCategoria.isEmpty()) throw new CategoriaNaoExistenteException("Categoria inexistente");
-        List<Produto> produtos = produtoRepository.findByCategoria(possivelCategoria.get());
-         return produtos;
-    }
-
-    @Override
-    public Produto consultaPorId(String id) {
-        var produto = produtoRepository.findById(id);
-        if(produto.isEmpty()){
-            throw new ProdutoNaoExistenteException("Produto não existe.");
+    public ConsultaProdutosResponse consultaProdutos() {
+        List<Produto> produtos = produtoRepository.findAll();
+        ConsultaProdutosResponse produtosResponse = new ConsultaProdutosResponse();
+        for (Produto produto: produtos
+             ) {
+            ConsultaProdutoResponse produtoResponse = new ConsultaProdutoResponse(produto.getId(),produto.getCategoria().getNome(),produto.getNome(),produto.getPreco(),produto.getDescricao(),produto.getEstoque(),produto.getImgUrl());
+            produtosResponse.getProdutos().add(produtoResponse);
         }
-        return produto.get();
+        return produtosResponse;
+    }
+
+    @Override
+    public ConsultaProdutosResponse consultaPorCategoria(String categoria)  {
+        Categoria possivelCategoria = categoriaRepository.findByNome(categoria).orElseThrow(()-> new CategoriaNaoExistenteException("Categoria inexistente"));
+        List<Produto> produtos = produtoRepository.findByCategoria(possivelCategoria);
+        ConsultaProdutosResponse produtosResponse = new ConsultaProdutosResponse();
+        for (Produto produto: produtos
+        ) {
+            ConsultaProdutoResponse produtoResponse = new ConsultaProdutoResponse(produto.getId(),produto.getCategoria().getNome(),produto.getNome(),produto.getPreco(),produto.getDescricao(),produto.getEstoque(),produto.getImgUrl());
+            produtosResponse.getProdutos().add(produtoResponse);
+        }
+        return produtosResponse;
+    }
+
+    @Override
+    public ConsultaProdutoResponse consultaPorId(String id) {
+        Produto produto = produtoRepository.findById(id).orElseThrow(()-> new ProdutoNaoExistenteException("Produto não existe."));
+        return new ConsultaProdutoResponse(produto.getId(),produto.getCategoria().getNome(),produto.getNome(),produto.getPreco(),produto.getDescricao(),produto.getEstoque(),produto.getImgUrl());
     }
 
 

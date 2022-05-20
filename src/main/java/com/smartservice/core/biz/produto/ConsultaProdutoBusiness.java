@@ -1,10 +1,9 @@
 package com.smartservice.core.biz.produto;
 
-import com.smartservice.adapter.datastore.entities.Produto;
+import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutoResponse;
+import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutosResponse;
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.port.entrada.ConsultaProdutosPort;
-
-import java.util.List;
 
 @AdapterUseCase
 public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
@@ -15,19 +14,18 @@ public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
         this.consultaProdutosPort = consultaProdutosPort;
     }
 
-    public List<Produto> consultaProdutos(){
-        List<Produto> produtos =  consultaProdutosPort.consultaProdutos();
-        return produtos;
+    public ConsultaProdutosResponse consultaProdutos(){
+        return consultaProdutosPort.consultaProdutos();
     }
 
     @Override
-    public List<Produto> consultaPorCategoria(String categoria) {
+    public ConsultaProdutosResponse consultaPorCategoria(String categoria) {
         categoria.toUpperCase().replace(" ","_");
         return consultaProdutosPort.consultaPorCategoria(categoria);
     }
 
     @Override
-    public Produto consultaPorId(String id) {
+    public ConsultaProdutoResponse consultaPorId(String id) {
         return consultaProdutosPort.consultaPorId(id);
     }
 }

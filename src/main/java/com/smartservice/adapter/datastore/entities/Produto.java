@@ -32,14 +32,18 @@ public class Produto {
     @Lob
     private String imgUrl;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Pedido> pedidos = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Mesa> mesas = new ArrayList<>();
 
     @Deprecated
     public Produto(){}
 
-    public Produto(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl,List<Pedido> pedidos) {
+    public Produto(String id, Categoria categoria, String nome, BigDecimal preco, String descricao, Integer estoque, String imgUrl,List<Pedido> pedidos,List<Mesa> mesas) {
         this.id = id;
         this.categoria = categoria;
         this.nome = nome;
@@ -48,6 +52,7 @@ public class Produto {
         this.estoque = estoque;
         this.imgUrl = imgUrl;
         this.pedidos = pedidos;
+        this.mesas = mesas;
     }
 
     public String getId() {
@@ -112,5 +117,13 @@ public class Produto {
 
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    public List<Mesa> getMesas() {
+        return mesas;
+    }
+
+    public void setMesas(List<Mesa> mesas) {
+        this.mesas = mesas;
     }
 }

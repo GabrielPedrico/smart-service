@@ -27,8 +27,14 @@ public class Pedido {
     @OneToOne
     private Usuario usuario;
 
-    @ManyToMany(mappedBy = "pedidos")
+    @ManyToOne
+    private Mesa mesa;
+
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Produto> produtos = new ArrayList<Produto>();
+
+    @Column(columnDefinition="VARCHAR(300)")
+    private String obs;
 
     @Enumerated(EnumType.STRING)
     private TipoPagamento formaPagamento;
@@ -45,7 +51,7 @@ public class Pedido {
     private LocalDateTime dataFinalizacaoPedido;
 
 
-    public Pedido(String id, Usuario usuario, List<Produto> produtos, TipoPagamento formaPagamento, StatusPedido statusPedido, BigDecimal valorTotal, LocalDateTime dataCriacaoPedido, LocalDateTime dataFinalizacaoPedido) {
+    public Pedido(String id, Usuario usuario, List<Produto> produtos, TipoPagamento formaPagamento, StatusPedido statusPedido, BigDecimal valorTotal, LocalDateTime dataCriacaoPedido, LocalDateTime dataFinalizacaoPedido,String obs,Mesa mesa) {
         this.id = id;
         this.usuario = usuario;
         this.produtos = produtos;
@@ -55,6 +61,8 @@ public class Pedido {
         this.dataCriacaoPedido = dataCriacaoPedido;
         this.dataFinalizacaoPedido = dataFinalizacaoPedido;
         this.codigoPedido = id.substring(0,3).toUpperCase();
+        this.obs = obs;
+        this.mesa = mesa;
     }
 
     @Deprecated
@@ -130,5 +138,17 @@ public class Pedido {
 
     public void setCodigoPedido(String codigoPedido) {
         this.codigoPedido = codigoPedido;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
+    }
+
+    public Mesa getMesa() {
+        return mesa;
     }
 }
