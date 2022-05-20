@@ -1,6 +1,5 @@
 package com.smartservice.adapter.http.dto.entrada.pedido;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotBlank;
@@ -16,14 +15,18 @@ public class CadastraPedidoRequest {
     @NotEmpty
     private List<ProdutoRequest> produtos;
 
+    @JsonProperty("observacao")
+    private String obs;
+
     @NotBlank
     @JsonProperty("forma_pagamento")
     private String formaPagamento;
 
-    public CadastraPedidoRequest(String idUsuario, List<ProdutoRequest> produtos, String formaPagamento) {
+    public CadastraPedidoRequest(String idUsuario, List<ProdutoRequest> produtos, String formaPagamento,String obs) {
         this.idUsuario = idUsuario;
         this.produtos = produtos;
         this.formaPagamento = formaPagamento;
+        this.obs = obs;
     }
 
     @Deprecated
@@ -40,5 +43,9 @@ public class CadastraPedidoRequest {
 
     public String getFormaPagamento() {
         return formaPagamento;
+    }
+
+    public String getObs() {
+        return obs;
     }
 }

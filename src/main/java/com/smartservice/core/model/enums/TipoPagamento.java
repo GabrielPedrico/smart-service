@@ -6,5 +6,6 @@ public enum TipoPagamento {
     CREDITO,
     PIX,
     VALE_REFEICAO,
-    VALE_ALIMENTACAO
+    VALE_ALIMENTACAO,
+    PRESENCIAL
 }

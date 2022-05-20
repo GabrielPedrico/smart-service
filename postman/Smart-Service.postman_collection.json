@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Juliana Villela\",\n    \"email\": \"julianavillelacomunicacao@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
+							"raw": "{\n    \"nome\": \"Gabriel Pedrico\",\n    \"email\": \"gabrieldacostapedrico@gmail.com\",\n    \"password\": \"123456\",\n    \"telefone\": \"13994385489\",\n    \"logradouro\": \"Rua Sao Joao\",\n    \"numero\": \"23-A\",\n    \"complemento\": \"Bloco C\",\n    \"cep\": \"11045001\",\n    \"bairro\": \"Embare\",\n    \"cidade\": \"Santos\",\n    \"estado\": \"SP\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -73,7 +73,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\" : \"julianavillelacomunicacao@gmail.com\",\n    \"password\" : \"123456\"\n}",
+							"raw": "{\n    \"email\" : \"gabrieldacostapedrico@gmail.com\",\n    \"password\" : \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,7 +149,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/usuario/d2b17862-8e0d-4f93-94fa-1f223d0b675f",
+							"raw": "http://localhost:8080/usuario/394ed38a-7d4b-4718-8d7b-4b2427e169b1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -157,7 +157,7 @@
 							"port": "8080",
 							"path": [
 								"usuario",
-								"d2b17862-8e0d-4f93-94fa-1f223d0b675f"
+								"394ed38a-7d4b-4718-8d7b-4b2427e169b1"
 							]
 						}
 					},
@@ -199,6 +199,55 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "EDITA NOME CATEGORIA [PATCH]",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome_novo\" : \"sushi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/edita/categoria/HAMBURGERS",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"edita",
+										"categoria",
+										"HAMBURGERS"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CONSULTA CATEGORIAS [GET]",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/categorias",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -209,7 +258,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoria\": \"Hamburguer\",\r\n    \"nome\": \"Hamburguer\",\r\n    \"preco\": \"12.99\",\r\n    \"descricao\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\r\n    \"estoque\": \"20\"\r\n}",
+							"raw": "{\r\n    \"categoria\": \"Hamburguer\",\r\n    \"nome\": \"X-Bacon\",\r\n    \"preco\": \"12.99\",\r\n    \"descricao\": \"xxxxxxxxxxxxxxxxxxxxxxxx\",\r\n    \"estoque\": \"20\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -294,7 +343,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/produto/4793fc83-a52c-4822-aeea-4cdd30d53e90",
+							"raw": "http://localhost:8080/produto/41971589-8b54-4a62-b723-15d8f416d20f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -302,7 +351,7 @@
 							"port": "8080",
 							"path": [
 								"produto",
-								"4793fc83-a52c-4822-aeea-4cdd30d53e90"
+								"41971589-8b54-4a62-b723-15d8f416d20f"
 							]
 						}
 					},
@@ -314,7 +363,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/produtos/categoria/hamburguer",
+							"raw": "http://localhost:8080/produtos/categoria/bebidas",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -323,7 +372,7 @@
 							"path": [
 								"produtos",
 								"categoria",
-								"hamburguer"
+								"bebidas"
 							]
 						}
 					},
@@ -335,7 +384,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/deleta/produto/dc3c6884-516a-44b7-ba60-fed154376cce",
+							"raw": "http://localhost:8080/deleta/produto/e0be7048-c6f8-4ac0-a658-16a56519dc51",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -344,7 +393,7 @@
 							"path": [
 								"deleta",
 								"produto",
-								"dc3c6884-516a-44b7-ba60-fed154376cce"
+								"e0be7048-c6f8-4ac0-a658-16a56519dc51"
 							]
 						}
 					},
@@ -415,13 +464,217 @@
 			"name": "PEDIDO",
 			"item": [
 				{
-					"name": "CADASTRA PEDIDO [POST]",
+					"name": "DELIVERY",
+					"item": [
+						{
+							"name": "CADASTRA PEDIDO [POST]",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id_usuario\": \"47e6f18d-3158-46e2-bcab-f12fec70b202\",\r\n    \"produtos\": [\r\n        {\r\n            \"id_produto\": \"2c09c0e1-3b6e-4c03-a8cf-cf1b259b93b2\",\r\n            \"quantidade\": \"2\"\r\n        }\r\n    ],\r\n    \"forma_pagamento\": \"CREDITO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/cadastra/pedido/delivery",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cadastra",
+										"pedido",
+										"delivery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ALTERA STATUS PEDIDO [PATCH]",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"PREPARANDO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/alterar/status/pedido/19175239-85f0-4064-8e31-926e54b101b5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"alterar",
+										"status",
+										"pedido",
+										"19175239-85f0-4064-8e31-926e54b101b5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CONSULTA PEDIDO BY STATUS [GET]",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos?status=PREPARANDO",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "PREPARANDO"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CONSULTA PEDIDO BY ID [GET]",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedido/4c0121aa-a680-4c07-89fa-a7115c43334b",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedido",
+										"4c0121aa-a680-4c07-89fa-a7115c43334b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CONSULTA PEDIDOS POR USUARIO [GET]",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pedidos/ad3a6648-b555-43fa-a7c9-b15a964dcc56",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pedidos",
+										"ad3a6648-b555-43fa-a7c9-b15a964dcc56"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PRESENCIAL",
+					"item": [
+						{
+							"name": "CADASTRA PEDIDO PRESENCIAL [POST]",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"produtos\":[\r\n        {\"id_produto\":\"2c09c0e1-3b6e-4c03-a8cf-cf1b259b93b2\",\r\n        \"quantidade\":\"1\"}\r\n    ]\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/cadastra/pedido/presencial/mesa/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cadastra",
+										"pedido",
+										"presencial",
+										"mesa",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ALTERA STATUS PEDIDO [PATCH] Copy",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"CONCLUIDO\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/alterar/status/pedido/34123b7c-814a-4d6c-8aaf-226e76f01679",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"alterar",
+										"status",
+										"pedido",
+										"34123b7c-814a-4d6c-8aaf-226e76f01679"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "MESA",
+			"item": [
+				{
+					"name": "CADASTRA MESAS [POST]",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_usuario\":\"\",\r\n    \"produtos\":[\r\n        {\"id_produto\":\"\",\r\n        \"quantidade\":\"\"}\r\n    ],\r\n    \"forma_pagamento\":\"DEBITO\"\r\n    \r\n}",
+							"raw": "{\r\n    \"quantidade_mesas\":20\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -429,7 +682,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/cadastra/pedido/delivery",
+							"raw": "http://localhost:8080/cadastra/mesas",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -437,8 +690,59 @@
 							"port": "8080",
 							"path": [
 								"cadastra",
-								"pedido",
-								"delivery"
+								"mesas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALTERA STATUS MESA [PATCH]",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"OCUPADA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/presencial/alterar/status/mesa/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"presencial",
+								"alterar",
+								"status",
+								"mesa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONSULTA MESA [GET]",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mesa/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mesa",
+								"1"
 							]
 						}
 					},

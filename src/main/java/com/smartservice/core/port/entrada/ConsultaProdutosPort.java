@@ -1,15 +1,17 @@
 package com.smartservice.core.port.entrada;
 
 import com.smartservice.adapter.datastore.entities.Produto;
+import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutoResponse;
+import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutosResponse;
 
 import java.util.List;
 
 public interface ConsultaProdutosPort {
 
-    List<Produto> consultaProdutos();
+    ConsultaProdutosResponse consultaProdutos();
 
-    List<Produto> consultaPorCategoria(String categoria);
+    ConsultaProdutosResponse consultaPorCategoria(String categoria);
 
-    Produto consultaPorId(String id);
+    ConsultaProdutoResponse consultaPorId(String id);
 
 }

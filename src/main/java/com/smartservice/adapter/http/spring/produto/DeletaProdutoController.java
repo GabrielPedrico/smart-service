@@ -1,13 +1,9 @@
 package com.smartservice.adapter.http.spring.produto;
 
 import com.smartservice.adapter.broker.delivery.ProdutoService;
-import com.smartservice.adapter.datastore.entities.Produto;
 import com.smartservice.adapter.http.dto.DefaultResponse;
 import com.smartservice.adapter.http.dto.ResponseData;
-import com.smartservice.adapter.http.dto.entrada.produto.DeletaProdutoRequest;
 import com.smartservice.adapter.http.dto.entrada.produto.DeletaProdutosRequest;
-import com.smartservice.adapter.http.dto.saida.produto.CadastraProdutoResponse;
-import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutoResponse;
 import com.smartservice.core.model.produto.ProdutoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
