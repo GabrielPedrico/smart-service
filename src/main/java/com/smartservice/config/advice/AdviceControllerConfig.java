@@ -1,7 +1,7 @@
 package com.smartservice.config.advice;
 
-import com.smartservice.adapter.http.dto.Response;
-import com.smartservice.adapter.http.dto.saida.handle.ErrorApiResponse;
+import com.smartservice.adapter.http.spring.dto.Response;
+import com.smartservice.adapter.http.spring.dto.saida.handle.ErrorApiResponse;
 import com.smartservice.core.exceptions.HttpException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

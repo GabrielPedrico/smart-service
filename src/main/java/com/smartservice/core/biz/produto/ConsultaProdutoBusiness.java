@@ -1,16 +1,16 @@
 package com.smartservice.core.biz.produto;
 
-import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutoResponse;
-import com.smartservice.adapter.http.dto.saida.produto.ConsultaProdutosResponse;
+import com.smartservice.adapter.http.spring.dto.saida.produto.ConsultaProdutoResponse;
+import com.smartservice.adapter.http.spring.dto.saida.produto.ConsultaProdutosResponse;
 import com.smartservice.config.annotations.AdapterUseCase;
-import com.smartservice.core.port.entrada.ConsultaProdutosPort;
+import com.smartservice.core.port.entrada.produto.ConsultaProdutosPort;
 
 @AdapterUseCase
 public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
 
-    private final com.smartservice.core.port.saida.ConsultaProdutosPort consultaProdutosPort;
+    private final com.smartservice.core.port.saida.produto.ConsultaProdutosPort consultaProdutosPort;
 
-    public ConsultaProdutoBusiness(com.smartservice.core.port.saida.ConsultaProdutosPort consultaProdutosPort) {
+    public ConsultaProdutoBusiness(com.smartservice.core.port.saida.produto.ConsultaProdutosPort consultaProdutosPort) {
         this.consultaProdutosPort = consultaProdutosPort;
     }
 

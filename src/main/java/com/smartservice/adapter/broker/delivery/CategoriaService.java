@@ -1,8 +1,8 @@
 package com.smartservice.adapter.broker.delivery;
 
-import com.smartservice.core.port.entrada.CadastraCategoriaPort;
-import com.smartservice.core.port.entrada.EditaCategoriaPort;
-import com.smartservice.core.port.saida.ConsultaCategoriasPort;
+import com.smartservice.core.port.entrada.produto.categoria.CadastraCategoriaPort;
+import com.smartservice.core.port.entrada.produto.categoria.EditaCategoriaPort;
+import com.smartservice.core.port.saida.categoria.ConsultaCategoriasPort;
 import org.springframework.stereotype.Service;
 
 @Service

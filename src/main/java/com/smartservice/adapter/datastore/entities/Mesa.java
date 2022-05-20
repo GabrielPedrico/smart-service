@@ -1,8 +1,6 @@
 package com.smartservice.adapter.datastore.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartservice.core.model.enums.StatusMesa;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

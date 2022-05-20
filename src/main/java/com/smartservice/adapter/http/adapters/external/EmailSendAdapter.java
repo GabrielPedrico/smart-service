@@ -5,7 +5,7 @@ import com.smartservice.adapter.datastore.entities.Usuario;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
 import com.smartservice.config.properties.MailProperties;
 import com.smartservice.core.exceptions.EmailNaoCadastradoException;
-import com.smartservice.core.port.saida.EmailSendPort;
+import com.smartservice.core.port.saida.external.EmailSendPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;

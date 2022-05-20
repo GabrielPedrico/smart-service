@@ -1,8 +1,0 @@
-
-^
-java:S6355@"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-J
-java:S1133A"5Do not forget to remove this deprecated code someday.(ª›¿.
-=
-java:S1123A"(Add the missing @deprecated Javadoc tag.(ª›¿.
-\	java:S1072"BConstructor has 11 parameters, which is greater than 7 authorized.(Ëú¬ãþÿÿÿÿ
