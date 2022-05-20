@@ -3,7 +3,7 @@ package com.smartservice.core.biz.pedido;
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.exceptions.StatusPedidoNaoExistenteException;
 import com.smartservice.core.model.enums.StatusPedido;
-import com.smartservice.core.port.entrada.AlteraStatusPedidoPort;
+import com.smartservice.core.port.entrada.pedido.AlteraStatusPedidoPort;
 
 import javax.mail.MessagingException;
 import java.util.Optional;
@@ -12,9 +12,9 @@ import java.util.Optional;
 public class AlteraStatusPedidoBusiness implements AlteraStatusPedidoPort {
 
 
-    private final com.smartservice.core.port.saida.AlteraStatusPedidoPort alteraStatusPedidoPort;
+    private final com.smartservice.core.port.saida.pedido.AlteraStatusPedidoPort alteraStatusPedidoPort;
 
-    public AlteraStatusPedidoBusiness(com.smartservice.core.port.saida.AlteraStatusPedidoPort alteraStatusPedidoPort) {
+    public AlteraStatusPedidoBusiness(com.smartservice.core.port.saida.pedido.AlteraStatusPedidoPort alteraStatusPedidoPort) {
         this.alteraStatusPedidoPort = alteraStatusPedidoPort;
     }
 

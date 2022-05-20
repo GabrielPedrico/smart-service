@@ -1,9 +1,9 @@
 package com.smartservice.adapter.broker.mapper;
 
 import com.smartservice.adapter.datastore.entities.Usuario;
-import com.smartservice.adapter.http.dto.entrada.usuario.CadastraAdministradorRequest;
-import com.smartservice.adapter.http.dto.entrada.usuario.CadastraClienteRequest;
-import com.smartservice.adapter.http.dto.entrada.usuario.RequestEditaUsuario;
+import com.smartservice.adapter.http.spring.dto.entrada.usuario.CadastraAdministradorRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.usuario.CadastraClienteRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.usuario.RequestEditaUsuario;
 import com.smartservice.config.general.ModelMapperConfig;
 import com.smartservice.core.model.usuario.UsuarioModel;
 import org.springframework.stereotype.Component;

@@ -1,11 +1,11 @@
 package com.smartservice.adapter.broker.delivery;
 
 import com.smartservice.adapter.broker.mapper.ProdutoMapper;
-import com.smartservice.core.port.entrada.CadastroProdutoPort;
-import com.smartservice.core.port.entrada.DeletaProdutoPort;
-import com.smartservice.core.port.saida.AdicionaImagemProdutoPort;
-import com.smartservice.core.port.entrada.ConsultaProdutosPort;
-import com.smartservice.core.port.saida.EditaProdutoPort;
+import com.smartservice.core.port.entrada.produto.CadastroProdutoPort;
+import com.smartservice.core.port.entrada.produto.ConsultaProdutosPort;
+import com.smartservice.core.port.entrada.produto.DeletaProdutoPort;
+import com.smartservice.core.port.saida.produto.AdicionaImagemProdutoPort;
+import com.smartservice.core.port.saida.produto.EditaProdutoPort;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -2,16 +2,16 @@ package com.smartservice.core.biz.produto;
 
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.model.produto.ProdutoModel;
-import com.smartservice.core.port.entrada.DeletaProdutoPort;
+import com.smartservice.core.port.entrada.produto.DeletaProdutoPort;
 
 import java.util.List;
 
 @AdapterUseCase
 public class DeletaProdutoBusiness implements DeletaProdutoPort {
 
-    public final com.smartservice.core.port.saida.DeletaProdutoPort deletaProdutoPort;
+    public final com.smartservice.core.port.saida.produto.DeletaProdutoPort deletaProdutoPort;
 
-    public DeletaProdutoBusiness(com.smartservice.core.port.saida.DeletaProdutoPort deletaProdutoPort) {
+    public DeletaProdutoBusiness(com.smartservice.core.port.saida.produto.DeletaProdutoPort deletaProdutoPort) {
         this.deletaProdutoPort = deletaProdutoPort;
     }
 

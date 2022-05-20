@@ -1,10 +1,10 @@
 package com.smartservice.adapter.broker.delivery;
 
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
-import com.smartservice.core.port.entrada.UsuarioAutenticaPort;
-import com.smartservice.core.port.entrada.UsuarioEditaPort;
-import com.smartservice.core.port.entrada.UsuarioListaPort;
-import com.smartservice.core.port.saida.UsuarioCadastroPort;
+import com.smartservice.core.port.entrada.usuario.UsuarioAutenticaPort;
+import com.smartservice.core.port.entrada.usuario.UsuarioEditaPort;
+import com.smartservice.core.port.entrada.usuario.UsuarioListaPort;
+import com.smartservice.core.port.saida.usuario.UsuarioCadastroPort;
 import org.springframework.stereotype.Service;
 
 @Service
