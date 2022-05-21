@@ -7,6 +7,7 @@ import com.smartservice.adapter.http.spring.dto.entrada.mesa.CadastraMesaRequest
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class CadastraMesasController {
     MesaService mesaService;
 
     @PostMapping("/cadastra/mesas")
+    @CrossOrigin
     public ResponseEntity<?> cadastraMesas(@RequestBody CadastraMesaRequest cadastraMesaRequest){
         mesaService.cadastraMesaPort().cadastra(cadastraMesaRequest.getQuantidadeMesas());
         return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.CREATED);

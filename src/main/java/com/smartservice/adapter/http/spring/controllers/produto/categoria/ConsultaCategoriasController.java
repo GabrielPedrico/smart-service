@@ -6,6 +6,7 @@ import com.smartservice.adapter.http.spring.dto.saida.produto.categoria.Consulta
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ public class ConsultaCategoriasController {
     CategoriaService categoriaService;
 
     @GetMapping("/categorias")
+    @CrossOrigin
     public ResponseEntity<?> consultaCategorias(){
         ConsultaCategoriasResponse categoriasResponse = categoriaService.consultaCategoriasPort().consultarCategoriasDB();
         return getResponseData(buildResponseData(categoriasResponse), HttpStatus.ACCEPTED);
