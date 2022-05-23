@@ -10,6 +10,8 @@ import com.smartservice.core.exceptions.CategoriaNaoExistenteException;
 import com.smartservice.core.exceptions.ProdutoNaoExistenteException;
 import com.smartservice.core.port.saida.produto.ConsultaProdutosPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,8 +26,9 @@ public class ConsultaProdutosAdapter implements ConsultaProdutosPort {
     private CategoriaRepository categoriaRepository;
 
     @Override
-    public ConsultaProdutosResponse consultaProdutos() {
-        List<Produto> produtos = produtoRepository.findAll();
+    public ConsultaProdutosResponse consultaProdutos(Integer page) {
+        Pageable firstPageWithTwoElements = PageRequest.of(page, 5);
+        List<Produto> produtos = produtoRepository.findAll(firstPageWithTwoElements).toList();
         ConsultaProdutosResponse produtosResponse = new ConsultaProdutosResponse();
         for (Produto produto: produtos
              ) {

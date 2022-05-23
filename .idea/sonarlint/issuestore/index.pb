@@ -49,10 +49,6 @@ Asrc/main/java/com/smartservice/core/exceptions/HttpException.java,b\9\b9f1c992
 Psrc/main/java/com/smartservice/core/exceptions/ProdutoNaoExistenteException.java,1\c\1c0cf3c01264e9a79108c95bd656f0ebb0cc1ff9
 v
 Fsrc/main/java/com/smartservice/adapter/datastore/entities/Produto.java,8\5\8540b6c3c2207a2a7817178c561ccfd468c92622
-Y
-)src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
-„
-Tsrc/main/java/com/smartservice/adapter/datastore/repositories/ProdutoRepository.java,6\0\60aeba642080b5d010c5c1a77c2921b8ae070fdb
 M
 src/main/resources/banner.txt,e\f\efc52e6af802f9b802ffaae1e093e328ff8a2c20
 }
@@ -85,8 +81,6 @@ Esrc/main/java/com/smartservice/config/annotations/AdapterUseCase.java,a\d\ad11
 Usrc/main/java/com/smartservice/core/port/saida/produto/AdicionaImagemProdutoPort.java,6\9\69650b114d6eee3da0405ac0685bc69bb659626c
 x
 Hsrc/main/java/com/smartservice/config/advice/AdviceControllerConfig.java,7\1\71b1a44686850404ca22f75f8043f656bcf9a06b
-‰
-Ysrc/main/java/com/smartservice/adapter/http/adapters/produto/AlteraStatusMesaAdapter.java,3\f\3fd1804183b7d3a2864c198daeccf7841c25d051
 Š
 Zsrc/main/java/com/smartservice/adapter/http/adapters/pedido/AlteraStatusPedidoAdapter.java,0\3\03851ce9ea359b3978090fd4811acc534f318ed2
 ~
@@ -95,8 +89,6 @@ Nsrc/main/java/com/smartservice/core/biz/pedido/AlteraStatusPedidoBusiness.java
 Ssrc/main/java/com/smartservice/core/port/entrada/pedido/AlteraStatusPedidoPort.java,5\4\54989f517e6561fc7d14e7f5915c7363050f4d60
 
 Qsrc/main/java/com/smartservice/core/port/saida/pedido/AlteraStatusPedidoPort.java,6\b\6bb8d84a813e521a0e5964cbc044865c1b367cbc
-
-]src/main/java/com/smartservice/core/port/entrada/pedido/AlteraStatusPedidoPresencialPort.java,8\9\89a134db7e84f6f58ea1bae9cf1df73848c5a177
 ”
 dsrc/main/java/com/smartservice/adapter/http/spring/dto/entrada/pedido/AlteraStatusPedidoRequest.java,8\e\8ea06f866a0fce0e4b468d443818e6b27a629131
 “
@@ -117,12 +109,6 @@ Ssrc/main/java/com/smartservice/core/port/saida/categoria/CadastraCategoriaPort.
 nsrc/main/java/com/smartservice/adapter/http/spring/dto/entrada/produto/categoria/CadastraCategoriaRequest.java,c\b\cb9d1c4d8f03b2bc0ae378de6ffeab9728fa34b1
 ’
 bsrc/main/java/com/smartservice/adapter/http/spring/dto/entrada/usuario/CadastraClienteRequest.java,2\d\2d7f8244922a0bda539b940fc3f268e3aead39c1
-‚
-Rsrc/main/java/com/smartservice/adapter/http/adapters/mesa/CadastraMesaAdapter.java,2\5\2555910c18aa4d0bb0333cd2ec20e24a8a711956
-y
-Isrc/main/java/com/smartservice/core/port/saida/mesa/CadastraMesaPort.java,2\8\28ba6b5af2e89845899076cca9136e0681813c24
-Œ
-\src/main/java/com/smartservice/adapter/http/spring/dto/entrada/mesa/CadastraMesaRequest.java,4\6\467a5f1b7e3688942045d20a40e1f2dfbb6141fa
 †
 Vsrc/main/java/com/smartservice/adapter/http/adapters/pedido/CadastraPedidoAdapter.java,f\0\f04195ca632c17b19689569eb8e352c679442a06
 z
@@ -159,10 +145,6 @@ esrc/main/java/com/smartservice/adapter/http/adapters/produto/categoria/Consulta
 Tsrc/main/java/com/smartservice/core/port/saida/categoria/ConsultaCategoriasPort.java,2\b\2b9f17b7b11f498fbc9d835f2ff5713ce3e4828c
 ž
 nsrc/main/java/com/smartservice/adapter/http/spring/dto/saida/produto/categoria/ConsultaCategoriasResponse.java,2\3\2354270b35beece6cae9c522891c1c4830e80f90
-‚
-Rsrc/main/java/com/smartservice/adapter/http/adapters/mesa/ConsultaMesaAdapter.java,7\3\738765f1561385cf7744bd1d4f9f38ad7c1a702c
-y
-Isrc/main/java/com/smartservice/core/port/saida/mesa/ConsultaMesaPort.java,1\4\140780deb8badbb00564667988a9cf0d88ae427e
 ‹
 [src/main/java/com/smartservice/adapter/http/spring/dto/saida/mesa/ConsultaMesaResponse.java,0\d\0d27fc7024351bb1cc0e50127fd7c99d032660fe
 
@@ -171,18 +153,8 @@ _src/main/java/com/smartservice/adapter/http/spring/dto/saida/pedido/ConsultaPed
 Wsrc/main/java/com/smartservice/adapter/http/adapters/pedido/ConsultaPedidosAdapter.java,c\1\c1b3f93df8925ddfe29c2d6ca4875f759c039277
 ~
 Nsrc/main/java/com/smartservice/core/port/saida/pedido/ConsultaPedidosPort.java,c\2\c277cc9d8be35e5dbf8c61202298e4fa3fa23511
-|
-Lsrc/main/java/com/smartservice/core/biz/produto/ConsultaProdutoBusiness.java,d\d\dd105fe0d290321a4c57f3920a36e040e41a13d4
 ‘
 asrc/main/java/com/smartservice/adapter/http/spring/dto/saida/produto/ConsultaProdutoResponse.java,d\7\d72a8956d24179c9c9fb95ff03b2ef2ca7d9ead7
-‰
-Ysrc/main/java/com/smartservice/adapter/http/adapters/produto/ConsultaProdutosAdapter.java,3\8\388f135c356a1a10387854e36dfe8a1f21638c93
-–
-fsrc/main/java/com/smartservice/adapter/http/spring/controllers/produto/ConsultaProdutosController.java,6\2\62d8d98fc10d1bda8f171c39efc421c8bf6af0df
-‚
-Rsrc/main/java/com/smartservice/core/port/entrada/produto/ConsultaProdutosPort.java,1\4\14ca21d61204ce6de0c680b1995991a44038a602
-€
-Psrc/main/java/com/smartservice/core/port/saida/produto/ConsultaProdutosPort.java,9\5\95b5666ceca74f4626089b060476e32ba1a68d10
 ’
 bsrc/main/java/com/smartservice/adapter/http/spring/dto/saida/produto/ConsultaProdutosResponse.java,9\4\944e7dc4a44fce21e618f80d137aeeb5a5a79a26
 {
@@ -237,8 +209,6 @@ Ysrc/main/java/com/smartservice/adapter/http/spring/dto/saida/handle/ErrorApiRes
 `src/main/java/com/smartservice/adapter/http/spring/dto/entrada/produto/ImagemProdutoRequest.java,4\e\4eb27e05817f6692d41db5615c1ebb22e9cf23db
 Ž
 ^src/main/java/com/smartservice/adapter/http/spring/dto/saida/usuario/ListaUsuarioResponse.java,a\b\abfcefe807c4711b8799a30436e1c0d81f392a0d
-n
->src/main/java/com/smartservice/config/general/Log4jConfig.java,e\4\e40cd14ad37314925a1fb90a437400b7b8c7e7c5
 t
 Dsrc/main/java/com/smartservice/config/properties/MailProperties.java,1\6\165ff175ee2fb3834452205f499da4d8193cb56b
 s

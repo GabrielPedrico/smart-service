@@ -14,8 +14,8 @@ public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
         this.consultaProdutosPort = consultaProdutosPort;
     }
 
-    public ConsultaProdutosResponse consultaProdutos(){
-        return consultaProdutosPort.consultaProdutos();
+    public ConsultaProdutosResponse consultaProdutos(Integer page){
+        return consultaProdutosPort.consultaProdutos(page);
     }
 
     @Override

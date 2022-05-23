@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "83731f33-90d0-4420-b761-7ecbf1572ee5",
 		"name": "Smart-Service",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15694592"
 	},
 	"item": [
 		{
@@ -324,7 +325,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/produtos",
+							"raw": "http://localhost:8080/produtos?page=0",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -332,6 +333,12 @@
 							"port": "8080",
 							"path": [
 								"produtos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								}
 							]
 						}
 					},
