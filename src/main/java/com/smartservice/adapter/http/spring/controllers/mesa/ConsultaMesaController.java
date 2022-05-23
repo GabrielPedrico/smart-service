@@ -3,6 +3,7 @@ package com.smartservice.adapter.http.spring.controllers.mesa;
 import com.smartservice.adapter.broker.delivery.MesaService;
 import com.smartservice.adapter.http.spring.dto.ResponseData;
 import com.smartservice.adapter.http.spring.dto.saida.mesa.ConsultaMesaResponse;
+import com.smartservice.config.general.Log4jConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +20,15 @@ public class ConsultaMesaController {
     @Autowired
     MesaService mesaService;
 
+    @Autowired
+    Log4jConfig log;
+
     @GetMapping("/mesa/{id}")
     @CrossOrigin
     public ResponseEntity<?> consultaMesa(@PathVariable("id") String id){
+        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[API] SMART-SERVICE [API] [END-POINT] /mesa/"+id+" [END-POINT]");
+        log.getLogger().info("[API] SMART-SERVICE [API] PAYLOAD RECEBIDO = {id:"+ id+"}");
         ConsultaMesaResponse response = mesaService.consultaMesaPort().consultaMesa(id);
         return getResponseData(buildResponseData(response), HttpStatus.OK);
     }

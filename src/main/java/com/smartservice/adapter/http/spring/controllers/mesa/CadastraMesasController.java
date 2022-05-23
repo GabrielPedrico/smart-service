@@ -4,6 +4,7 @@ import com.smartservice.adapter.broker.delivery.MesaService;
 import com.smartservice.adapter.http.spring.dto.DefaultResponse;
 import com.smartservice.adapter.http.spring.dto.ResponseData;
 import com.smartservice.adapter.http.spring.dto.entrada.mesa.CadastraMesaRequest;
+import com.smartservice.config.general.Log4jConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,15 @@ public class CadastraMesasController {
 
     @Autowired
     MesaService mesaService;
+    @Autowired
+    private Log4jConfig log;
 
     @PostMapping("/cadastra/mesas")
     @CrossOrigin
     public ResponseEntity<?> cadastraMesas(@RequestBody CadastraMesaRequest cadastraMesaRequest){
+        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[END-POINT] /CADASTRA/MESAS [END-POINT] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[API] SMART-SERVICE [API] PAYLOAD RECEBIDO = {quantidade_mesas:"+ cadastraMesaRequest.getQuantidadeMesas()+"}");
         mesaService.cadastraMesaPort().cadastra(cadastraMesaRequest.getQuantidadeMesas());
         return getResponseData(buildResponseData(buildDefaultResponse()), HttpStatus.CREATED);
     }

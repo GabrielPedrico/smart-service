@@ -7,10 +7,7 @@ import com.smartservice.adapter.http.spring.dto.saida.produto.ConsultaProdutosRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
@@ -22,8 +19,8 @@ public class ConsultaProdutosController {
 
     @GetMapping(value = "/produtos")
     @CrossOrigin
-    ResponseEntity<?> consultaProdutos(){
-        var produtos = produtoService.consultaProdutosPort().consultaProdutos();
+    ResponseEntity<?> consultaProdutos(@RequestParam Integer page){
+        var produtos = produtoService.consultaProdutosPort().consultaProdutos(page);
         return getResponseData(buildResponseData(produtos), HttpStatus.OK);
         }
 

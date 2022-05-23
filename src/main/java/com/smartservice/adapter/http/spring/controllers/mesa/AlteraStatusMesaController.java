@@ -25,8 +25,8 @@ public class AlteraStatusMesaController {
     @PatchMapping(value = "/presencial/alterar/status/mesa/{id}")
     @CrossOrigin
     ResponseEntity<?> alteraStatusPedido(@RequestBody @Valid AlteraStatusPedidoRequest request, @PathVariable("id") String idProduto) {
-        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO");
-        log.getLogger().info("[API] SMART-SERVICE [API] END-POINT /presencial/alterar/status/mesa/"+idProduto);
+        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[API] SMART-SERVICE [API] [END-POINT] /presencial/alterar/status/mesa/"+idProduto+" [END-POINT]");
         log.getLogger().info("[API] SMART-SERVICE [API] PAYLOAD RECEBIDO = {status:"+ request.getStatus()+"}");
         pedidoService.alteraStatusPedidoPresencialPort().alteraStatusMesa(idProduto,request.getStatus());
         log.getLogger().info("[API] SMART-SERVICE [API] ALTERAÇÃO REALIZADA COM SUCESSO PARA MESA DE ID "+idProduto);

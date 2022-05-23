@@ -5,7 +5,7 @@ import com.smartservice.adapter.http.spring.dto.saida.produto.ConsultaProdutosRe
 
 public interface ConsultaProdutosPort {
 
-    ConsultaProdutosResponse consultaProdutos();
+    ConsultaProdutosResponse consultaProdutos(Integer page);
 
     ConsultaProdutosResponse consultaPorCategoria(String categoria);
 
