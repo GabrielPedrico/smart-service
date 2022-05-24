@@ -17,4 +17,11 @@ public class DeletaProdutosRequest {
     public List<DeletaProdutoRequest> getProdutos() {
         return produtos;
     }
+
+    @Override
+    public String toString() {
+        return "DeletaProdutosRequest{" +
+                "produtos=" + produtos +
+                '}';
+    }
 }

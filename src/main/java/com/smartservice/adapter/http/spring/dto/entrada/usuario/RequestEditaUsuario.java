@@ -128,4 +128,21 @@ public class RequestEditaUsuario {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "RequestEditaUsuario{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", numero='" + numero + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", cep='" + cep + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
 }

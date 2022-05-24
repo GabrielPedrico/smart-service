@@ -120,4 +120,21 @@ public class CadastraClienteRequest {
     public BCryptPasswordEncoder getbCryptPasswordEncoder() {
         return bCryptPasswordEncoder;
     }
+
+    @Override
+    public String toString() {
+        return "CadastraClienteRequest{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", tipo=" + tipo +
+                ", telefone='" + telefone + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", numero='" + numero + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", cep='" + cep + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
 }

@@ -18,6 +18,13 @@ public class EditaCategoriaRequest {
     public EditaCategoriaRequest() {
     }
 
+    @Override
+    public String toString() {
+        return "EditaCategoriaRequest{" +
+                "nomeNovo='" + nomeNovo + '\'' +
+                '}';
+    }
+
     public String getNomeNovo() {
         return nomeNovo;
     }
