@@ -46,7 +46,7 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
             ProdutoResponse produtoResponse = new ProdutoResponse(produto.getNome(), "1");
             produtos.add(produtoResponse);
         }
-        return new ConsultaPedidoResponse(pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern)));
+        return new ConsultaPedidoResponse(pedido.getId(),pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern)));
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
                 pedido.setFormaPagamento(TipoPagamento.PRESENCIAL);
             }
             EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
-            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern))));
+            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getId(),pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern))));
             produtos = new ArrayList<>();
         }
         return pedidosResponse;
@@ -87,7 +87,7 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
                 produtos.add(produtoResponse);
             }
             EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
-            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern))));
+            pedidosResponse.add(new ConsultaPedidoResponse(pedido.getId(),pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern))));
             produtos = new ArrayList<>();
         }
         return pedidosResponse;
