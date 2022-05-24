@@ -5,8 +5,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.List;
 
-@JsonPropertyOrder({"codigo_pedido","nome_cliente","email_cliente","endereco"})
+@JsonPropertyOrder({"id_pedido","codigo_pedido","nome_cliente","email_cliente","endereco"})
 public class ConsultaPedidoResponse {
+
+    @JsonProperty("id_pedido")
+    private String idPedido;
 
     @JsonProperty("codigo_pedido")
     private String codigoPedido;
@@ -35,7 +38,8 @@ public class ConsultaPedidoResponse {
     @JsonProperty("data_pedido")
     private String dataPedido;
 
-    public ConsultaPedidoResponse(String codigoPedido, String nomeCliente, String emailCliente, EnderecoResponse endereco, List<ProdutoResponse> produtos, String obs, String formaPagamento, String valorTotal,String dataPedido) {
+    public ConsultaPedidoResponse(String idPedido,String codigoPedido, String nomeCliente, String emailCliente, EnderecoResponse endereco, List<ProdutoResponse> produtos, String obs, String formaPagamento, String valorTotal,String dataPedido) {
+        this.idPedido = idPedido;
         this.codigoPedido = codigoPedido;
         this.nomeCliente = nomeCliente;
         this.emailCliente = emailCliente;

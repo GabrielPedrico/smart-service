@@ -147,10 +147,6 @@ Tsrc/main/java/com/smartservice/core/port/saida/categoria/ConsultaCategoriasPort
 nsrc/main/java/com/smartservice/adapter/http/spring/dto/saida/produto/categoria/ConsultaCategoriasResponse.java,2\3\2354270b35beece6cae9c522891c1c4830e80f90
 ã
 [src/main/java/com/smartservice/adapter/http/spring/dto/saida/mesa/ConsultaMesaResponse.java,0\d\0d27fc7024351bb1cc0e50127fd7c99d032660fe
-è
-_src/main/java/com/smartservice/adapter/http/spring/dto/saida/pedido/ConsultaPedidoResponse.java,5\6\56108b08726acc330c01368638aab3c76086d70e
-á
-Wsrc/main/java/com/smartservice/adapter/http/adapters/pedido/ConsultaPedidosAdapter.java,c\1\c1b3f93df8925ddfe29c2d6ca4875f759c039277
 ~
 Nsrc/main/java/com/smartservice/core/port/saida/pedido/ConsultaPedidosPort.java,c\2\c277cc9d8be35e5dbf8c61202298e4fa3fa23511
 ë
@@ -271,3 +267,5 @@ Csrc/main/java/com/smartservice/core/model/usuario/UsuarioModel.java,d\a\da9cfe
 Tsrc/main/java/com/smartservice/adapter/datastore/repositories/UsuarioRepository.java,d\6\d6d3631660d47e22640a21e13faba16688089ab6
 z
 Jsrc/main/java/com/smartservice/adapter/broker/delivery/UsuarioService.java,3\f\3fca989d5e174b2899ba4bb2f0e5864a894470eb
+]
+-postman/Smart-Service.postman_collection.json,b\8\b8a05d11dd982e198ad067d68d640ed12c2b7f45
