@@ -16,6 +16,13 @@ public class AutenticaUsuarioRequest {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "AutenticaUsuarioRequest{" +
+                "email='" + email + '\'' +
+                '}';
+    }
+
     @Deprecated
     public AutenticaUsuarioRequest() {
     }

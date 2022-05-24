@@ -9,6 +9,14 @@ public class ProdutoRequest {
 
     private Integer quantidade;
 
+    @Override
+    public String toString() {
+        return "ProdutoRequest{" +
+                "idProduto='" + idProduto + '\'' +
+                ", quantidade=" + quantidade +
+                '}';
+    }
+
     public ProdutoRequest(String idProduto, Integer quantidade) {
         this.idProduto = idProduto;
         this.quantidade = quantidade;

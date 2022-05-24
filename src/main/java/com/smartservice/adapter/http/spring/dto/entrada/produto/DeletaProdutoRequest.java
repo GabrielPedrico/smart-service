@@ -14,6 +14,13 @@ public class DeletaProdutoRequest {
     @Deprecated
     public DeletaProdutoRequest(){}
 
+    @Override
+    public String toString() {
+        return "DeletaProdutoRequest{" +
+                "idProduto='" + idProduto + '\'' +
+                '}';
+    }
+
     public String getIdProduto() {
         return idProduto;
     }

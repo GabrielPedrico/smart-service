@@ -18,6 +18,16 @@ public class CadastraPedidoRequest {
     @JsonProperty("observacao")
     private String obs;
 
+    @Override
+    public String toString() {
+        return "CadastraPedidoRequest{" +
+                "idUsuario='" + idUsuario + '\'' +
+                ", produtos=" + produtos +
+                ", obs='" + obs + '\'' +
+                ", formaPagamento='" + formaPagamento + '\'' +
+                '}';
+    }
+
     @NotBlank
     @JsonProperty("forma_pagamento")
     private String formaPagamento;

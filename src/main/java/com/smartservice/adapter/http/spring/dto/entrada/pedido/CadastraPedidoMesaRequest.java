@@ -18,6 +18,14 @@ public class CadastraPedidoMesaRequest {
         this.obs = obs;
     }
 
+    @Override
+    public String toString() {
+        return "CadastraPedidoMesaRequest{" +
+                "produtos=" + produtos +
+                ", obs='" + obs + '\'' +
+                '}';
+    }
+
     @Deprecated
     public CadastraPedidoMesaRequest() {
     }

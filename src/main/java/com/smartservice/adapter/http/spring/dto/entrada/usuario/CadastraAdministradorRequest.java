@@ -69,6 +69,25 @@ public class CadastraAdministradorRequest {
         this.tipo = Perfil.ADMINISTRADOR;
     }
 
+    @Override
+    public String toString() {
+        return "CadastraAdministradorRequest{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", tipo=" + tipo +
+                ", telefone='" + telefone + '\'' +
+                ", logradouro='" + logradouro + '\'' +
+                ", numero='" + numero + '\'' +
+                ", complemento='" + complemento + '\'' +
+                ", cep='" + cep + '\'' +
+                ", bairro='" + bairro + '\'' +
+                ", cidade='" + cidade + '\'' +
+                ", estado='" + estado + '\'' +
+                ", bCryptPasswordEncoder=" + bCryptPasswordEncoder +
+                '}';
+    }
+
     public String getNome() {
         return nome;
     }

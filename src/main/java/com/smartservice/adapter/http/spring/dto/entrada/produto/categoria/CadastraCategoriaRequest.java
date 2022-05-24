@@ -15,6 +15,13 @@ public class CadastraCategoriaRequest {
     public CadastraCategoriaRequest() {
     }
 
+    @Override
+    public String toString() {
+        return "CadastraCategoriaRequest{" +
+                "nome='" + nome + '\'' +
+                '}';
+    }
+
     public String getNome() {
         return nome;
     }

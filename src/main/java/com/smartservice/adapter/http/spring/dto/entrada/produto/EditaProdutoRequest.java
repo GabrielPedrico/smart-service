@@ -49,4 +49,16 @@ public class EditaProdutoRequest {
     public String getEstoque() {
         return estoque;
     }
+
+    @Override
+    public String toString() {
+        return "EditaProdutoRequest{" +
+                "id='" + id + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", nome='" + nome + '\'' +
+                ", preco='" + preco + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", estoque='" + estoque + '\'' +
+                '}';
+    }
 }

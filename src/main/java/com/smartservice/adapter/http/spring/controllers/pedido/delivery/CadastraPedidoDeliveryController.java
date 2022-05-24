@@ -4,6 +4,7 @@ import com.smartservice.adapter.broker.delivery.PedidoService;
 import com.smartservice.adapter.http.spring.dto.ResponseData;
 import com.smartservice.adapter.http.spring.dto.entrada.pedido.CadastraPedidoRequest;
 import com.smartservice.adapter.http.spring.dto.saida.pedido.CadastraPedidoResponse;
+import com.smartservice.config.general.Log4jConfig;
 import com.smartservice.core.model.pedido.PedidoModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,10 +25,15 @@ public class CadastraPedidoDeliveryController {
 
     @Autowired
     private PedidoService pedidoService;
+    @Autowired
+    private Log4jConfig log;
 
     @PostMapping(value = "/cadastra/pedido/delivery")
     @CrossOrigin
     ResponseEntity<?> cadastrarPedido(@RequestBody @Valid CadastraPedidoRequest request) throws MessagingException, URISyntaxException, UnsupportedEncodingException {
+        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[API] SMART-SERVICE [API] [END-POINT] /cadastra/pedido/delivery [END-POINT]");
+        log.getLogger().info("[API] SMART-SERVICE [API] PAYLOAD RECEBIDO = "+request.toString());
         PedidoModel pedidoModel = pedidoService.pedidoMapper().converterParaPedidoModel(request);
         CadastraPedidoResponse cadastraPedidoResponse = pedidoService.cadastraPedidoPort().cadastraPedidoDelivery(pedidoModel);
         return getResponseData(buildResponseData(cadastraPedidoResponse), HttpStatus.CREATED);

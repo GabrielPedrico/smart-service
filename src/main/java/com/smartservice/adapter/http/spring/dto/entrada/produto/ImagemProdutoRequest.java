@@ -16,4 +16,11 @@ public class ImagemProdutoRequest {
     public String getImgUrl() {
         return imgUrl;
     }
+
+    @Override
+    public String toString() {
+        return "ImagemProdutoRequest{" +
+                "imgUrl='" + imgUrl + '\'' +
+                '}';
+    }
 }

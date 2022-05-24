@@ -16,6 +16,17 @@ public class CadastraProdutoRequest {
 
     private String descricao;
 
+    @Override
+    public String toString() {
+        return "CadastraProdutoRequest{" +
+                "categoria='" + categoria + '\'' +
+                ", nome='" + nome + '\'' +
+                ", preco='" + preco + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", estoque='" + estoque + '\'' +
+                '}';
+    }
+
     @PositiveOrZero
     private String estoque;
 
