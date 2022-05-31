@@ -29,7 +29,11 @@ public class Pedido {
     @ManyToOne
     private Mesa mesa;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany
+    @JoinTable(
+            name = "pedido_produtos",
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id"))
     private List<Produto> produtos = new ArrayList<>();
 
     @Column(columnDefinition="VARCHAR(300)")

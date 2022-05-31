@@ -3,6 +3,7 @@ package com.smartservice.adapter.http.spring.controllers.produto.categoria;
 import com.smartservice.adapter.broker.delivery.CategoriaService;
 import com.smartservice.adapter.http.spring.dto.ResponseData;
 import com.smartservice.adapter.http.spring.dto.saida.produto.categoria.ConsultaCategoriasResponse;
+import com.smartservice.config.general.Log4jConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,14 @@ public class ConsultaCategoriasController {
     @Autowired
     CategoriaService categoriaService;
 
+    @Autowired
+    Log4jConfig log;
+
     @GetMapping("/categorias")
     @CrossOrigin
     public ResponseEntity<?> consultaCategorias(){
+        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[API] SMART-SERVICE [API] [END-POINT] /categorias [END-POINT]");
         ConsultaCategoriasResponse categoriasResponse = categoriaService.consultaCategoriasPort().consultarCategoriasDB();
         return getResponseData(buildResponseData(categoriasResponse), HttpStatus.ACCEPTED);
     }

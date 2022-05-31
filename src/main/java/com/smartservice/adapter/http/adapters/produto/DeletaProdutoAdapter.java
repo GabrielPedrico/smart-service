@@ -24,7 +24,10 @@ public class DeletaProdutoAdapter implements DeletaProdutoPort {
     @Override
     @Transactional
     public void deleteCrud(String idProduto) {
-        produtoRepository.findById(idProduto).orElseThrow(()-> new ProdutoNaoExistenteException("Produto inexistente."));
+        var produto = produtoRepository.findById(idProduto).orElseThrow(()-> new ProdutoNaoExistenteException("Produto inexistente."));
+        produto.getPedidos().forEach(pedido -> {
+            pedidoRepository.deleteById(pedido.getId());
+        });
         produtoRepository.deleteById(idProduto);
     }
 

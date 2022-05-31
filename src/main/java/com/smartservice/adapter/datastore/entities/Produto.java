@@ -32,7 +32,7 @@ public class Produto {
     @Lob
     private String imgUrl;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "produtos")
     @JsonIgnore
     private List<Pedido> pedidos = new ArrayList<>();
 
