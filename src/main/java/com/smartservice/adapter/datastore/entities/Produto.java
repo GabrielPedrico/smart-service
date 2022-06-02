@@ -36,7 +36,7 @@ public class Produto {
     @JsonIgnore
     private List<Pedido> pedidos = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "produtos")
     @JsonIgnore
     private List<Mesa> mesas = new ArrayList<>();
 
