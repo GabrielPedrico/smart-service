@@ -133,8 +133,6 @@ Ysrc/main/java/com/smartservice/adapter/http/spring/dto/saida/handle/ErrorApiRes
 ^src/main/java/com/smartservice/adapter/http/spring/dto/saida/usuario/ListaUsuarioResponse.java,a\b\abfcefe807c4711b8799a30436e1c0d81f392a0d
 t
 Dsrc/main/java/com/smartservice/config/properties/MailProperties.java,1\6\165ff175ee2fb3834452205f499da4d8193cb56b
-s
-Csrc/main/java/com/smartservice/adapter/datastore/entities/Mesa.java,b\8\b8fe58e1fc51a7c62a4a7ccdd9a754d832a8743e
 v
 Fsrc/main/java/com/smartservice/adapter/broker/mapper/PedidoMapper.java,c\6\c66c70b98afd65caa3e13825a58cf8e38aa3211a
 y
@@ -183,3 +181,5 @@ z
 Jsrc/main/java/com/smartservice/adapter/broker/delivery/UsuarioService.java,3\f\3fca989d5e174b2899ba4bb2f0e5864a894470eb
 ]
 -postman/Smart-Service.postman_collection.json,b\8\b8a05d11dd982e198ad067d68d640ed12c2b7f45
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec

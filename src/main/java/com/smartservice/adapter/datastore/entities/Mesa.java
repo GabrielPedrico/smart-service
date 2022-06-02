@@ -23,7 +23,11 @@ public class Mesa {
     @OneToMany
     private List<Pedido> pedidos = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany
+    @JoinTable(
+            name = "mesa_produtos",
+            joinColumns = @JoinColumn(name = "mesa_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id"))
     private List<Produto> produtos = new ArrayList<>();
 
     private BigDecimal valorTotal;
