@@ -7,6 +7,7 @@ import com.smartservice.core.exceptions.CategoriaExistenteException;
 import com.smartservice.core.port.saida.categoria.CadastraCategoriaPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class CadastraCategoriaAdapter implements CadastraCategoriaPort {
         log.getLogger().info("[API] SMART-SERVICE [API] [ADAPTER] VERIFICANDO SE CATEGORIA JÁ EXISTE...[ADAPTER]");
         Optional<Categoria> possivelCategoria = categoriaRepository.findByNome(categoria.toUpperCase().replace(" ","_"));
         if(possivelCategoria.isPresent()) throw new CategoriaExistenteException("Falha ao cadastrar nova categoria, pois já existe essa categoria na nossa base de dados.");
-        Categoria categoriaFinal = new Categoria(null,categoria.toUpperCase().replace(" ","_"));
+        Categoria categoriaFinal = new Categoria(null, StringUtils.capitalize(categoria));
         categoriaRepository.save(categoriaFinal);
         log.getLogger().info("[API] SMART-SERVICE [API] [ADAPTER] CATEGORIA "+categoriaFinal+" CADASTRADA COM SUCESSO! [ADAPTER]");
     }

@@ -7,5 +7,5 @@ public enum TipoPagamento {
     PIX,
     VALE_REFEICAO,
     VALE_ALIMENTACAO,
-    PRESENCIAL
+    DINHEIRO
 }

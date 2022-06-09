@@ -42,7 +42,7 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
         log.getLogger().info("[ADAPTER] PEDIDO ENCONTRADO COM SUCESSO! [ADAPTER]");
         if(null == pedido.getUsuario()) {
             pedido.setUsuario(new Usuario());
-            pedido.setFormaPagamento(TipoPagamento.PRESENCIAL);
+            pedido.setFormaPagamento(TipoPagamento.DINHEIRO);
         }
         EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
         List<ProdutoResponse> produtos = new ArrayList<>();
@@ -81,7 +81,7 @@ public class ConsultaPedidosAdapter implements ConsultaPedidosPort {
             }
             if (null == pedido.getUsuario()) {
                 pedido.setUsuario(new Usuario());
-                pedido.setFormaPagamento(TipoPagamento.PRESENCIAL);
+                pedido.setFormaPagamento(TipoPagamento.DINHEIRO);
             }
             EnderecoResponse endereco = new EnderecoResponse(pedido.getUsuario().getLogradouro(), pedido.getUsuario().getNumero(), pedido.getUsuario().getBairro(), pedido.getUsuario().getComplemento(), pedido.getUsuario().getCidade(), pedido.getUsuario().getEstado(), pedido.getUsuario().getCep());
             pedidosResponse.add(new ConsultaPedidoResponse(pedido.getId(), pedido.getCodigoPedido(), pedido.getUsuario().getNome(), pedido.getUsuario().getEmail(), endereco, produtos, pedido.getObs(), pedido.getFormaPagamento().toString(), pedido.getValorTotal().toString(), pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern(datePattern))));

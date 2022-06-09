@@ -3,6 +3,7 @@ package com.smartservice.adapter.http.adapters.usuario;
 import com.smartservice.adapter.broker.mapper.UsuarioMapper;
 import com.smartservice.adapter.datastore.entities.Usuario;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
+import com.smartservice.config.general.Log4jConfig;
 import com.smartservice.core.exceptions.UsuarioNaoExistenteException;
 import com.smartservice.core.model.usuario.UsuarioModel;
 import com.smartservice.core.port.saida.usuario.EditaUsuarioPort;
@@ -24,6 +25,9 @@ public class EditaUsuarioAdapter implements EditaUsuarioPort {
     @Autowired
     public BCryptPasswordEncoder bCrypt;
 
+    @Autowired
+    public Log4jConfig log;
+
     @Override
     public void crudUpdateUsuario(UsuarioModel usuarioModel,String email) {
         Optional<Usuario> possivelUsuario = usuarioRepository.findByEmail(email);
@@ -43,7 +47,7 @@ public class EditaUsuarioAdapter implements EditaUsuarioPort {
         if(usuarioFinal.getComplemento().isBlank()) usuarioFinal.setComplemento(possivelUsuario.get().getComplemento());
         if(usuarioFinal.getEstado().isBlank()) usuarioFinal.setEstado(possivelUsuario.get().getEstado());
         if(usuarioFinal.getNome().isBlank()) usuarioFinal.setNome(possivelUsuario.get().getNome());
-        if(!usuarioFinal.getPassword().isBlank()) usuarioFinal.setPassword(bCrypt.encode(possivelUsuario.get().getPassword()));
+        if(!usuarioFinal.getPassword().isBlank()) usuarioFinal.setPassword(bCrypt.encode(usuarioModel.getPassword()));
         if(usuarioFinal.getPassword().isBlank()) usuarioFinal.setPassword(possivelUsuario.get().getPassword());
         if(usuarioFinal.getCidade().isBlank()) usuarioFinal.setCidade(possivelUsuario.get().getCidade());
 

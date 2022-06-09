@@ -4,6 +4,7 @@ import com.smartservice.adapter.http.spring.dto.saida.produto.ConsultaProdutoRes
 import com.smartservice.adapter.http.spring.dto.saida.produto.ConsultaProdutosResponse;
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.port.entrada.produto.ConsultaProdutosPort;
+import org.springframework.util.StringUtils;
 
 @AdapterUseCase
 public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
@@ -20,8 +21,7 @@ public class ConsultaProdutoBusiness implements ConsultaProdutosPort {
 
     @Override
     public ConsultaProdutosResponse consultaPorCategoria(String categoria) {
-        categoria.toUpperCase().replace(" ","_");
-        return consultaProdutosPort.consultaPorCategoria(categoria);
+        return consultaProdutosPort.consultaPorCategoria(StringUtils.capitalize(categoria));
     }
 
     @Override
