@@ -165,7 +165,7 @@ public class CadastraPedidoAdapter implements CadastraPedidoPort {
         }
         pedido.setValorTotal(BigDecimal.valueOf(valorTotal));
         log.getLogger().info("[ADAPTER] PEDIDO CADASTRADO COM SUCESSO P/ MESA "+mesa.getId()+"![ADAPTER]");
-        pedido.setStatusPedido(StatusPedido.PREPARANDO);
+        pedido.setStatusPedido(StatusPedido.AGUARDANDO_CONFIRMACAO);
         pedido.setProdutos(produtos);
         pedidoRepository.save(pedido);
         mesa.getPedidos().add(pedido);
