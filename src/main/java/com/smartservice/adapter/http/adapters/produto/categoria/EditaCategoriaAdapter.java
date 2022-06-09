@@ -8,6 +8,7 @@ import com.smartservice.core.exceptions.CategoriaNaoExistenteException;
 import com.smartservice.core.port.saida.categoria.EditaCategoriaPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -29,7 +30,7 @@ public class EditaCategoriaAdapter implements EditaCategoriaPort {
         Optional<Categoria> possivelCategoria2 = categoriaRepository.findByNome(categoriaNova);
         if (possivelCategoria2.isPresent()) throw new CategoriaExistenteException("Falha ao editar categoria, a categoria "+categoriaNova+" já existe em nossa base de dados.");
         log.getLogger().info("[API] SMART-SERVICE [API] [ADAPTER] CATEGORIA NOVA VALIDA PARA CADASTRO, EDITANDO CATEGORIA...[ADAPTER]");
-        possivelCategoria.setNome(categoriaNova.toUpperCase().replace(" ","_"));
+        possivelCategoria.setNome(StringUtils.capitalize(categoriaNova));
 
         categoriaRepository.save(possivelCategoria);
         log.getLogger().info("[API] SMART-SERVICE [API] [ADAPTER] CATEGORIA EDITADA COM SUCESSO! [ADAPTER]");
