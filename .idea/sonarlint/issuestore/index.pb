@@ -1,6 +1,4 @@
 
-p
-@src/test/java/com/smartservice/SmartServiceApplicationTests.java,8\b\8b0846d36fc3c72774115b6e9f865dd873512bf9
 †
 Vsrc/main/java/com/smartservice/core/exceptions/DeleteProdutoNaoExistenteException.java,b\6\b621ef01480bf10425887513d40b0655ab2e1e8a
 q
