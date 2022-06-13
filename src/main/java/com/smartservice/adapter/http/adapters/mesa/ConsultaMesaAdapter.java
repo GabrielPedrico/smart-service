@@ -34,4 +34,21 @@ public class ConsultaMesaAdapter implements ConsultaMesaPort {
 
         return new ConsultaMesaResponse(mesa.getId(),mesa.getStatusMesa().name(),produtos,mesa.getValorTotal().toString());
     }
+
+    @Override
+    public List<ConsultaMesaResponse> consultaMesas() {
+        log.getLogger().info("[API] SMART-SERVICE [API] [ADAPTER] RESGATANDO MESAS...[ADAPTER]");
+        List<Mesa> mesas = mesaRepository.findAll();
+        List<ConsultaMesaResponse> mesasResponses = new ArrayList<>();
+        mesas.forEach(mesa -> {
+            List<MesaProdutoResponse> produtos = new ArrayList<>();
+            mesa.getProdutos().forEach(produto ->
+                    produtos.add(new MesaProdutoResponse(produto.getNome()))
+            );
+            ConsultaMesaResponse consultaMesaResponse =  new ConsultaMesaResponse(mesa.getId(),mesa.getStatusMesa().name(),produtos,mesa.getValorTotal().toString());
+            mesasResponses.add(consultaMesaResponse);
+        });
+
+        return mesasResponses;
+    }
 }

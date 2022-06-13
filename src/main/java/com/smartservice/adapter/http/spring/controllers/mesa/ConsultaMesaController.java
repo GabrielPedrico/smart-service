@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
+import java.util.List;
 
 @RestController
 public class ConsultaMesaController {
@@ -33,11 +34,23 @@ public class ConsultaMesaController {
         return getResponseData(buildResponseData(response), HttpStatus.OK);
     }
 
+    @GetMapping("/mesas")
+    @CrossOrigin
+    public ResponseEntity<?> consultaMesas(){
+        log.getLogger().info("[API] SMART-SERVICE [API] INICIANDO OPERAÇÃO...");
+        log.getLogger().info("[API] SMART-SERVICE [API] [END-POINT] /mesas [END-POINT]");
+        List<ConsultaMesaResponse> responses = mesaService.consultaMesaPort().consultaMesas();
+        return getResponseData(buildListResponseData(responses), HttpStatus.OK);
+    }
+
     public ResponseEntity<ResponseData> getResponseData(ResponseData responseData, HttpStatus httpStatus){
         return new ResponseEntity<>(responseData,httpStatus);
     }
 
     private ResponseData buildResponseData(ConsultaMesaResponse defaultResponse){
+        return new ResponseData(Collections.singletonList(defaultResponse));
+    }
+    private ResponseData buildListResponseData(List<ConsultaMesaResponse> defaultResponse){
         return new ResponseData(Collections.singletonList(defaultResponse));
     }
 }

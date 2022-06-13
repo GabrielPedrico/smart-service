@@ -6,8 +6,8 @@ import com.smartservice.config.general.Log4jConfig;
 import com.smartservice.core.exceptions.AlteraStatusInconsistenciaException;
 import com.smartservice.core.exceptions.PedidoNaoExistenteException;
 import com.smartservice.core.model.enums.StatusPedido;
-import com.smartservice.core.port.saida.pedido.AlteraStatusPedidoPort;
 import com.smartservice.core.port.saida.external.EmailSendPort;
+import com.smartservice.core.port.saida.pedido.AlteraStatusPedidoPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,17 +32,20 @@ public class AlteraStatusPedidoAdapter implements AlteraStatusPedidoPort {
         log.getLogger().info("[ADAPTER] PEDIDO ENCONTRADO![ADAPTER]");
         Pedido pedido = possivelPedido;
         log.getLogger().info("[ADAPTER] ALTERANDO STATUS DO PEDIDO "+idPedido+" ...[ADAPTER]");
-        if(pedido.getStatusPedido().equals(StatusPedido.CONCLUIDO) || pedido.getStatusPedido().equals(StatusPedido.CANCELADO)) throw new AlteraStatusInconsistenciaException("Não é possível alterar o status de um pedido que ja esteja CONCLUIDO/CANCELADO");
-        pedido.setStatusPedido(status);
+        if(pedido.getUsuario() != null) {
 
-        if(status.equals(StatusPedido.PREPARANDO)) emailSendPort.sendPedidoEmPreparoEmail(pedido);
+            if (pedido.getStatusPedido().equals(StatusPedido.CONCLUIDO) || pedido.getStatusPedido().equals(StatusPedido.CANCELADO))
+                throw new AlteraStatusInconsistenciaException("Não é possível alterar o status de um pedido que ja esteja CONCLUIDO/CANCELADO");
 
-        if(status.equals(StatusPedido.ENTREGANDO)) emailSendPort.sendPedidoSaiuEntregaEmail(pedido);
+            if (status.equals(StatusPedido.PREPARANDO)) emailSendPort.sendPedidoEmPreparoEmail(pedido);
 
-        if(status.equals(StatusPedido.CONCLUIDO)){
-            pedido.setDataFinalizacaoPedido(LocalDateTime.now());
+            if (status.equals(StatusPedido.ENTREGANDO)) emailSendPort.sendPedidoSaiuEntregaEmail(pedido);
         }
 
+        if (status.equals(StatusPedido.CONCLUIDO)) {
+            pedido.setDataFinalizacaoPedido(LocalDateTime.now());
+        }
+        pedido.setStatusPedido(status);
         pedidoRepository.save(pedido);
         log.getLogger().info("[ADAPTER] STATUS PEDIDO "+idPedido+" ALTERADO COM SUCESSO![ADAPTER]");
 
