@@ -7,8 +7,6 @@ q
 Asrc/main/java/com/smartservice/core/model/enums/StatusPedido.java,4\0\4034edaf3f54e8fb47ed37376eef4288b0ba532c
 ‚
 Rsrc/main/java/com/smartservice/core/exceptions/CategoriaNaoExistenteException.java,6\a\6a9d90579225e1a1ab8fa6fffae72ef742638b9c
-†
-Vsrc/main/java/com/smartservice/adapter/datastore/repositories/CategoriaRepository.java,b\8\b8bfe2e84732d194e0831b4c6d0cfb4ced1c5ac2
 ƒ
 Ssrc/main/java/com/smartservice/adapter/datastore/repositories/PedidoRepository.java,e\1\e1e96c1c14965b0ee47724713d4f3969fea5a328
 s
@@ -25,8 +23,6 @@ Nsrc/main/java/com/smartservice/core/exceptions/ProdutoSemEstoqueException.java
 Osrc/main/java/com/smartservice/core/exceptions/CategoriaExistenteException.java,3\d\3dc1b1723ef7fa202f7cd8b30004d7b910d7b9f4
 ƒ
 Ssrc/main/java/com/smartservice/config/general/RestTemplateResponseErrorHandler.java,b\a\ba36d1411e414408f8df9e8e28793d0b6fac98ec
-p
-@src/main/java/com/smartservice/config/security/BcryptConfig.java,c\2\c2bf4b4aab4f83356abedb418bc9721bdd5d7a9b
 u
 Esrc/main/java/com/smartservice/config/general/RestTemplateConfig.java,2\4\24f5b24ee2ee9c82afe4aa620445d2729ecdc259
 t
@@ -147,5 +143,3 @@ z
 Jsrc/main/java/com/smartservice/adapter/broker/delivery/UsuarioService.java,3\f\3fca989d5e174b2899ba4bb2f0e5864a894470eb
 ]
 -postman/Smart-Service.postman_collection.json,b\8\b8a05d11dd982e198ad067d68d640ed12c2b7f45
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
