@@ -1,10 +1,10 @@
 package com.smartservice.adapter.broker.delivery;
 
 import com.smartservice.adapter.broker.mapper.PedidoMapper;
-import com.smartservice.core.port.entrada.AlteraStatusPedidoPort;
-import com.smartservice.core.port.entrada.AlteraStatusPedidoPresencialPort;
-import com.smartservice.core.port.entrada.CadastraPedidoPort;
-import com.smartservice.core.port.saida.ConsultaPedidosPort;
+import com.smartservice.core.port.entrada.pedido.AlteraStatusPedidoPort;
+import com.smartservice.core.port.entrada.pedido.AlteraStatusPedidoPresencialPort;
+import com.smartservice.core.port.entrada.pedido.CadastraPedidoPort;
+import com.smartservice.core.port.saida.pedido.ConsultaPedidosPort;
 import org.springframework.stereotype.Service;
 
 @Service

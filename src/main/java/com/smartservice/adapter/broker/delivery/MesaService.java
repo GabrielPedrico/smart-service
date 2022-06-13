@@ -1,8 +1,8 @@
 package com.smartservice.adapter.broker.delivery;
 
 
-import com.smartservice.core.port.saida.CadastraMesaPort;
-import com.smartservice.core.port.saida.ConsultaMesaPort;
+import com.smartservice.core.port.saida.mesa.CadastraMesaPort;
+import com.smartservice.core.port.saida.mesa.ConsultaMesaPort;
 import org.springframework.stereotype.Service;
 
 @Service

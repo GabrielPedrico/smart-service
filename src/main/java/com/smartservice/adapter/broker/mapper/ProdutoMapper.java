@@ -2,10 +2,10 @@ package com.smartservice.adapter.broker.mapper;
 
 import com.smartservice.adapter.datastore.entities.Categoria;
 import com.smartservice.adapter.datastore.entities.Produto;
-import com.smartservice.adapter.http.dto.entrada.produto.CadastraProdutoRequest;
-import com.smartservice.adapter.http.dto.entrada.produto.DeletaProdutoRequest;
-import com.smartservice.adapter.http.dto.entrada.produto.DeletaProdutosRequest;
-import com.smartservice.adapter.http.dto.entrada.produto.EditaProdutoRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.produto.CadastraProdutoRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.produto.DeletaProdutoRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.produto.DeletaProdutosRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.produto.EditaProdutoRequest;
 import com.smartservice.config.general.ModelMapperConfig;
 import com.smartservice.core.model.produto.ProdutoModel;
 import org.springframework.stereotype.Component;

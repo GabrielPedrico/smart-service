@@ -48,7 +48,7 @@ public class UsuarioModel {
         this.estado = estado;
     }
 
-    public UsuarioModel(){};
+    public UsuarioModel(){}
 
     public UUID getId() {
         return id;

@@ -2,9 +2,9 @@ package com.smartservice.core.biz.usuario;
 
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.model.usuario.UsuarioModel;
-import com.smartservice.core.port.entrada.UsuarioEditaPort;
-import com.smartservice.core.port.saida.EditaUsuarioPort;
-import com.smartservice.core.port.saida.EmailSendPort;
+import com.smartservice.core.port.entrada.usuario.UsuarioEditaPort;
+import com.smartservice.core.port.saida.usuario.EditaUsuarioPort;
+import com.smartservice.core.port.saida.external.EmailSendPort;
 
 import javax.mail.MessagingException;
 

@@ -14,7 +14,7 @@ public class MailProperties {
     }
 
     @Deprecated
-    public MailProperties(){};
+    public MailProperties(){}
 
     public String getUsername() {
         return username;
