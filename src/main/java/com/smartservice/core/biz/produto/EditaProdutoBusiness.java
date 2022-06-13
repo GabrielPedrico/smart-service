@@ -2,14 +2,14 @@ package com.smartservice.core.biz.produto;
 
 import com.smartservice.config.annotations.AdapterUseCase;
 import com.smartservice.core.model.produto.ProdutoModel;
-import com.smartservice.core.port.entrada.EditaProdutoPort;
+import com.smartservice.core.port.entrada.produto.EditaProdutoPort;
 
 @AdapterUseCase
 public class EditaProdutoBusiness implements EditaProdutoPort {
 
-    private final com.smartservice.core.port.saida.EditaProdutoPort editaProdutoPort;
+    private final com.smartservice.core.port.saida.produto.EditaProdutoPort editaProdutoPort;
 
-    public EditaProdutoBusiness(com.smartservice.core.port.saida.EditaProdutoPort editaProdutoPort) {
+    public EditaProdutoBusiness(com.smartservice.core.port.saida.produto.EditaProdutoPort editaProdutoPort) {
         this.editaProdutoPort = editaProdutoPort;
     }
 
@@ -18,7 +18,7 @@ public class EditaProdutoBusiness implements EditaProdutoPort {
         editaProdutoPort.editaProduto(produtoModel);
     }
 
-    public com.smartservice.core.port.saida.EditaProdutoPort getEditaProdutoPort() {
+    public com.smartservice.core.port.saida.produto.EditaProdutoPort getEditaProdutoPort() {
         return editaProdutoPort;
     }
 }

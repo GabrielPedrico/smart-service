@@ -5,7 +5,7 @@ import com.smartservice.adapter.datastore.entities.Usuario;
 import com.smartservice.adapter.datastore.repositories.UsuarioRepository;
 import com.smartservice.config.properties.MailProperties;
 import com.smartservice.core.exceptions.EmailNaoCadastradoException;
-import com.smartservice.core.port.saida.EmailSendPort;
+import com.smartservice.core.port.saida.external.EmailSendPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -15,6 +15,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -36,7 +37,8 @@ public class EmailSendAdapter implements EmailSendPort {
     public void sendResetEmail(String emailDestino) throws MessagingException {
 
         Optional<Usuario> possivelUsuario = usuarioRepository.findByEmail(emailDestino);
-        if(possivelUsuario.isEmpty()) throw new EmailNaoCadastradoException("O email solicitado para reset não está cadastrado em nossa base.");
+        if (possivelUsuario.isEmpty())
+            throw new EmailNaoCadastradoException("O email solicitado para reset não está cadastrado em nossa base.");
         String novaSenha = UUID.randomUUID().toString();
         possivelUsuario.get().setPassword(bCryptPasswordEncoder.encode(novaSenha));
         usuarioRepository.save(possivelUsuario.get());
@@ -354,7 +356,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "                              <div align=\"center\">\n" +
                 "                                <!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:'Cabin',sans-serif;\"><tr><td style=\"font-family:'Cabin',sans-serif;\" align=\"center\"><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\"\" style=\"height:44px; v-text-anchor:middle; width:138px;\" arcsize=\"9%\" stroke=\"f\" fillcolor=\"#ff6600\"><w:anchorlock/><center style=\"color:#FFFFFF;font-family:'Cabin',sans-serif;\"><![endif]-->\n" +
                 "                                <a href=\"\" target=\"_blank\" style=\"box-sizing: border-box;display: inline-block;font-family:'Cabin',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #ff6600; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;\">\n" +
-                "                                  <span style=\"display:block;padding:14px 44px 13px;line-height:120%;\">"+novaSenha+"</span>\n" +
+                "                                  <span style=\"display:block;padding:14px 44px 13px;line-height:120%;\">" + novaSenha + "</span>\n" +
                 "                                </a>\n" +
                 "                                <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->\n" +
                 "                              </div>\n" +
@@ -571,12 +573,12 @@ public class EmailSendAdapter implements EmailSendPort {
                 "</body>\n" +
                 "\n" +
                 "</html>";
-            sendEmail(emailDestino,"Smart Service Reset Senha",msg);
-        }
+        sendEmail(emailDestino, "Smart Service Reset Senha", msg);
+    }
 
     @Override
     public void sendPedidoSaiuEntregaEmail(Pedido pedido) throws MessagingException {
-        double valorTotal = pedido.getValorTotal().doubleValue()+5.0;
+        String valorTotal = pedido.getValorTotal().add(new BigDecimal(5)).setScale(2).toString().replace(".", ",");
         String msg = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                 "<head>\n" +
@@ -782,10 +784,10 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 25px 50px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #eccafa; line-height: 180%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 180%;\">Pedido #: "+pedido.getCodigoPedido()+"</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\">Data: "+pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y"))+"</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\">Horario sa&iacute;da: "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("h:m"))+" </p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 18px; line-height: 32.4px; color: #94f3f7;\">Pedido total R$"+valorTotal+"</span></p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 180%;\">Numero do Pedido: " + pedido.getCodigoPedido() + "</p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\">Data: " + pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("dd/MM/y")) + "</p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\">Horario sa&iacute;da: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm")) + " </p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 18px; line-height: 32.4px; color: #94f3f7;\">Pedido Total R$ " + valorTotal + "</span></p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -822,7 +824,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 50px 40px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #eccafa; line-height: 170%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 170%;\">"+pedido.getUsuario().getLogradouro()+", "+pedido.getUsuario().getNumero()+", "+pedido.getUsuario().getCidade()+", "+pedido.getUsuario().getEstado()+"</p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 170%;\">" + pedido.getUsuario().getLogradouro() + ", " + pedido.getUsuario().getNumero() + ", " + pedido.getUsuario().getCidade() + ", " + pedido.getUsuario().getEstado() + "</p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1096,12 +1098,12 @@ public class EmailSendAdapter implements EmailSendPort {
                 "</body>\n" +
                 "\n" +
                 "</html>";
-        sendEmail(pedido.getUsuario().getEmail(),"SMART SERVICE - PEDIDO",msg);
+        sendEmail(pedido.getUsuario().getEmail(), "SMART SERVICE - PEDIDO", msg);
     }
 
     @Override
     public void sendPedidoEmPreparoEmail(Pedido pedido) throws MessagingException {
-        double valorTotal = pedido.getValorTotal().doubleValue()+5.0;
+        String valorTotal = pedido.getValorTotal().add(new BigDecimal(5)).setScale(2).toString().replace(".", ",");
         String msg = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                 "<head>\n" +
@@ -1307,11 +1309,11 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 25px 50px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #eccafa; line-height: 180%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 180%;\">Pedido #: "+pedido.getCodigoPedido()+"</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\">Data: "+pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y"))+"</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\">Horario: "+pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("h:m"))+"</p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 180%;\">Numero do Pedido: " + pedido.getCodigoPedido() + "</p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\">Data: " + pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("dd/MM/y")) + "</p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\">Horario: " + pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("HH:mm")) + "</p>\n" +
                 "<p style=\"font-size: 14px; line-height: 180%;\">Status: EM PREPARA&Ccedil;&Atilde;O</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 18px; line-height: 32.4px; color: #94f3f7;\">Pedido total R$"+valorTotal+"</span></p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 18px; line-height: 32.4px; color: #94f3f7;\">Valor do Pedido: R$ " + valorTotal + "</span></p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1334,7 +1336,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 10px 50px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <h4 class=\"v-text-align\" style=\"margin: 0px; color: #ffffff; line-height: 140%; text-align: left; word-wrap: break-word; font-weight: normal; font-family: 'Open Sans',sans-serif; font-size: 18px;\">\n" +
-                "    <strong>SHIPPING ADDRESS:</strong>\n" +
+                "    <strong>Endereço de Entrega:</strong>\n" +
                 "  </h4>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1348,7 +1350,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 50px 40px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #eccafa; line-height: 170%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 170%;\">"+pedido.getUsuario().getLogradouro()+", "+pedido.getUsuario().getNumero()+", "+pedido.getUsuario().getCidade()+", "+pedido.getUsuario().getEstado()+"</p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 170%;\">" + pedido.getUsuario().getLogradouro() + ", " + pedido.getUsuario().getNumero() + ", " + pedido.getUsuario().getCidade() + ", " + pedido.getUsuario().getEstado() + "</p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1602,12 +1604,12 @@ public class EmailSendAdapter implements EmailSendPort {
                 "</body>\n" +
                 "\n" +
                 "</html>";
-        sendEmail(pedido.getUsuario().getEmail(),"SMART SERVICE - PEDIDO",msg);
+        sendEmail(pedido.getUsuario().getEmail(), "SMART SERVICE - PEDIDO", msg);
     }
 
     @Override
-    public void sendPedidoRegistradoEmail(Pedido pedido, String msgWpp) throws MessagingException{
-        double valorTotal = pedido.getValorTotal().doubleValue()+5.0;
+    public void sendPedidoRegistradoEmail(Pedido pedido, String msgWpp) throws MessagingException {
+        String valorTotal = pedido.getValorTotal().add(new BigDecimal(5)).setScale(2).toString().replace(".", ",");
         String msg = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional //EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                 "<head>\n" +
@@ -1814,7 +1816,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "<div class=\"v-text-align\" align=\"center\">\n" +
                 "  <!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:arial,helvetica,sans-serif;\"><tr><td class=\"v-text-align\" style=\"font-family:arial,helvetica,sans-serif;\" align=\"center\"><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\"\" style=\"height:37px; v-text-anchor:middle; width:91px;\" arcsize=\"11%\" stroke=\"f\" fillcolor=\"#000000\"><w:anchorlock/><center style=\"color:#FFFFFF;font-family:arial,helvetica,sans-serif;\"><![endif]-->\n" +
                 "    <a href=\"\" target=\"_blank\" style=\"box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #000000; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;\">\n" +
-                "      <span style=\"display:block;padding:10px 20px;line-height:120%;\">#"+pedido.getCodigoPedido()+"</span>\n" +
+                "      <span style=\"display:block;padding:10px 20px;line-height:120%;\">#" + pedido.getCodigoPedido() + "</span>\n" +
                 "    </a>\n" +
                 "  <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->\n" +
                 "</div>\n" +
@@ -1865,12 +1867,12 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 10px 25px 50px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #eccafa; line-height: 180%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 180%;\">Data:"+pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("d/M/y"))+"</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\">Horario: "+pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("h:m"))+"</p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 180%;\">Data:" + pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("dd/MM/y")) + "</p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\">Horario: " + pedido.getDataCriacaoPedido().format(DateTimeFormatter.ofPattern("HH:mm")) + "</p>\n" +
                 "<p style=\"font-size: 14px; line-height: 180%;\">Status: CONFIRMANDO PEDIDO...</p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 14px; line-height: 25.2px; color: #ecf0f1;\">Subtotal: R$"+pedido.getValorTotal()+"</span></p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 16px; line-height: 28.8px; color: #f1c40f;\">Taxa Entrega: + R$5.00</span></p>\n" +
-                "<p style=\"font-size: 14px; line-height: 180%;\"><strong><span style=\"font-size: 18px; line-height: 32.4px; color: #2dc26b;\">Pedido total: R$"+valorTotal+"</span></strong></p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 14px; line-height: 25.2px; color: #ecf0f1;\">Valor do Pedido: R$ " + pedido.getValorTotal().setScale(2).toString().replace(".", ",") + "</span></p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\"><span style=\"font-size: 16px; line-height: 28.8px; color: #f1c40f;\">Taxa Entrega: R$ 5,00</span></p>\n" +
+                "<p style=\"font-size: 14px; line-height: 180%;\"><strong><span style=\"font-size: 18px; line-height: 32.4px; color: #2dc26b;\">Valor Total: R$ " + valorTotal + "</span></strong></p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1907,7 +1909,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px 50px 40px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #eccafa; line-height: 170%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 170%;\">"+pedido.getUsuario().getLogradouro()+", "+pedido.getUsuario().getNumero()+", "+pedido.getUsuario().getCidade()+", "+pedido.getUsuario().getEstado()+"</p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 170%;\">" + pedido.getUsuario().getLogradouro() + ", " + pedido.getUsuario().getNumero() + ", " + pedido.getUsuario().getCidade() + ", " + pedido.getUsuario().getEstado() + "</p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1942,7 +1944,7 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "  <div class=\"v-text-align\" style=\"color: #ff0000; line-height: 140%; text-align: left; word-wrap: break-word;\">\n" +
-                "    <p style=\"font-size: 14px; line-height: 140%;\"><span style=\"background-color: #ecf0f1; font-size: 14px; line-height: 19.6px;\"><em>*Caso ao finalizar seu pedido, voc&ecirc; n&atilde;o tenha finalizado o pedido por whatsapp por favor clique no bot&atilde;o abaixo</em></span></p>\n" +
+                "    <p style=\"font-size: 14px; line-height: 140%;\"><span style=\"background-color: #ecf0f1; font-size: 14px; line-height: 19.6px;\"><em>*Caso não tenha finalizado o pedido por whatsapp clique no botão abaixo</em></span></p>\n" +
                 "  </div>\n" +
                 "\n" +
                 "      </td>\n" +
@@ -1956,8 +1958,8 @@ public class EmailSendAdapter implements EmailSendPort {
                 "      <td class=\"v-container-padding-padding\" style=\"overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;\" align=\"left\">\n" +
                 "        \n" +
                 "<div class=\"v-text-align\" align=\"center\">\n" +
-                "  <!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:arial,helvetica,sans-serif;\"><tr><td class=\"v-text-align\" style=\"font-family:arial,helvetica,sans-serif;\" align=\"center\"><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\""+msgWpp+"\" style=\"height:37px; v-text-anchor:middle; width:206px;\" arcsize=\"11%\" stroke=\"f\" fillcolor=\"#00ff1f\"><w:anchorlock/><center style=\"color:#030303;font-family:arial,helvetica,sans-serif;\"><![endif]-->\n" +
-                "    <a href=\""+msgWpp+"\" target=\"_blank\" style=\"box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #030303; background-color: #00ff1f; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;\">\n" +
+                "  <!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:arial,helvetica,sans-serif;\"><tr><td class=\"v-text-align\" style=\"font-family:arial,helvetica,sans-serif;\" align=\"center\"><v:roundrect xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" href=\"" + msgWpp + "\" style=\"height:37px; v-text-anchor:middle; width:206px;\" arcsize=\"11%\" stroke=\"f\" fillcolor=\"#00ff1f\"><w:anchorlock/><center style=\"color:#030303;font-family:arial,helvetica,sans-serif;\"><![endif]-->\n" +
+                "    <a href=\"" + msgWpp + "\" target=\"_blank\" style=\"box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #030303; background-color: #00ff1f; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;\">\n" +
                 "      <span style=\"display:block;padding:10px 20px;line-height:120%;\"><strong><span style=\"font-size: 14px; line-height: 16.8px;\">FINALIZAR MEU PEDIDO</span></strong></span>\n" +
                 "    </a>\n" +
                 "  <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->\n" +
@@ -2193,10 +2195,10 @@ public class EmailSendAdapter implements EmailSendPort {
                 "</body>\n" +
                 "\n" +
                 "</html>";
-        sendEmail(pedido.getUsuario().getEmail(),"SMART SERVICE - PEDIDO",msg);
+        sendEmail(pedido.getUsuario().getEmail(), "SMART SERVICE - PEDIDO", msg);
     }
 
-    private void sendEmail(String emailDestino,String assuntoEmail,String msg) throws MessagingException {
+    private void sendEmail(String emailDestino, String assuntoEmail, String msg) throws MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");

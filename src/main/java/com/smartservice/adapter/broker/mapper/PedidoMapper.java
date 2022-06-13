@@ -1,8 +1,8 @@
 package com.smartservice.adapter.broker.mapper;
 
-import com.smartservice.adapter.http.dto.entrada.pedido.CadastraPedidoMesaRequest;
-import com.smartservice.adapter.http.dto.entrada.pedido.CadastraPedidoRequest;
-import com.smartservice.adapter.http.dto.entrada.pedido.ProdutoRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.pedido.CadastraPedidoMesaRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.pedido.CadastraPedidoRequest;
+import com.smartservice.adapter.http.spring.dto.entrada.pedido.ProdutoRequest;
 import com.smartservice.config.general.ModelMapperConfig;
 import com.smartservice.core.model.pedido.PedidoModel;
 import com.smartservice.core.model.pedido.ProdutoModel;
@@ -22,7 +22,7 @@ public class PedidoMapper {
     }
 
     public PedidoModel converterParaPedidoModel(CadastraPedidoRequest cadastraPedidoRequest){
-        List<ProdutoModel> produtos = new ArrayList<ProdutoModel>();
+        List<ProdutoModel> produtos = new ArrayList<>();
         for (ProdutoRequest produtoRequest:cadastraPedidoRequest.getProdutos()
              ) {
             ProdutoModel produtoModel = new ProdutoModel(produtoRequest.getIdProduto(),produtoRequest.getQuantidade());
@@ -32,7 +32,7 @@ public class PedidoMapper {
     }
 
     public PedidoModel converterParaPedidoModel(CadastraPedidoMesaRequest cadastraPedidoRequest){
-        List<ProdutoModel> produtos = new ArrayList<ProdutoModel>();
+        List<ProdutoModel> produtos = new ArrayList<>();
         for (ProdutoRequest produtoRequest:cadastraPedidoRequest.getProdutos()
         ) {
             ProdutoModel produtoModel = new ProdutoModel(produtoRequest.getIdProduto(),produtoRequest.getQuantidade());

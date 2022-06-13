@@ -4,9 +4,7 @@ import com.smartservice.core.model.enums.Perfil;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity
 public class Usuario {
@@ -44,7 +42,7 @@ public class Usuario {
     private String estado;
 
     @Deprecated
-    public Usuario(){};
+    public Usuario(){}
 
     public Usuario(String nome, String email, String password, Perfil tipo, String telefone, String logradouro, String numero, String complemento, String cep, String bairro, String cidade, String estado) {
         this.nome = nome;

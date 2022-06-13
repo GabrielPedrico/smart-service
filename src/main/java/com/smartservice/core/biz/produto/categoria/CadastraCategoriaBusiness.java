@@ -1,14 +1,14 @@
 package com.smartservice.core.biz.produto.categoria;
 
 import com.smartservice.config.annotations.AdapterUseCase;
-import com.smartservice.core.port.entrada.CadastraCategoriaPort;
+import com.smartservice.core.port.entrada.produto.categoria.CadastraCategoriaPort;
 
 @AdapterUseCase
 public class CadastraCategoriaBusiness implements CadastraCategoriaPort {
 
-    private final com.smartservice.core.port.saida.CadastraCategoriaPort cadastraCategoriaPort;
+    private final com.smartservice.core.port.saida.categoria.CadastraCategoriaPort cadastraCategoriaPort;
 
-    public CadastraCategoriaBusiness(com.smartservice.core.port.saida.CadastraCategoriaPort cadastraCategoriaPort) {
+    public CadastraCategoriaBusiness(com.smartservice.core.port.saida.categoria.CadastraCategoriaPort cadastraCategoriaPort) {
         this.cadastraCategoriaPort = cadastraCategoriaPort;
     }
 

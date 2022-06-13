@@ -1,6 +1,5 @@
 package com.smartservice.adapter.datastore.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartservice.core.model.enums.StatusPedido;
 import com.smartservice.core.model.enums.TipoPagamento;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,8 +29,12 @@ public class Pedido {
     @ManyToOne
     private Mesa mesa;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
-    private List<Produto> produtos = new ArrayList<Produto>();
+    @ManyToMany
+    @JoinTable(
+            name = "pedido_produtos",
+            joinColumns = @JoinColumn(name = "pedido_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id"))
+    private List<Produto> produtos = new ArrayList<>();
 
     @Column(columnDefinition="VARCHAR(300)")
     private String obs;
